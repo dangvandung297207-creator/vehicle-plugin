@@ -4,15 +4,15 @@ import com.wavemotorcycle.config.ConfigManager;
 import java.util.Map;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Bisected;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockData;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Bisected;
 
 /**
  * Ground detection and surface traction.
  *
  * <p>Ground is resolved per wheel contact point by scanning the block column
- * around the motorcycle. Full blocks and upper slabs give a ground height, lower
+ * around the motorcycle. Full blocks and top slabs give a ground height, lower
  * slabs are climbable. Liquids provide no ground.
  */
 public final class TerrainSurface {

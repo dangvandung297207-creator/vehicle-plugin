@@ -18,7 +18,10 @@ jobs:
           java-version: "25"
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon --stacktrace
+        run: |
+          ./gradlew build --no-daemon --stacktrace 2>&1 \
+            | sed -E "s#$(echo $GITHUB_WORKSPACE)/##g" | tee /tmp/build.log
+          exit "${PIPESTATUS[0]}"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

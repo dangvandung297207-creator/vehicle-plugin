@@ -44,11 +44,13 @@ public final class EntityEventListener implements Listener {
 
     @EventHandler
     public void onDismount(EntityDismountEvent event) {
-        MotorcycleController bike = bikeOf(event.getVehicle());
+        // In EntityDismountEvent the vehicle is the event's entity; the
+        // passenger that dismounted is getDismounted().
+        MotorcycleController bike = bikeOf(event.getEntity());
         if (bike == null) {
             return;
         }
-        if (event.getEntity() instanceof Player p) {
+        if (event.getDismounted() instanceof Player p) {
             if (Math.abs(bike.speed()) > plugin.cfg().dismountMaxSpeed) {
                 // Too fast to jump off safely.
                 event.setCancelled(true);
@@ -92,10 +94,11 @@ public final class EntityEventListener implements Listener {
     @EventHandler
     public void onBlockExplode(BlockExplodeEvent event) {
         // Blocks near a bike can also damage it (TNT under the chassis etc.).
+        org.bukkit.Location at = event.getBlock().getLocation();
         for (MotorcycleController bike : plugin.manager().all()) {
-            double d = bike.location().distanceSquared(event.getLocation());
-            if (d <= 4.0 * 4.0) {
-                explodeAt(event.getLocation(), bike);
+            if (bike.location().getWorld() == at.getWorld()
+                    && bike.location().distanceSquared(at) <= 4.0 * 4.0) {
+                explodeAt(at, bike);
             }
         }
     }
