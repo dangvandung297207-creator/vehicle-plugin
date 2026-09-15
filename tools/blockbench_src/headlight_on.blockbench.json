@@ -1,0 +1,222 @@
+{
+  "name": "headlight_on",
+  "namespace": "wavemotorcycle",
+  "res": 16,
+  "type": "item",
+  "from": {},
+  "elements": [
+    {
+      "name": "housing",
+      "from": [
+        -5,
+        8.5,
+        5
+      ],
+      "to": [
+        5,
+        14.5,
+        8.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            10,
+            6.0
+          ],
+          "texture": "#silver_dark"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            10,
+            6.0
+          ],
+          "texture": "#silver_dark"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            3.2,
+            6.0
+          ],
+          "texture": "#silver_dark"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            3.2,
+            6.0
+          ],
+          "texture": "#silver_dark"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            10,
+            3.2
+          ],
+          "texture": "#silver_dark"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            10,
+            3.2
+          ],
+          "texture": "#silver_dark"
+        }
+      }
+    },
+    {
+      "name": "housing_lip",
+      "from": [
+        -4.2,
+        9.3,
+        8.2
+      ],
+      "to": [
+        4.2,
+        13.7,
+        8.9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8.4,
+            4.4
+          ],
+          "texture": "#black"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8.4,
+            4.4
+          ],
+          "texture": "#black"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            0.7,
+            4.4
+          ],
+          "texture": "#black"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            0.7,
+            4.4
+          ],
+          "texture": "#black"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8.4,
+            0.7
+          ],
+          "texture": "#black"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8.4,
+            0.7
+          ],
+          "texture": "#black"
+        }
+      }
+    },
+    {
+      "name": "lens",
+      "from": [
+        -3.4,
+        10,
+        8.9
+      ],
+      "to": [
+        3.4,
+        13,
+        9.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6.8,
+            3
+          ],
+          "texture": "#glow"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6.8,
+            3
+          ],
+          "texture": "#glow"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            0.7,
+            3
+          ],
+          "texture": "#glow"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            0.7,
+            3
+          ],
+          "texture": "#glow"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6.8,
+            0.7
+          ],
+          "texture": "#glow"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6.8,
+            0.7
+          ],
+          "texture": "#glow"
+        }
+      }
+    }
+  ],
+  "gui_light": "side",
+  "textures": {
+    "black": "wavemotorcycle:textures/item/black.png",
+    "glow": "wavemotorcycle:textures/item/glow.png",
+    "silver_dark": "wavemotorcycle:textures/item/silver_dark.png"
+  }
+}

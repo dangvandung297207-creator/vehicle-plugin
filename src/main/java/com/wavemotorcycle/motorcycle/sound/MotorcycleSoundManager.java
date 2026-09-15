@@ -7,7 +7,6 @@ import java.util.Locale;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Registry;
 import org.bukkit.Sound;
-import org.bukkit.location.Location;
 
 /**
  * Throttled sound playback for one motorcycle.

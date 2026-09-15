@@ -51,9 +51,11 @@ public final class WaveKeyItem {
             stack.setItemMeta(meta);
         }
         if (boundBike != null) {
-            stack.getPersistentDataContainer().set(Keys.KEY_BOUND_BIKE, PersistentDataType.STRING, boundBike.toString());
+            stack.editPersistentDataContainer(pdc ->
+                    pdc.set(Keys.KEY_BOUND_BIKE, PersistentDataType.STRING, boundBike.toString()));
         }
-        stack.getPersistentDataContainer().set(Keys.KEY_IS_WAVE_KEY, PersistentDataType.STRING, "1");
+        stack.editPersistentDataContainer(pdc ->
+                pdc.set(Keys.KEY_IS_WAVE_KEY, PersistentDataType.STRING, "1"));
         return stack;
     }
 

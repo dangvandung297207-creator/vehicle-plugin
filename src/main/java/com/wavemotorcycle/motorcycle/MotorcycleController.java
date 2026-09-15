@@ -489,7 +489,7 @@ public final class MotorcycleController {
 
         anim.update(this, dt);
         model.update();
-        sounds.tick(this, dt);
+        sounds.tick(this);
         effects(dt);
         checkEnvironment();
 

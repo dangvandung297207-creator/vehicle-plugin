@@ -40,7 +40,7 @@ public final class TerrainSurface {
             }
             BlockData data = block.getBlockData();
             if (data instanceof Bisected bisected) {
-                return y + (bisected.getHalf() == Bisected.Half.UPPER ? 1.0 : 0.5);
+                return y + (bisected.getHalf() == Bisected.Half.TOP ? 1.0 : 0.5);
             }
             // liquids (lava/water) do not support the bike
         }

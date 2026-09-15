@@ -31,7 +31,8 @@ public final class MotorcycleManager {
     private final WaveMotorcyclePlugin plugin;
     private final ConfigManager cfg;
     private final Map<UUID, MotorcycleController> bikes = new HashMap<>();
-    private final Map<UUID, MotorcycleController> pendingWorlds = new HashMap<>();
+    /** Saved bikes whose world was not loaded yet at startup. */
+    private final Map<UUID, Motorcycle> pendingWorlds = new HashMap<>();
     private final List<UUID> saveQueue = new ArrayList<>();
 
     private MotorcyclePhysics physics;

@@ -1,0 +1,152 @@
+{
+  "name": "rear_light_brake",
+  "namespace": "wavemotorcycle",
+  "res": 16,
+  "type": "item",
+  "from": {},
+  "elements": [
+    {
+      "name": "housing",
+      "from": [
+        -3.5,
+        12.2,
+        -9.4
+      ],
+      "to": [
+        3.5,
+        15.2,
+        -8.4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            7.0,
+            3.0
+          ],
+          "texture": "#black"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            7.0,
+            3.0
+          ],
+          "texture": "#black"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            1.0,
+            3.0
+          ],
+          "texture": "#black"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            1.0,
+            3.0
+          ],
+          "texture": "#black"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            7.0,
+            1.0
+          ],
+          "texture": "#black"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            7.0,
+            1.0
+          ],
+          "texture": "#black"
+        }
+      }
+    },
+    {
+      "name": "lens",
+      "from": [
+        -2.9,
+        12.9,
+        -9.9
+      ],
+      "to": [
+        2.9,
+        14.5,
+        -9.4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            5.8,
+            1.6
+          ],
+          "texture": "#red_bright"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            5.8,
+            1.6
+          ],
+          "texture": "#red_bright"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            0.5,
+            1.6
+          ],
+          "texture": "#red_bright"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            0.5,
+            1.6
+          ],
+          "texture": "#red_bright"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            5.8,
+            0.5
+          ],
+          "texture": "#red_bright"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            5.8,
+            0.5
+          ],
+          "texture": "#red_bright"
+        }
+      }
+    }
+  ],
+  "gui_light": "side",
+  "textures": {
+    "black": "wavemotorcycle:textures/item/black.png",
+    "red_bright": "wavemotorcycle:textures/item/red_bright.png"
+  }
+}

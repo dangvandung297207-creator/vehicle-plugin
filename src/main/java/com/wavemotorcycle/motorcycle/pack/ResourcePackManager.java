@@ -48,12 +48,11 @@ public final class ResourcePackManager {
         }
         try {
             UUID id = UUID.nameUUIDFromBytes(cfg.packUrl.getBytes(java.nio.charset.StandardCharsets.UTF_8));
-            ResourcePackRequest request = ResourcePackRequest.resourcePackRequest()
+            player.sendResourcePacks(ResourcePackRequest.resourcePackRequest()
                     .required(cfg.packRequired)
                     .replace(true)
                     .prompt(Component.text(cfg.msg("pack.prompt")))
-                    .packs(ResourcePackInfo.resourcePackInfo(id, URI.create(cfg.packUrl.trim()), cfg.packSha1.toLowerCase(java.util.Locale.ROOT)));
-            player.sendResourcePacks(request);
+                    .packs(ResourcePackInfo.resourcePackInfo(id, URI.create(cfg.packUrl.trim()), cfg.packSha1.toLowerCase(java.util.Locale.ROOT))));
         } catch (Exception e) {
             plugin.getLogger().severe("Failed to send resource pack to " + player.getName() + ": " + e.getMessage());
         }

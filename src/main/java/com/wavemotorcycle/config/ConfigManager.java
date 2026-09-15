@@ -177,9 +177,11 @@ public final class ConfigManager {
         mirrorX = c.getBoolean("model.mirror-x", false);
 
         surfaceTraction.clear();
-        for (String key : c.getConfigurationSection("surfaces") != null
-                ? c.getConfigurationSection("surfaces").getKeys(false) : java.util.Collections.emptySet()) {
-            surfaceTraction.put(key.toLowerCase(Locale.ROOT), c.getDouble("surfaces." + key, 1.0));
+        org.bukkit.configuration.ConfigurationSection surfaces = c.getConfigurationSection("surfaces");
+        if (surfaces != null) {
+            for (String key : surfaces.getKeys(false)) {
+                surfaceTraction.put(key.toLowerCase(Locale.ROOT), surfaces.getDouble(key, 1.0));
+            }
         }
         if (surfaceTraction.isEmpty()) {
             surfaceTraction.put("grass_block", 0.85);
