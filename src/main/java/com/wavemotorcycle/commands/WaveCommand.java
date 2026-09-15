@@ -193,6 +193,23 @@ public final class WaveCommand implements TabExecutor {
                 }
                 break;
             }
+            case "reloadpack": {
+                if (!sender.hasPermission("wavemotorcycle.admin")) {
+                    sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
+                    return true;
+                }
+                plugin.reloadAll();
+                ResourcePackManager pack = plugin.packManager();
+                if (!pack.canSend()) {
+                    sender.sendMessage(plugin.cfg().msgC("msg.pack_not_configured"));
+                    break;
+                }
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    pack.sendPack(p);
+                }
+                sender.sendMessage(plugin.cfg().msg("msg.pack_sent_all"));
+                break;
+            }
             case "light": {
                 if (player == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.players_only"));
@@ -272,6 +289,7 @@ public final class WaveCommand implements TabExecutor {
         sender.sendMessage("§e/wave fuel [player] §7- show fuel");
         sender.sendMessage("§e/wave refuel [player] §7- refuel (admin)");
         sender.sendMessage("§e/wave pack [player] §7- send the resource pack (admin)");
+        sender.sendMessage("§e/wave reloadpack §7- reload config + re-send pack to all (admin)");
         sender.sendMessage("§e/wave light §7- toggle your headlight");
         sender.sendMessage("§e/wave debug §7- bike diagnostics (admin)");
         sender.sendMessage("§e/wave removeall §7- remove every bike (admin)");
@@ -283,7 +301,7 @@ public final class WaveCommand implements TabExecutor {
         List<String> out = new ArrayList<>();
         if (args.length == 1) {
             String partial = args[0].toLowerCase(Locale.ROOT);
-            String[] subs = {"give", "spawn", "remove", "reload", "fuel", "refuel", "pack", "light", "debug", "removeall", "help"};
+            String[] subs = {"give", "spawn", "remove", "reload", "reloadpack", "fuel", "refuel", "pack", "light", "debug", "removeall", "help"};
             for (String s : subs) {
                 if (s.startsWith(partial)) {
                     out.add(s);
