@@ -1,0 +1,30 @@
+name: WaveMotorcycle
+version: 1.0.0
+main: com.wavemotorcycle.WaveMotorcyclePlugin
+api-version: 26.2
+description: Fully rideable, physics-based Honda Wave-style motorcycle with a custom 3D resource-pack model.
+authors:
+  - dangvandung2972
+
+commands:
+  wave:
+    description: Wave motorcycle control command.
+    usage: /wave <give|spawn|remove|reload|fuel|refuel|pack|light|debug|removeall|help>
+    aliases: [wv]
+
+permissions:
+  wavemotorcycle.use:
+    description: Allows mounting and driving Wave motorcycles.
+    default: true
+  wavemotorcycle.admin:
+    description: Full administrative access to Wave motorcycle tools.
+    default: op
+  wavemotorcycle.spawn:
+    description: Allows spawning Wave motorcycles.
+    default: op
+  wavemotorcycle.give:
+    description: Allows giving motorcycle keys to players.
+    default: op
+  wavemotorcycle.reload:
+    description: Allows reloading the WaveMotorcycle configuration.
+    default: op
