@@ -1,1 +1,150 @@
-# WaveMotorcycle - skeleton config (full config shipped with the plugin)
+# ============================================================================
+# WaveMotorcycle configuration
+#
+# Physics values are in blocks/tick and blocks/tick^2 (20 ticks per second).
+# After editing run /wave reload (or restart the server).
+# ============================================================================
+
+motorcycle:
+  # Top speed while accelerating (blocks/tick). 0.75 = 15 m/s, a zippy street bike.
+  max-speed: 0.75
+  # Acceleration while throttling (blocks/tick^2).
+  acceleration: 0.025
+  # Deceleration while braking (blocks/tick^2).
+  braking: 0.08
+  # Passive rolling friction (blocks/tick^2), always applied.
+  friction: 0.015
+  # Maximum reverse speed (blocks/tick, positive number).
+  reverse-speed: 0.18
+  # Overall turn scale (1.0 = raw bicycle kinematics; lower = wider turns).
+  turn-rate: 0.35
+  # Gravity while airborne (blocks/tick^2, vanilla player gravity is 0.08).
+  gravity: 0.08
+  # Maximum steering angle at low speed in degrees; it shrinks with speed.
+  steering-angle: 28.0
+  # Global traction multiplier applied to every surface.
+  traction: 1.0
+
+wheelie:
+  enabled: true
+  # Upward front-rotation force per tick while lifting (degrees/tick).
+  lift-force: 0.10
+  # Maximum wheelie angle in degrees (keep between 25 and 35).
+  max-angle: 28
+  # Balance wobble amplitude while holding the wheelie.
+  balance: 0.015
+  # 0 = wheelie held as long as you keep the throttle; >0 = auto-lower after N ticks.
+  duration: 0
+  # Minimum forward speed (blocks/tick) needed to pop a wheelie.
+  min-speed: 0.20
+
+lights:
+  headlight: true
+  rear-light: true
+  brake-light: true
+  # Particle beam projected in front of the bike while the headlight is on.
+  beam: true
+  beam-particle: end_rod
+  # Ticks between beam particle puffs (higher = more subtle).
+  beam-interval: 2
+
+fuel:
+  enabled: true
+  capacity: 100
+  # Fuel burned per second while the engine runs.
+  consumption-per-second: 0.12
+  # Item that refuels the bike when right-clicked while riding (1 item = +fuel-item-amount).
+  fuel-item: glass_bottle
+  fuel-item-amount: 25.0
+
+damage:
+  enabled: true
+  collision-damage: true
+  fall-damage: true
+  fire-damage: true
+
+effects:
+  # Exhaust smoke particle (minecraft particle name).
+  exhaust-particle: smoke
+  # Wheel dust while driving fast.
+  dust: true
+  dust-interval: 6
+
+rider:
+  # Height (blocks) from the controller stand's feet to the rider's feet.
+  # Tune this if the rider appears to float above or sink into the seat:
+  # floating -> increase, sinking -> decrease.
+  seat-y-compensation: 0.45
+
+interaction:
+  # Distance (blocks) at which right-clicking mounts the nearest bike.
+  mount-range: 2.6
+  # Above this speed (blocks/tick) the rider cannot dismount.
+  dismount-max-speed: 0.35
+
+spawn:
+  # Consume the key item when a motorcycle is spawned with it.
+  consume-key: true
+
+tick:
+  # Physics runs every N server ticks (1 = every tick, smoothest; 2 = half rate, cheaper).
+  update-interval: 1
+  # Bikes with no rider and no player within this radius are frozen (no updates at all).
+  activation-radius: 96.0
+
+sounds:
+  # All values are sound resource locations, e.g. minecraft:block_note_block_bass
+  # (custom sounds from the resource pack work too, e.g. wavemotorcycle:engine_idle).
+  engine_idle: minecraft:block_note_block_bass
+  engine_low: minecraft:block_note_block_bass
+  engine_high: minecraft:block_note_block_bass
+  engine_start: minecraft:block_lava_extinguish
+  engine_stop: minecraft:block_fire_extinguish
+  brake: minecraft:block_stone_hit
+  collision: minecraft:block_stone_hit
+  wheelie: minecraft:block_note_block_hat
+  headlight_toggle: minecraft:block_lever_click
+  landing: minecraft:entity_armor_stand_fall
+  destroyed: minecraft:entity_tnt_primed
+  refuel: minecraft:entity_cow_milk
+  # Ticks between engine sound pulses (lower = higher idle "buzz").
+  engine-pulse-interval: 8
+
+resource-pack:
+  enabled: true
+  # Public URL of the ZIP built by `./gradlew buildResourcePack`.
+  # Leave empty to disable pack sending (the plugin still works, the bike then
+  # renders as a plain item model - see README "Resource pack setup").
+  url: ""
+  # 40-character lowercase SHA-1 of the ZIP file.
+  sha1: ""
+  # Required packs cannot be declined by the player (they must accept to join).
+  required: false
+
+model:
+  # Extra yaw (degrees) applied to every model part. Only needed if you replace
+  # the model files and the bike faces the wrong direction.
+  yaw-offset-degrees: 0.0
+  # Mirror the model left/right if your replacement model was authored mirrored.
+  mirror-x: false
+
+# Traction multipliers per surface block (material names). Unknown surfaces use 1.0.
+# Slabs automatically use their base material's value.
+surfaces:
+  grass_block: 0.85
+  dirt: 0.90
+  stone: 1.00
+  deepslate: 1.00
+  ice: 0.35
+  packed_ice: 0.50
+  blue_ice: 0.45
+  soul_sand: 0.60
+  soul_soil: 0.60
+  sand: 0.70
+  gravel: 0.75
+  snow_block: 0.55
+  mud: 0.50
+  moss_block: 0.80
+  cobblestone: 1.00
+  oak_planks: 0.95
+  stone_bricks: 1.00

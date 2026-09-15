@@ -1,0 +1,45 @@
+# WaveMotorcycle messages. Use & color codes.
+# <player>, <fuel>, <capacity>, <count> are replaced at runtime.
+
+msg:
+  no_permission: "&cYou don't have permission to do that."
+  players_only: "&cThis command can only be used by players."
+  player_not_found: "&cPlayer not found: <player>"
+  already_riding: "&cYou are already riding a motorcycle."
+  not_riding: "&cYou are not riding a motorcycle."
+  no_bike_near: "&7No motorcycle nearby."
+  bike_exists: "&cThat motorcycle already exists."
+  mounted: "&aYou mounted your Wave Motorcycle. &7Hold SPACE to ride, SHIFT to brake, look to steer."
+  slow_down: "&cSlow down before dismounting!"
+  teleport_dismount: "&7You were teleported, so you dismounted."
+  given: "&aYou received a Wave motorcycle key. &7Right-click the air to spawn it."
+  gave: "&aGave a motorcycle key to <player>."
+  spawned: "&aWave Motorcycle spawned. &7Right-click the air near it to ride."
+  removed: "&7Motorcycle removed."
+  removed_all: "&7Removed <count> motorcycle(s)."
+  reloaded: "&aConfiguration reloaded."
+  fuel: "&eFuel: <fuel>/<capacity>"
+  fuel_disabled: "&7The fuel system is disabled."
+  refueled: "&aRefueled."
+  fuel_empty: "&cOut of fuel! Refuel to ride again."
+  engine_failure: "&cEngine failure! Repair or scrap the bike."
+  destroyed: "&cYour Wave Motorcycle was destroyed. A key was dropped."
+  light_on: "&eHeadlight ON."
+  light_off: "&eHeadlight OFF."
+  pack_not_configured: "&cNo resource pack URL is configured. See the README (resource-pack section)."
+  pack_sent: "&aResource pack request sent to <player>."
+  pack_sent_self: "&aResource pack request sent."
+  pack_sent_all: "&aResource pack request sent to all players."
+
+key:
+  name: "&6Wave Motorcycle Key"
+  lore_1: "&7Right-click the air to spawn your motorcycle."
+  lore_2: "&7Spawns a brand new Wave Motorcycle."
+  lore_bound: "&7Bound to bike:"
+
+pack:
+  prompt: "&eWave Motorcycle resource pack (3D model)."
+  status_successfully_loaded: "&aWave Motorcycle resource pack loaded."
+  status_declined: "&7Wave Motorcycle resource pack declined - the 3D model will not appear."
+  status_failed_download: "&cWave Motorcycle resource pack download failed."
+  status_invalid_url: "&cWave Motorcycle resource pack URL is invalid - contact an admin."
