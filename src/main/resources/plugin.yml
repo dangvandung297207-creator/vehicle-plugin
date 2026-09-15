@@ -1,0 +1,44 @@
+name: VanillaVehicles
+version: 1.0.0
+main: com.example.vanillavehicles.VanillaVehicles
+api-version: '1.21'
+author: VanillaVehicles
+description: Complete vanilla-client vehicle framework with 34 ready-to-use vehicles built from display entities.
+website: https://example.com/vanillavehicles
+
+commands:
+  vehicle:
+    description: Main VanillaVehicles command.
+    usage: /vehicle <spawn|remove|removeall|list|info|give|reload|debug|help|garage|siren|boost|lights|horn|exit|cargo|fare|tool>
+    aliases: [vv, vehicles]
+    permission: vehicle.use
+
+permissions:
+  vehicle.use:
+    description: Ride and control vehicles.
+    default: true
+  vehicle.spawn:
+    description: Spawn vehicles.
+    default: true
+  vehicle.remove:
+    description: Remove vehicles.
+    default: true
+  vehicle.garage:
+    description: Use the vehicle garage.
+    default: true
+  vehicle.give:
+    description: Give vehicle spawner items.
+    default: op
+  vehicle.reload:
+    description: Reload the plugin configuration.
+    default: op
+  vehicle.admin:
+    description: Full vehicle administration.
+    default: op
+    children:
+      vehicle.use: true
+      vehicle.spawn: true
+      vehicle.remove: true
+      vehicle.garage: true
+      vehicle.give: true
+      vehicle.reload: true
