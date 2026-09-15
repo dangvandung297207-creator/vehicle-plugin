@@ -2,7 +2,6 @@ package com.example.vanillavehicles.input;
 
 import com.example.vanillavehicles.VanillaVehicles;
 import com.example.vanillavehicles.vehicle.Vehicle;
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

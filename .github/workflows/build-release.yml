@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "21"
@@ -29,7 +29,21 @@ jobs:
           echo "$PWD/gradle-8.10.2/bin" >> "$GITHUB_PATH"
 
       - name: Build plugin jar
-        run: gradle build --no-daemon
+        run: |
+          set -o pipefail
+          gradle build --no-daemon --stacktrace 2>&1 | tee build-output.log
+
+      - name: Push build log to repo (on failure)
+        if: failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B arena/01a0a625-vehicle-plugin
+          mkdir -p build-logs
+          cp build-output.log "build-logs/run-${{ github.run_id }}.log"
+          git add "build-logs/run-${{ github.run_id }}.log"
+          git commit -m "ci: build log for run ${{ github.run_id }}"
+          git push origin arena/01a0a625-vehicle-plugin
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')

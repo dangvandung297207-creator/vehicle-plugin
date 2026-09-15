@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Method;
+import java.util.function.Consumer;
 
 /**
  * Optional hook for Paper's PlayerInputEvent (real WASD state while riding).
@@ -14,6 +15,9 @@ import java.lang.reflect.Method;
  * <p>The event does not exist on Paper 1.21.1, so it is wired purely through
  * reflection: on 1.21.1 this hook quietly disables itself and the fallback
  * control scheme is used, while newer servers automatically get full WASD.</p>
+ *
+ * <p>PlayerJumpEvent is hooked the same way so the plugin never has a hard
+ * compile/runtime dependency on Paper-only event classes.</p>
  */
 public final class PlayerInputHook {
 
