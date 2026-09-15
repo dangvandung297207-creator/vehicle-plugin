@@ -45,6 +45,7 @@ public class InputManager implements Listener {
     public void init() {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         enhancedAvailable = PlayerInputHook.tryRegister(plugin, this::onEnhancedInput);
+        PlayerInputHook.tryRegisterJump(plugin, this::onJumpPulse);
         plugin.getLogger().info("Input mode: "
                 + (enhancedAvailable ? "enhanced WASD available" : "fallback (gears + mouse steering)"));
     }
@@ -166,9 +167,7 @@ public class InputManager implements Listener {
     }
 
     /** Bonus Space detection where the server fires it while riding. */
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onJump(PlayerJumpEvent event) {
-        Player player = event.getPlayer();
+    private void onJumpPulse(Player player) {
         if (!plugin.getVehicleManager().isDriver(player)) {
             return;
         }

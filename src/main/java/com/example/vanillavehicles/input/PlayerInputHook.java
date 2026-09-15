@@ -82,5 +82,40 @@ public final class PlayerInputHook {
         } catch (Exception ex) {
             return false;
         }
+
+    /**
+     * Tries to hook PlayerJumpEvent (bonus Space detection). Returns true
+     * when the server provides the event and the hook is active.
+     */
+    @SuppressWarnings("unchecked")
+    public static boolean tryRegisterJump(Plugin plugin, Consumer<Player> listener) {
+        try {
+            Class<?> eventClass = Class.forName("com.destroystokyo.paper.event.player.PlayerJumpEvent");
+            if (!Event.class.isAssignableFrom(eventClass)) {
+                return false;
+            }
+            Class<? extends Event> clazz = (Class<? extends Event>) eventClass;
+            final Method getPlayer = eventClass.getMethod("getPlayer");
+            plugin.getServer().getPluginManager().registerEvent(
+                    clazz,
+                    new Listener() {
+                    },
+                    EventPriority.MONITOR,
+                    (l, event) -> {
+                        try {
+                            Player player = (Player) getPlayer.invoke(event);
+                            if (player != null) {
+                                listener.accept(player);
+                            }
+                        } catch (Exception ignored) {
+                        }
+                    },
+                    plugin);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     }
 }

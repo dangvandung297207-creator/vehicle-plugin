@@ -1,6 +1,7 @@
 package com.example.vanillavehicles.model;
 
 import org.bukkit.entity.Display;
+import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
@@ -167,19 +168,19 @@ public final class ModelMath {
     }
 
     /** Transformation for a static axis-aligned block part. */
-    public static Display.Transformation blockTransform(Vector3f center, Vector3f size) {
+    public static Transformation blockTransform(Vector3f center, Vector3f size) {
         Vector3f translation = new Vector3f(
                 center.x - size.x / 2f,
                 center.y - size.y / 2f,
                 center.z - size.z / 2f);
-        return new Display.Transformation(translation, identity(),
+        return new Transformation(translation, identity(),
                 new Vector3f(size), identity());
     }
 
     /** Transformation for a (possibly rotated) centered item/text part. */
-    public static Display.Transformation orientedTransform(Vector3f center, AxisAngle4f leftRotation,
+    public static Transformation orientedTransform(Vector3f center, AxisAngle4f leftRotation,
                                                            Vector3f size) {
-        return new Display.Transformation(new Vector3f(center), leftRotation,
+        return new Transformation(new Vector3f(center), leftRotation,
                 new Vector3f(size), identity());
     }
 

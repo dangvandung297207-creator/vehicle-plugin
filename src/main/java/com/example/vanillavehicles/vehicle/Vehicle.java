@@ -452,7 +452,7 @@ public class Vehicle {
             pushHistory();
             updateCarriages();
             updateChannels();
-            VehicleAnimator.update(this, input);
+            VehicleAnimator.update(this, input, now);
             updateTransforms();
             plugin.getSoundManager().update(this, driver);
             if (input != null) {

@@ -167,12 +167,15 @@ public class VehicleStats {
                 break;
             case ATV:
             case SUV:
-            case MOTORCYCLE:
-            case MILITARY_TRUCK:
                 stepUp = true;
                 break;
             case MOTORCYCLE:
+                stepUp = true;
                 leanFactor = 1.4;
+                break;
+            case MILITARY_TRUCK:
+                stepUp = true;
+                cargoSize = 18;
                 break;
             case SCOOTER:
                 leanFactor = 1.0;
@@ -185,12 +188,13 @@ public class VehicleStats {
                 cargoSize = 27;
                 break;
             case AMBULANCE:
-            case MILITARY_TRUCK:
+                cargoSize = 18;
+                siren = true;
+                break;
             case CONSTRUCTION_TRUCK:
                 cargoSize = 18;
                 break;
             case POLICE_CAR:
-            case AMBULANCE:
             case FIRE_TRUCK:
                 siren = true;
                 break;
