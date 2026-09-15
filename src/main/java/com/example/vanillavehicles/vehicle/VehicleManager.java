@@ -8,6 +8,8 @@ import com.example.vanillavehicles.event.VehicleSpawnEvent;
 import com.example.vanillavehicles.input.InputState;
 import com.example.vanillavehicles.storage.VehicleStorage;
 import com.example.vanillavehicles.util.MessageUtil;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -416,11 +418,11 @@ public class VehicleManager implements Listener {
         ItemStack item = new ItemStack(Material.MINECART);
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(org.bukkit.ChatColor.GOLD + type.getDisplayName() + " Spawner");
-            meta.setLore(Arrays.asList(
-                    org.bukkit.ChatColor.GRAY + "Right-click a block to spawn",
-                    org.bukkit.ChatColor.GRAY + "a " + type.getDisplayName() + ".",
-                    org.bukkit.ChatColor.DARK_GRAY + type.getId()));
+            meta.displayName(Component.text(type.getDisplayName() + " Spawner", NamedTextColor.GOLD));
+            meta.lore(Arrays.asList(
+                    Component.text("Right-click a block to spawn", NamedTextColor.GRAY),
+                    Component.text("a " + type.getDisplayName() + ".", NamedTextColor.GRAY),
+                    Component.text(type.getId(), NamedTextColor.DARK_GRAY)));
             meta.getPersistentDataContainer().set(VehicleTags.SPAWNER_TYPE,
                     PersistentDataType.STRING, type.getId());
             item.setItemMeta(meta);

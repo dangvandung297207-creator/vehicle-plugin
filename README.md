@@ -1,6 +1,6 @@
 # VanillaVehicles
 
-A complete, dependency-free vehicle framework and 34 ready-to-use vehicles for **Paper 1.21.1** — working with a **100% vanilla client**. No mods, no resource packs, no ProtocolLib, no ModelEngine. Every vehicle is built at runtime from vanilla display entities, sounds and particles.
+A complete, dependency-free vehicle framework and 34 ready-to-use vehicles for **Paper 26.2** — working with a **100% vanilla client**. No mods, no resource packs, no ProtocolLib, no ModelEngine. Every vehicle is built at runtime from vanilla display entities, sounds and particles.
 
 ## Vehicle roster (34)
 
@@ -14,21 +14,21 @@ Type ids for commands: `car sports_car muscle_car pickup van minivan suv bus tax
 
 ## Installation
 
-1. Build the jar (see below) or download `VanillaVehicles-1.0.0.jar`.
+1. Build the jar (see below) or download `VanillaVehicles-1.1.0.jar`.
 2. Drop it into your server's `plugins/` folder.
-3. Start a Paper 1.21.1 server (Java 21). `config.yml` is generated on first run.
+3. Start a Paper 26.2 server (Java 25). `config.yml` is generated on first run.
 4. Run `/vehicle garage`, click a vehicle, right-click it to board.
 
 ## Build instructions
 
-Requirements: JDK 21 + Gradle 8.x.
+Requirements: JDK 25 + Gradle 9.x.
 
 ```bash
 gradle build
-# jar: build/libs/VanillaVehicles-1.0.0.jar
+# jar: build/libs/VanillaVehicles-1.1.0.jar
 ```
 
-The build only needs `io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT` from `https://repo.papermc.io/repository/maven-public/`. Nothing is shaded — the plugin has zero runtime dependencies.
+The build only needs `io.papermc.paper:paper-api:26.2.build.124-stable` from `https://repo.papermc.io/repository/maven-public/`. Nothing is shaded — the plugin has zero runtime dependencies.
 
 ## Commands (`/vehicle`, alias `/vv`)
 
@@ -61,11 +61,11 @@ Tab completion is provided for everything.
 
 ## Controls
 
-Paper 1.21.1 has no raw-key API for riders, so the plugin ships a hybrid input system:
+The plugin uses Paper's native `PlayerInputEvent`, so every driver gets true key input:
 
-**Enhanced mode** (automatic on newer Paper via a reflection hook — no code changes needed): `W/S` throttle/brake/reverse, `A/D` steer, `Space` lift/boost, `Shift` exit.
+**Standard mode** (always on): `W/S` throttle/brake/reverse, `A/D` steer, `Space` lift/boost, `Shift` brake/exit, plus mouse steering for boats and aircraft aim.
 
-**Fallback mode** (Paper 1.21.1, always works): hotbar slot = cruise gear (slot 1 reverse … slot 9 full speed), mouse = steering (look where you want to go), sneak-hold = brake (dismount is cancelled while moving; press Shift again when slow to exit), `Q` = exit, `F` = headlights, left-click = horn, right-click = vehicle special (siren / boost / horn / tools), `Space` = lift where supported.
+**Fallback safety net** (kicks in if live input ever goes stale): hotbar slot = cruise gear (slot 1 reverse … slot 9 full speed), mouse = steering (look where you want to go), sneak-hold = brake (dismount is cancelled while moving; press Shift again when slow to exit), `Q` = exit, `F` = headlights, left-click = horn, right-click = vehicle special (siren / boost / horn / tools), `Space` = lift where supported.
 
 Aircraft: `Shift` never exits mid-air (it is descend/airbrake) — press `Q` or use `/vehicle exit`. Helicopters fly toward your crosshair; planes use a persistent throttle (hotbar or `W/S`) and rotate when fast with the nose up.
 
@@ -79,7 +79,7 @@ com.example.vanillavehicles
 ├── model/                 # VehicleModel builder, ModelPart, ModelMath, PartKind/PartFlag
 ├── entity/                # DisplayFactory (spawning + PDC tagging), VehicleTags
 ├── seat/                  # Seat definitions + SeatInstance (invisible armor stands)
-├── input/                 # InputManager, InputState, PlayerInputHook (reflection WASD)
+├── input/                 # InputManager, InputState (native PlayerInputEvent WASD)
 ├── physics/               # PhysicsEngine (CAR/BIKE/HEAVY/BOAT/AIRCRAFT/TRAIN/CONSTRUCTION)
 ├── collision/             # CollisionHandler (cheap block sampling)
 ├── animation/             # VehicleAnimator (wheels, tracks, rotors, turret, lamps, channels, particles)
@@ -116,7 +116,7 @@ Every entity carries `vehicle_id / vehicle_type / vehicle_part / vehicle_instanc
 
 Seats are definitions (offset + driver flag); each spawn creates invisible, gravity-free, invulnerable, non-colliding armor stands teleported to the rotated offsets every tick. Entering prefers the free driver seat, then any free seat (including train carriages). Dismounts route through `EntityDismountEvent`: cancelled for braking (fallback) and aircraft descend, otherwise exiting through the cancellable `VehicleExitEvent`. Stale riders (quit/dead) are cleaned every tick; `Q` always exits.
 
-Input merges (a) the optional reflection `PlayerInputEvent` hook, (b) look tracking, sneak/gear/click/`Q`/`F`/jump listeners. Sounds and names everywhere resolve by string with safe fallbacks, so config typos degrade gracefully instead of crashing.
+Input merges (a) the native `PlayerInputEvent` listener, (b) look tracking, sneak/gear/click/`Q`/`F`/jump listeners. Sounds and names everywhere resolve by string with safe fallbacks, so config typos degrade gracefully instead of crashing.
 
 ## Adding a new vehicle
 
@@ -141,9 +141,9 @@ No other code changes are required — spawning, seats, physics, garage, persist
 - No world entity scans except one orphan cleanup at boot and throttled 4 Hz vehicle-vs-vehicle checks.
 - Particles/sounds are throttled per vehicle. Designed for dozens of concurrent vehicles; trains are the heaviest (each carriage is a full model).
 
-## Known limitations (vanilla Paper 1.21.1)
+## Known limitations (vanilla Paper 26.2)
 
-- No true W/A/S/D detection on 1.21.1 (API added the input event later) — hence gears + mouse steering by default; newer servers automatically upgrade to WASD with no config change.
+- Requires Paper 26.2+ (uses the stable `PlayerInputEvent` API) — the v1.0.0 release remains available for Paper 1.21.1 servers.
 - Riders keep upright posture (armor-stand seats), so tall leans/pitches move the seat position but not the rider's body angle.
 - Heads may sit above the roofline on low closed cars (standard for display-entity vehicles); seat offsets are tunable in `VehicleDefinitions`.
 - Headlights are bright blocks + night beams, not real dynamic light (impossible vanilla).

@@ -1,9 +1,9 @@
 package com.example.vanillavehicles.input;
 
 /**
- * Control state of one driver. Filled either by the enhanced
- * PlayerInputEvent hook (real WASD) or by the fallback listeners that only
- * use API available since forever (hotbar gears, mouse steering, sneak brake).
+ * Control state of one driver. Filled by the native PlayerInputEvent
+ * listener (real WASD), with fallback listeners (hotbar gears, mouse
+ * steering, sneak brake) as a safety net.
  */
 public class InputState {
 

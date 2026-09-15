@@ -2,6 +2,7 @@ package com.example.vanillavehicles.input;
 
 import com.example.vanillavehicles.VanillaVehicles;
 import com.example.vanillavehicles.vehicle.Vehicle;
+import org.bukkit.Input;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInputEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -23,10 +25,10 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Collects driver input from vanilla-client-safe sources.
  *
- * <p>Enhanced mode (newer Paper): real W/A/S/D + Space through
- * PlayerInputEvent. Fallback mode (Paper 1.21.1): hotbar slot selects a cruise
- * gear, the mouse steers (driver look yaw vs vehicle heading), sneak brakes,
- * Q exits, F toggles lights, left click honks, right click triggers the
+ * <p>Primary mode: real W/A/S/D + Space/Shift through Paper's native
+ * PlayerInputEvent. Fallback safety net: hotbar slot selects a cruise gear,
+ * the mouse steers (driver look yaw vs vehicle heading), sneak brakes, Q
+ * exits, F toggles lights, left click honks, right click triggers the
  * vehicle special.</p>
  */
 public class InputManager implements Listener {
@@ -44,10 +46,9 @@ public class InputManager implements Listener {
 
     public void init() {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        enhancedAvailable = PlayerInputHook.tryRegister(plugin, this::onEnhancedInput);
-        PlayerInputHook.tryRegisterJump(plugin, this::onJumpPulse);
-        plugin.getLogger().info("Input mode: "
-                + (enhancedAvailable ? "enhanced WASD available" : "fallback (gears + mouse steering)"));
+        // Paper 26.2 always provides PlayerInputEvent: native WASD for every driver.
+        enhancedAvailable = true;
+        plugin.getLogger().info("Input mode: native WASD (PlayerInputEvent) with fallback safety net");
     }
 
     public void shutdown() {
@@ -68,20 +69,23 @@ public class InputManager implements Listener {
         }
     }
 
-    private void onEnhancedInput(Player player, boolean forward, boolean backward, boolean left,
-                                 boolean right, boolean jump, boolean sneak, boolean sprint) {
+    /** Native WASD + Space/Shift state, straight from the client. */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onInput(PlayerInputEvent event) {
+        Player player = event.getPlayer();
         // Only track actual drivers; anything else would leak entries.
         if (!plugin.getVehicleManager().isDriver(player)) {
             return;
         }
+        Input input = event.getInput();
         InputState state = getState(player);
         state.enhanced = true;
         state.lastEnhancedInput = System.currentTimeMillis();
-        state.forward = (forward ? 1.0 : 0.0) - (backward ? 1.0 : 0.0);
-        state.strafe = (right ? 1.0 : 0.0) - (left ? 1.0 : 0.0);
-        state.jump = jump;
-        state.sneak = sneak;
-        state.sprint = sprint;
+        state.forward = (input.isForward() ? 1.0 : 0.0) - (input.isBackward() ? 1.0 : 0.0);
+        state.strafe = (input.isRight() ? 1.0 : 0.0) - (input.isLeft() ? 1.0 : 0.0);
+        state.jump = input.isJump();
+        state.sneak = input.isSneak();
+        state.sprint = input.isSprint();
     }
 
     /** Tracks driver look direction (mouse steering / aircraft pitch). */
@@ -164,14 +168,6 @@ public class InputManager implements Listener {
             vehicle.special();
             event.setCancelled(true);
         }
-    }
-
-    /** Bonus Space detection where the server fires it while riding. */
-    private void onJumpPulse(Player player) {
-        if (!plugin.getVehicleManager().isDriver(player)) {
-            return;
-        }
-        getState(player).jumpPulse = true;
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

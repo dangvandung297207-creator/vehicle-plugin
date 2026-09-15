@@ -9,7 +9,8 @@ import com.example.vanillavehicles.vehicle.VehicleManager;
 import com.example.vanillavehicles.vehicle.VehicleStats;
 import com.example.vanillavehicles.vehicle.VehicleType;
 import com.example.vanillavehicles.util.MessageUtil;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -52,11 +53,10 @@ public class GarageManager implements Listener {
         this.plugin = plugin;
     }
 
-    @SuppressWarnings("deprecation")
     public void open(Player player) {
         GarageHolder holder = new GarageHolder();
         Inventory inventory = org.bukkit.Bukkit.createInventory(holder, 54,
-                plugin.getPluginConfig().getGarageTitle());
+                Component.text(plugin.getPluginConfig().getGarageTitle()));
         holder.setInventory(inventory);
 
         for (VehicleDefinition definition : plugin.getRegistry().all()) {
@@ -72,21 +72,21 @@ public class GarageManager implements Listener {
             ItemStack item = new ItemStack(icon);
             ItemMeta meta = item.getItemMeta();
             if (meta != null) {
-                meta.setDisplayName(ChatColor.GREEN + type.getDisplayName());
-                List<String> lore = new ArrayList<>();
-                lore.add(ChatColor.GRAY + type.getDescription());
-                lore.add("");
-                lore.add(ChatColor.YELLOW + "Top speed: " + ChatColor.WHITE
-                        + String.format("%.0f m/s", stats.maxSpeed));
-                lore.add(ChatColor.YELLOW + "Seats: " + ChatColor.WHITE
-                        + definition.getModel().seatCount());
-                lore.add(ChatColor.YELLOW + "Health: " + ChatColor.WHITE
-                        + (int) stats.maxHealth);
-                lore.add(ChatColor.YELLOW + "Class: " + ChatColor.WHITE
-                        + type.getTier().getDisplayName());
-                lore.add("");
-                lore.add(ChatColor.AQUA + "Click to spawn");
-                meta.setLore(lore);
+                meta.displayName(Component.text(type.getDisplayName(), NamedTextColor.GREEN));
+                List<Component> lore = new ArrayList<>();
+                lore.add(Component.text(type.getDescription(), NamedTextColor.GRAY));
+                lore.add(Component.empty());
+                lore.add(Component.text("Top speed: ", NamedTextColor.YELLOW)
+                        .append(Component.text(String.format("%.0f m/s", stats.maxSpeed), NamedTextColor.WHITE)));
+                lore.add(Component.text("Seats: ", NamedTextColor.YELLOW)
+                        .append(Component.text(String.valueOf(definition.getModel().seatCount()), NamedTextColor.WHITE)));
+                lore.add(Component.text("Health: ", NamedTextColor.YELLOW)
+                        .append(Component.text(String.valueOf((int) stats.maxHealth), NamedTextColor.WHITE)));
+                lore.add(Component.text("Class: ", NamedTextColor.YELLOW)
+                        .append(Component.text(type.getTier().getDisplayName(), NamedTextColor.WHITE)));
+                lore.add(Component.empty());
+                lore.add(Component.text("Click to spawn", NamedTextColor.AQUA));
+                meta.lore(lore);
                 meta.getPersistentDataContainer().set(VehicleTags.SPAWNER_TYPE,
                         PersistentDataType.STRING, type.getId());
                 item.setItemMeta(meta);
@@ -97,7 +97,7 @@ public class GarageManager implements Listener {
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
         if (closeMeta != null) {
-            closeMeta.setDisplayName(ChatColor.RED + "Close");
+            closeMeta.displayName(Component.text("Close", NamedTextColor.RED));
             close.setItemMeta(closeMeta);
         }
         inventory.setItem(49, close);

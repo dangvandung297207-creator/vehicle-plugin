@@ -407,7 +407,7 @@ public class Vehicle {
     private void createCargo() {
         int size = Math.max(9, Math.min(54, ((stats.cargoSize + 8) / 9) * 9));
         CargoHolder holder = new CargoHolder(this);
-        Inventory inventory = Bukkit.createInventory(holder, size, "Vehicle Cargo");
+        Inventory inventory = Bukkit.createInventory(holder, size, Component.text("Vehicle Cargo"));
         holder.setInventory(inventory);
         cargo = inventory;
     }
