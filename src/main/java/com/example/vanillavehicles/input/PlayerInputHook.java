@@ -82,6 +82,7 @@ public final class PlayerInputHook {
         } catch (Exception ex) {
             return false;
         }
+    }
 
     /**
      * Tries to hook PlayerJumpEvent (bonus Space detection). Returns true
@@ -115,7 +116,5 @@ public final class PlayerInputHook {
         } catch (Exception ex) {
             return false;
         }
-    }
-
     }
 }
