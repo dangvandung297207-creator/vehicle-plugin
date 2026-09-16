@@ -1,0 +1,156 @@
+# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)
+
+@@@@@ SIGS: net/minecraft/world/entity/Entity.java @@@@
+MISSING
+
+@@@@@ REGION: protected void baseTick :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: void applyGravity :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: public void move(MoverType :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: protected void positionRider :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getPassengerAttachmentPoint :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getPassengerRidingPosition :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: onPassengerTurned :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getDismountLocationForPassenger :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: defineSynchedData :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: public final void lerpTo :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: isControlledByLocalInstance :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getControllingPassenger :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: public boolean hurt :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: public final boolean isInvulnerableTo :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: igniteForSeconds :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: maxUpStep :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: shouldRenderAtSqrDistance :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getPickResult :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: canAddPassenger :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: push(Entity :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: isPickable :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: getAddCarriageLimit :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ SIGS: net/minecraft/world/entity/EntityType.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/world/entity/EntityDimensions.java @@@@
+MISSING
+
+@@@@@ FILE: net/minecraft/world/entity/EntityAttachment.java @@@@
+MISSING
+
+@@@@@ FILE: net/minecraft/world/entity/EntityAttachments.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/world/entity/player/Player.java @@@@
+MISSING
+
+@@@@@ REGION: getVehicleAttachmentPoint :: net/minecraft/world/entity/Entity.java @@@@
+
+@@@@@ REGION: public void rideTick :: net/minecraft/world/entity/player/Player.java @@@@
+
+@@@@@ SIGS: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
+MISSING
+
+@@@@@ REGION: getPassengerAttachmentPoint :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
+
+@@@@@ REGION: clampRotation :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
+
+@@@@@ REGION: getDismountLocationForPassenger :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
+
+@@@@@ SIGS: net/minecraft/world/entity/vehicle/AbstractMinecart.java @@@@
+MISSING
+
+@@@@@ REGION: public void tick :: net/minecraft/world/entity/vehicle/AbstractMinecart.java @@@@
+
+@@@@@ SIGS: net/minecraft/server/level/ServerEntity.java @@@@
+MISSING
+
+@@@@@ REGION: sendChanges :: net/minecraft/server/level/ServerEntity.java @@@@
+
+@@@@@ SIGS: net/minecraft/client/renderer/entity/EntityRenderer.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/HierarchicalModel.java @@@@
+MISSING
+
+@@@@@ FILE: net/minecraft/client/model/EntityModel.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/geom/ModelPart.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/geom/builders/CubeListBuilder.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/geom/builders/PartPose.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/geom/builders/LayerDefinition.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/model/geom/builders/MeshDefinition.java @@@@
+MISSING
+
+@@@@@ FILE: net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/resources/sounds/SimpleSoundInstance.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/resources/sounds/SoundInstance.java @@@@
+MISSING
+
+@@@@@ FILE: net/minecraft/client/gui/LayeredDraw.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/gui/GuiGraphics.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/Options.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/world/item/Item.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/network/codec/StreamCodec.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/network/codec/ByteBufCodecs.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/sounds/SoundEvent.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/server/level/ServerLevel.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/world/InteractionResult.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/world/entity/DismountHelper.java @@@@
+MISSING
+
+@@@@@ SIGS: net/minecraft/client/player/LocalPlayer.java @@@@
+MISSING
+
+@@@@@ REGION: rideTick :: net/minecraft/client/player/LocalPlayer.java @@@@
+
+@@@@@ REGION: handleMoveVehicle :: net/minecraft/server/network/ServerGamePacketListenerImpl.java @@@@
