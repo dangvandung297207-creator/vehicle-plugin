@@ -89,73 +89,56 @@ jobs:
           echo "# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)" > "$OUT"
           dump() { echo "" >> "$OUT"; echo "@@@@@ FILE: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then cat "$1" >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
           sig()  { echo "" >> "$OUT"; echo "@@@@@ SIGS: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -240 >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
-          region(){ echo "" >> "$OUT"; echo "@@@@@ REGION: $1 :: $2 @@@@" >> "$OUT"; grep -n -A "$3" "$2" "$1" 2>/dev/null | head -"$(( $3 + 2 ))" >> "$OUT"; }
+          grab() { echo "" >> "$OUT"; echo "@@@@@ GRAB: $2 :: $1 @@@@" >> "$OUT"; grep -n -A "$3" -- "$2" "$1" 2>/dev/null | head -"$(( $3 + 3 ))" >> "$OUT"; }
+          lines(){ echo "" >> "$OUT"; echo "@@@@@ LINES: $2 :: $1 ($3-$4) @@@@" >> "$OUT"; sed -n "$3,$4p" "$1" >> "$OUT" 2>/dev/null; }
 
-          sig net/minecraft/world/entity/Entity.java
-          region "protected void baseTick" net/minecraft/world/entity/Entity.java 8
-          region "void applyGravity" net/minecraft/world/entity/Entity.java 8
-          region "public void move(MoverType" net/minecraft/world/entity/Entity.java 60
-          region "protected void positionRider" net/minecraft/world/entity/Entity.java 14
-          region "getPassengerAttachmentPoint" net/minecraft/world/entity/Entity.java 10
-          region "getPassengerRidingPosition" net/minecraft/world/entity/Entity.java 12
-          region "onPassengerTurned" net/minecraft/world/entity/Entity.java 6
-          region "getDismountLocationForPassenger" net/minecraft/world/entity/Entity.java 12
-          region "defineSynchedData" net/minecraft/world/entity/Entity.java 6
-          region "public final void lerpTo" net/minecraft/world/entity/Entity.java 12
-          region "isControlledByLocalInstance" net/minecraft/world/entity/Entity.java 10
-          region "getControllingPassenger" net/minecraft/world/entity/Entity.java 6
-          region "public boolean hurt" net/minecraft/world/entity/Entity.java 10
-          region "public final boolean isInvulnerableTo" net/minecraft/world/entity/Entity.java 8
-          region "igniteForSeconds" net/minecraft/world/entity/Entity.java 4
-          region "maxUpStep" net/minecraft/world/entity/Entity.java 3
-          region "shouldRenderAtSqrDistance" net/minecraft/world/entity/Entity.java 4
-          region "getPickResult" net/minecraft/world/entity/Entity.java 4
-          region "canAddPassenger" net/minecraft/world/entity/Entity.java 4
-          region "push(Entity" net/minecraft/world/entity/Entity.java 6
-          region "isPickable" net/minecraft/world/entity/Entity.java 3
-          region "getAddCarriageLimit" net/minecraft/world/entity/Entity.java 3
+          E=net/minecraft/world/entity/Entity.java
+          grab "positionRider" $E 22
+          grab "getPassengerAttachmentPoint" $E 12
+          grab "getPassengerRidingPosition" $E 14
+          grab "getVehicleAttachmentPoint" $E 8
+          grab "onPassengerTurned" $E 8
+          grab "getDismountLocationForPassenger" $E 18
+          grab "canAddPassenger" $E 5
+          grab "getControllingPassenger" $E 5
+          grab "isControlledByLocalInstance" $E 12
+          grab "public final void lerpTo" $E 14
+          grab "getDefaultGravity" $E 4
+          grab "maxUpStep" $E 4
+          grab "shouldRenderAtSqrDistance" $E 4
+          grab "public boolean isPickable" $E 3
+          grab "getPickResult" $E 3
+          grab "public boolean isPushable" $E 3
+          grab "startRiding" $E 6
+          lines $E baseTick 424 495
+          lines $E applyGravity+move 1151 1180
+          lines $E move 605 745
+
+          P=net/minecraft/world/entity/player/Player.java
+          grab "DEFAULT_VEHICLE_ATTACHMENT" $P 3
+          lines $P rideTick 505 545
+
+          B=net/minecraft/world/entity/vehicle/AbstractBoat.java
+          grab "clampRotation" $B 22
+          grab "getPassengerAttachmentPoint" $B 8
+          grab "getDismountLocationForPassenger" $B 25
+          grab "onPassengerTurned" $B 4
+          sig $B
+
+          M=net/minecraft/world/entity/vehicle/AbstractMinecart.java
+          grab "public void tick" $M 55
+
+          S=net/minecraft/server/level/ServerEntity.java
+          lines $S sendChanges 86 228
+
+          dump net/minecraft/client/resources/sounds/AbstractSoundInstance.java
+          dump net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java
+          sig net/minecraft/client/resources/sounds/SoundInstance.java
 
           sig net/minecraft/world/entity/EntityType.java
-          sig net/minecraft/world/entity/EntityDimensions.java
-          dump net/minecraft/world/entity/EntityAttachment.java
-          dump net/minecraft/world/entity/EntityAttachments.java
-          sig net/minecraft/world/entity/player/Player.java
-          region "getVehicleAttachmentPoint" net/minecraft/world/entity/Entity.java 10
-          region "public void rideTick" net/minecraft/world/entity/player/Player.java 10
-          sig net/minecraft/world/entity/vehicle/AbstractBoat.java
-          region "getPassengerAttachmentPoint" net/minecraft/world/entity/vehicle/AbstractBoat.java 10
-          region "clampRotation" net/minecraft/world/entity/vehicle/AbstractBoat.java 20
-          region "getDismountLocationForPassenger" net/minecraft/world/entity/vehicle/AbstractBoat.java 25
-          sig net/minecraft/world/entity/vehicle/AbstractMinecart.java
-          region "public void tick" net/minecraft/world/entity/vehicle/AbstractMinecart.java 40
-          sig net/minecraft/server/level/ServerEntity.java
-          region "sendChanges" net/minecraft/server/level/ServerEntity.java 40
+          lines net/minecraft/world/entity/EntityType.java builder 1242 1420
 
-          sig net/minecraft/client/renderer/entity/EntityRenderer.java
-          sig net/minecraft/client/model/HierarchicalModel.java
-          dump net/minecraft/client/model/EntityModel.java
-          sig net/minecraft/client/model/geom/ModelPart.java
-          sig net/minecraft/client/model/geom/builders/CubeListBuilder.java
-          sig net/minecraft/client/model/geom/builders/PartPose.java
-          sig net/minecraft/client/model/geom/builders/LayerDefinition.java
-          sig net/minecraft/client/model/geom/builders/MeshDefinition.java
 
-          dump net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java
-          sig net/minecraft/client/resources/sounds/SimpleSoundInstance.java
-          sig net/minecraft/client/resources/sounds/SoundInstance.java
-          dump net/minecraft/client/gui/LayeredDraw.java
-          sig net/minecraft/client/gui/GuiGraphics.java
-          sig net/minecraft/client/Options.java
-          sig net/minecraft/world/item/Item.java
-          sig net/minecraft/network/codec/StreamCodec.java
-          sig net/minecraft/network/codec/ByteBufCodecs.java
-          sig net/minecraft/sounds/SoundEvent.java
-          sig net/minecraft/server/level/ServerLevel.java
-          sig net/minecraft/world/InteractionResult.java
-          sig net/minecraft/world/entity/DismountHelper.java
-          sig net/minecraft/client/player/LocalPlayer.java
-          region "rideTick" net/minecraft/client/player/LocalPlayer.java 20
-          region "handleMoveVehicle" net/minecraft/server/network/ServerGamePacketListenerImpl.java 25
           echo "dump written: $(wc -l < $OUT) lines"
 
       - name: Commit dump
