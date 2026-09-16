@@ -3,6 +3,7 @@ on:
   push:
     branches: ['**']
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,7 +13,56 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - name: Canary
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
+      - name: Build with Gradle
         run: |
-          java -version
-          echo "CI is alive"
+          chmod +x ./gradlew
+          ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
+          echo "BUILD_EXIT=${PIPESTATUS[0]}" >> $GITHUB_ENV
+          if grep -qE "error:|error]" build.log; then
+            echo "--- COMPILE ERRORS FOUND ---"
+            grep -E "error:|error]" build.log | head -100
+          fi
+
+      - name: Collect build jar
+        if: always()
+        run: |
+          mkdir -p /tmp/out
+          find build/libs -name "*.jar" -exec cp {} /tmp/out/ \; 2>/dev/null || true
+          ls -la /tmp/out
+
+      - name: Upload mod jar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wave100-mod-jar
+          path: /tmp/out/*.jar
+
+      - name: Collect decompiled Minecraft sources (developer reference)
+        if: always()
+        run: |
+          mkdir -p /tmp/mcsrc
+          find "$HOME/.gradle" -type f -iname "*.jar" 2>/dev/null | while read -r j; do
+            name=$(basename "$j")
+            case "$name" in
+              *sources*|*-src*|*recompil*|*joined*)
+                if [ ! -f "/tmp/mcsrc/$name" ]; then
+                  cp "$j" "/tmp/mcsrc/$name" 2>/dev/null || true
+                fi
+                ;;
+            esac
+          done
+          ls -la /tmp/mcsrc || true
+
+      - name: Upload MC sources
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mc-sources-reference
+          path: /tmp/mcsrc
+          if-no-files-found: ignore
