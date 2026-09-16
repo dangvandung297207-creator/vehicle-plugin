@@ -65,14 +65,16 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew compileJava --no-daemon -q > /dev/null 2>&1 || ./gradlew compileJava --no-daemon > /dev/null 2>&1 || true
-          SRC_JAR=$(find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources" | head -1)
+          echo "--- all sources-ish jars:"
+          find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources|neoform" | while read -r j; do echo "$(stat -c%s "$j") $j"; done | sort -rn | head -10
+          SRC_JAR=$(find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources" | while read -r j; do echo "$(stat -c%s "$j") $j"; done | sort -rn | head -1 | cut -d' ' -f2-)
           echo "SOURCES JAR: $SRC_JAR"
           if [ -z "$SRC_JAR" ]; then
-            echo "no sources jar found, listing candidates:"
-            find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "neoform|minecraft|joined" | head -20
             echo "SOURCES_JAR=none" >> $GITHUB_ENV
             exit 0
           fi
+          echo "--- first entries of jar:"
+          unzip -l "$SRC_JAR" | head -12
           rm -rf /tmp/mcsrc && mkdir -p /tmp/mcsrc
           unzip -oq "$SRC_JAR" -d /tmp/mcsrc
           echo "SOURCES_JAR=$SRC_JAR" >> $GITHUB_ENV
@@ -81,6 +83,8 @@ jobs:
         if: env.SOURCES_JAR != 'none'
         run: |
           cd /tmp/mcsrc
+          echo "--- locate Entity.java:"
+          find . -name "Entity.java" | head -5
           OUT="$GITHUB_WORKSPACE/api-dump.txt"
           echo "# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)" > "$OUT"
           dump() { echo "" >> "$OUT"; echo "@@@@@ FILE: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then cat "$1" >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
