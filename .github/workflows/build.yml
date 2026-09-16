@@ -4,6 +4,9 @@ on:
     branches: ['**']
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,10 +26,10 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
-          echo "BUILD_EXIT=${PIPESTATUS[0]}" >> $GITHUB_ENV
           if grep -qE "error:|error]" build.log; then
             echo "--- COMPILE ERRORS FOUND ---"
-            grep -E "error:|error]" build.log | head -100
+            grep -B2 -A4 -E "error:|error]" build.log | head -200
+            exit 1
           fi
 
       - name: Collect build jar
@@ -42,35 +45,14 @@ jobs:
         with:
           name: wave100-mod-jar
           path: /tmp/out/*.jar
-
-      - name: Collect decompiled Minecraft sources (developer reference)
-        if: always()
-        run: |
-          mkdir -p /tmp/mcsrc
-          find "$HOME/.gradle" -type f -iname "*.jar" 2>/dev/null | while read -r j; do
-            name=$(basename "$j")
-            case "$name" in
-              *sources*|*-src*|*recompil*|*joined*)
-                if [ ! -f "/tmp/mcsrc/$name" ]; then
-                  cp "$j" "/tmp/mcsrc/$name" 2>/dev/null || true
-                fi
-                ;;
-            esac
-          done
-          ls -la /tmp/mcsrc || true
-
-      - name: Upload MC sources
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: mc-sources-reference
-          path: /tmp/mcsrc
-          if-no-files-found: ignore
+          if-no-files-found: warn
 
   api-dump:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -87,19 +69,23 @@ jobs:
           echo "SOURCES JAR: $SRC_JAR"
           if [ -z "$SRC_JAR" ]; then
             echo "no sources jar found, listing candidates:"
-            find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "neoform|minecraft" | head -20
+            find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "neoform|minecraft|joined" | head -20
+            echo "SOURCES_JAR=none" >> $GITHUB_ENV
             exit 0
           fi
           rm -rf /tmp/mcsrc && mkdir -p /tmp/mcsrc
           unzip -oq "$SRC_JAR" -d /tmp/mcsrc
-          ls /tmp/mcsrc/net/minecraft | head -5 || true
+          echo "SOURCES_JAR=$SRC_JAR" >> $GITHUB_ENV
 
       - name: Dump API signatures
+        if: env.SOURCES_JAR != 'none'
         run: |
           cd /tmp/mcsrc
-          dump() { echo ""; echo "@@@@@ FILE: $1 @@@@@"; if [ -f "$1" ]; then cat "$1"; else echo "MISSING"; fi; }
-          sig()  { echo ""; echo "@@@@@ SIGS: $1 @@@@@"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -220; else echo "MISSING"; fi; }
-          region(){ echo ""; echo "@@@@@ REGION: $1 :: $2 @@@@@"; grep -n -A "$3" "$2" "$1" | head -"$(( $3 + 2 ))"; }
+          OUT="$GITHUB_WORKSPACE/api-dump.txt"
+          echo "# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)" > "$OUT"
+          dump() { echo "" >> "$OUT"; echo "@@@@@ FILE: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then cat "$1" >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
+          sig()  { echo "" >> "$OUT"; echo "@@@@@ SIGS: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -240 >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
+          region(){ echo "" >> "$OUT"; echo "@@@@@ REGION: $1 :: $2 @@@@" >> "$OUT"; grep -n -A "$3" "$2" "$1" 2>/dev/null | head -"$(( $3 + 2 ))" >> "$OUT"; }
 
           sig net/minecraft/world/entity/Entity.java
           region "protected void baseTick" net/minecraft/world/entity/Entity.java 8
@@ -118,13 +104,18 @@ jobs:
           region "public final boolean isInvulnerableTo" net/minecraft/world/entity/Entity.java 8
           region "igniteForSeconds" net/minecraft/world/entity/Entity.java 4
           region "maxUpStep" net/minecraft/world/entity/Entity.java 3
+          region "shouldRenderAtSqrDistance" net/minecraft/world/entity/Entity.java 4
+          region "getPickResult" net/minecraft/world/entity/Entity.java 4
+          region "canAddPassenger" net/minecraft/world/entity/Entity.java 4
+          region "push(Entity" net/minecraft/world/entity/Entity.java 6
+          region "isPickable" net/minecraft/world/entity/Entity.java 3
+          region "getAddCarriageLimit" net/minecraft/world/entity/Entity.java 3
 
           sig net/minecraft/world/entity/EntityType.java
           sig net/minecraft/world/entity/EntityDimensions.java
           dump net/minecraft/world/entity/EntityAttachment.java
           dump net/minecraft/world/entity/EntityAttachments.java
           sig net/minecraft/world/entity/player/Player.java
-          region "vehicleAttachmentPoint" net/minecraft/world/entity/player/Player.java 6
           region "getVehicleAttachmentPoint" net/minecraft/world/entity/Entity.java 10
           region "public void rideTick" net/minecraft/world/entity/player/Player.java 10
           sig net/minecraft/world/entity/vehicle/AbstractBoat.java
@@ -159,8 +150,19 @@ jobs:
           sig net/minecraft/world/InteractionResult.java
           sig net/minecraft/world/entity/DismountHelper.java
           sig net/minecraft/client/player/LocalPlayer.java
-          region "sendPosition" net/minecraft/client/player/LocalPlayer.java 25
           region "rideTick" net/minecraft/client/player/LocalPlayer.java 20
-          sig net/minecraft/server/network/ServerGamePacketListenerImpl.java
           region "handleMoveVehicle" net/minecraft/server/network/ServerGamePacketListenerImpl.java 25
+          echo "dump written: $(wc -l < $OUT) lines"
 
+      - name: Commit dump
+        if: env.SOURCES_JAR != 'none'
+        run: |
+          git config user.name "arena-ai-coding-agent[bot]"
+          git config user.email "arena-ai-coding-agent[bot]@users.noreply.github.com"
+          git add api-dump.txt
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh api-dump.txt (bot)"
+            git push
+          fi
