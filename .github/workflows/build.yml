@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -25,40 +22,6 @@ jobs:
           ./gradlew build --no-daemon --stacktrace 2>&1 \
             | sed -E "s#$(echo $GITHUB_WORKSPACE)/##g" | tee /tmp/build.log
           exit "${PIPESTATUS[0]}"
-
-      # One-shot release publish: runs only while the repo root contains a
-      # `release.txt` file whose first line is the release tag.
-      - name: Read release tag
-        if: hashFiles('release.txt') != ''
-        id: reltag
-        run: echo "tag=$(head -1 release.txt)" >> "$GITHUB_OUTPUT"
-
-      - name: Publish GitHub release
-        if: hashFiles('release.txt') != ''
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.reltag.outputs.tag }}
-          name: Wave Motorcycle ${{ steps.reltag.outputs.tag }}
-          body: |
-            Wave Motorcycle — a rideable, physics-based Honda Wave-style underbone motorcycle for **Paper 26.2** (no client mods).
-
-            **Fixes in 1.0.1:** registers `/wave` via the modern Paper `BasicCommand` API (Paper plugins don't support YAML command declarations), null-safe shutdown, no more `messages.yml` warning.
-
-            ## Files
-            - `WaveMotorcycle-1.0.1.jar` — the plugin. Drop it into your server's `plugins/` folder (replaces the 1.0.0 jar).
-            - `wave-motorcycle-pack-1.0.1.zip` — the resource pack (3D model + textures). Host it publicly, then set `resource-pack.url` and the file's `sha1` in `config.yml`.
-
-            ## Quick start
-            1. Put the jar in `plugins/`, start the server once, stop it.
-            2. Host the pack ZIP and fill in `resource-pack.url` + `sha1` in `config.yml`.
-            3. Start the server, then: `/wave give` → `/wave spawn` (or right-click the air holding the key) → ride.
-
-            Controls, commands, permissions and the full configuration reference are in the repository README.
-          files: |
-            build/libs/WaveMotorcycle-1.0.1.jar
-            build/resourcepacks/wave-motorcycle-pack-1.0.1.zip
-          draft: false
-          prerelease: false
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
