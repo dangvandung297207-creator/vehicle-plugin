@@ -20,7 +20,7 @@ public final class WaveEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(Registries.ENTITY_TYPE, WaveMod.MODID);
 
-    public static final DeferredHolder<EntityType<WaveMotorcycleEntity>, EntityType<WaveMotorcycleEntity>> WAVE_MOTORCYCLE =
+    public static final DeferredHolder<EntityType<?>, EntityType<WaveMotorcycleEntity>> WAVE_MOTORCYCLE =
             ENTITY_TYPES.register("wave_motorcycle", () -> EntityType.Builder
                     .<WaveMotorcycleEntity>of(WaveMotorcycleEntity::new, MobCategory.MISC)
                     .sized(0.8F, 1.35F)

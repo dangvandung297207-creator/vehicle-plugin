@@ -11,7 +11,6 @@ import com.wave100.registry.WaveItems;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.coordinates.AngleArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public final class WaveCommands {
     private static final double SEARCH_RANGE = 8.0;
 
     public static void register(RegisterCommandsEvent event) {
-        CommandDispatcher<CommandSourceStack> dispatcher = event.getCommandDispatcher();
+        CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
 
         dispatcher.register(Commands.literal("wave")
                 .then(Commands.literal("give")
@@ -46,10 +46,7 @@ public final class WaveCommands {
                                 .executes(ctx -> give(ctx.getSource(), EntityArgument.getPlayer(ctx, "player")))))
                 .then(Commands.literal("spawn")
                         .requires(src -> src.hasPermission(2))
-                        .executes(ctx -> spawn(ctx.getSource(), null))
-                        .then(Commands.argument("rotation", AngleArgument.angle())
-                                .executes(ctx -> spawn(ctx.getSource(),
-                                        AngleArgument.getAngle(ctx, "rotation")))))
+                        .executes(ctx -> spawn(ctx.getSource())))
                 .then(Commands.literal("remove")
                         .requires(src -> src.hasPermission(0))
                         .executes(ctx -> remove(ctx.getSource())))
@@ -83,11 +80,11 @@ public final class WaveCommands {
         return 1;
     }
 
-    private static int spawn(CommandSourceStack source, Float rotation) throws CommandSyntaxException {
+    private static int spawn(CommandSourceStack source) throws CommandSyntaxException {
         ServerPlayer player = source.getPlayerOrException();
         ServerLevel level = source.getLevel();
         Vec3 pos = player.position();
-        float yaw = rotation != null ? rotation : player.getYRot();
+        float yaw = player.getYRot();
 
         WaveMotorcycleEntity bike = new WaveMotorcycleEntity(WaveEntities.WAVE_MOTORCYCLE.get(), level);
         bike.moveTo(pos.x, pos.y, pos.z, yaw, 0.0F);
@@ -194,7 +191,7 @@ public final class WaveCommands {
     // ------------------------------------------------------------------
 
     /** The motorcycle the source player is riding, else the nearest one. */
-    @net.minecraft.lang.Nullable
+    @Nullable
     private static WaveMotorcycleEntity findTarget(CommandSourceStack source) {
         try {
             ServerPlayer player = source.getPlayerOrException();

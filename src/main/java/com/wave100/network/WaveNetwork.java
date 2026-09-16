@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 /**
  * Network channel setup and server-side handling of driver input.
  */
-@EventBusSubscriber(modid = WaveMod.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = WaveMod.MODID)
 public final class WaveNetwork {
 
     @SubscribeEvent

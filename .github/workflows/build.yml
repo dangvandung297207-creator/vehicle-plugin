@@ -110,7 +110,7 @@ jobs:
           echo "# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)" > "$OUT"
           dump() { echo "" >> "$OUT"; echo "@@@@@ FILE: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then cat "$1" >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
           sig()  { echo "" >> "$OUT"; echo "@@@@@ SIGS: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -240 >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
-          grab() { echo "" >> "$OUT"; echo "@@@@@ GRAB: $2 :: $1 @@@@" >> "$OUT"; grep -n -A "$3" -- "$2" "$1" 2>/dev/null | head -"$(( $3 + 3 ))" >> "$OUT"; }
+          grab() { echo "" >> "$OUT"; echo "@@@@@ GRAB: $1 :: $2 @@@@" >> "$OUT"; grep -n -A "$3" -- "$1" "$2" 2>/dev/null | head -"$(( $3 + 3 ))" >> "$OUT"; }
           lines(){ echo "" >> "$OUT"; echo "@@@@@ LINES: $2 :: $1 ($3-$4) @@@@" >> "$OUT"; sed -n "$3,$4p" "$1" >> "$OUT" 2>/dev/null; }
 
           E=net/minecraft/world/entity/Entity.java

@@ -21,6 +21,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
@@ -50,33 +51,33 @@ public class WaveMotorcycleEntity extends Entity {
     // Synchronized state (visible to clients for rendering + HUD)
     // ------------------------------------------------------------------
     private static final EntityDataAccessor<Integer> DATA_ENGINE_STATE =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_SPEED =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Integer> DATA_RPM =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_GEAR =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_FUEL =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_HEALTH =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Boolean> DATA_HEADLIGHT_ON =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_BRAKE_LIGHT_ON =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_LOCKED =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_CRASHED =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> DATA_WHEELIE_ANGLE =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_STEERING_ANGLE =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_LEAN_ANGLE =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_SUSPENSION =
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
 
     // ------------------------------------------------------------------
     // Tuning constants (world-space, 1 block = 1 meter)
@@ -140,7 +141,12 @@ public class WaveMotorcycleEntity extends Entity {
 
     public WaveMotorcycleEntity(EntityType<?> type, Level level) {
         super(type, level);
-        this.maxUpStep = 0.55F;
+    }
+
+    /** Climbs slabs and stairs like a lightweight bike should. */
+    @Override
+    public float maxUpStep() {
+        return 0.55F;
     }
 
     // ==================================================================
@@ -178,6 +184,11 @@ public class WaveMotorcycleEntity extends Entity {
     }
 
     private void serverTick() {
+        if (this.isRemoved()) {
+            return;
+        }
+        this.applyGravity();
+
         LivingEntity driver = getDriver();
         boolean crashed = this.entityData.get(DATA_CRASHED);
 
@@ -236,12 +247,6 @@ public class WaveMotorcycleEntity extends Entity {
         }
         if (this.brakeSoundCooldown > 0) {
             this.brakeSoundCooldown--;
-        }
-
-        // ----- void safety -----
-        if (this.getY() < this.level().getMinBuildHeight() - 40.0) {
-            destroyVehicle(false);
-            return;
         }
 
         // ----- sync visual state -----
@@ -659,13 +664,13 @@ public class WaveMotorcycleEntity extends Entity {
         double ly = py * Math.cos(lean);
 
         Vec3 world = localToWorld(lx, ly, pz);
-        Vec3 attachment = passenger.getVehicleAttachmentPoint();
+        Vec3 attachment = passenger.getVehicleAttachmentPoint(this);
         moveFunction.accept(passenger, world.x - attachment.x, world.y - attachment.y, world.z - attachment.z);
+        clampRiderYaw(passenger);
     }
 
-    @Override
-    public void onPassengerTurned(Entity passenger) {
-        // gently pull the rider's facing toward the direction of travel
+    /** Gently pulls the rider's facing toward the direction of travel. */
+    protected void clampRiderYaw(Entity passenger) {
         passenger.setYBodyRot(this.getYRot());
         float delta = Mth.wrapDegrees(this.getYRot() - passenger.getYRot());
         float clamped = Mth.clamp(delta, -70.0F, 70.0F);
@@ -675,7 +680,7 @@ public class WaveMotorcycleEntity extends Entity {
     }
 
     @Override
-    protected Vec3 getDismountLocationForPassenger(Entity passenger) {
+    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
         // try the left side first, then right, then diagonal, then behind, then above
         double[][] candidates = {
                 {1.15, 0.0, 0.25}, {-1.15, 0.0, 0.25}, {0.9, 0.0, -0.9}, {-0.9, 0.0, -0.9},
@@ -1001,6 +1006,15 @@ public class WaveMotorcycleEntity extends Entity {
     @Override
     public boolean isPushable() {
         return true;
+    }
+
+    @Override
+    protected void onBelowWorld() {
+        // fell into the void: drop the item (config) and remove
+        if (WaveConfig.Damage.dropItem()) {
+            this.spawnAtLocation(new ItemStack(WaveItems.WAVE_MOTORCYCLE.get()));
+        }
+        this.discard();
     }
 
     @Override
