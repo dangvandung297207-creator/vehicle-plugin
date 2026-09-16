@@ -1,453 +1,453 @@
 # Build log (errors & context)
-50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
-53:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-56:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-59:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-62:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-65:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-68:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
-71:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-74:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-77:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-80:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-83:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-86:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
-89:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-92:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-95:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-98:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-101:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-104:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
-107:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-110:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-113:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-116:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-119:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-122:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
-125:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-128:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-131:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-134:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-137:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-140:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
-143:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-146:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-149:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-152:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-155:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-158:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
-161:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-164:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-167:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-170:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-173:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-176:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
-179:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-182:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-185:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-188:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-191:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-194:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
-197:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-200:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-203:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-206:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-209:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-212:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
-215:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-218:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-221:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-224:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-227:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-230:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
-233:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-236:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-239:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-242:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-245:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-248:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
-251:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-254:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-257:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-260:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-263:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-266:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
-269:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-272:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-275:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-278:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-281:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-284:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
-287:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-290:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-293:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-296:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-299:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-302:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
-305:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-308:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-311:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-314:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-317:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-320:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
-323:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-326:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-329:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-332:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-335:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-338:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ')' or ',' expected
-341:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
-344:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
-347:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
-357:FAILURE: Build failed with an exception.
-362:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-365:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-368:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-371:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-374:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-377:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-380:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-383:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-386:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-389:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-392:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-395:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-398:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-401:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-404:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-407:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-410:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-413:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-416:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-419:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-422:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-425:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-428:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-431:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-434:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-437:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-440:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-443:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-446:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-449:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-452:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-455:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-458:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
-461:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
-464:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
-467:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
-470:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
-473:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
-476:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
-479:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
-482:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
-485:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
-488:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
-491:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
-494:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
-497:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
-500:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
-503:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
-506:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
+50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:11: error: cannot find symbol
+55:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/VehicleKeyConflictContext.java:12: error: VehicleKeyConflictContext is not abstract and does not override abstract method conflicts(IKeyConflictContext) in IKeyConflictContext
+58:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/VehicleKeyConflictContext.java:26: error: method does not override or implement a method from a supertype
+61:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:169: error: cannot find symbol
+66:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: cannot find symbol
+71:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:179: error: cannot find symbol
+76:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:185: error: cannot find symbol
+81:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:209: error: cannot find symbol
+86:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: cannot find symbol
+91:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:221: error: cannot find symbol
+96:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:223: error: cannot find symbol
+101:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:227: error: cannot find symbol
+106:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: cannot find symbol
+111:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: cannot find symbol
+116:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: cannot find symbol
+121:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: cannot find symbol
+126:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: cannot find symbol
+131:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: cannot find symbol
+136:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: cannot find symbol
+141:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: cannot find symbol
+146:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: cannot find symbol
+151:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: cannot find symbol
+156:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: cannot find symbol
+161:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: cannot find symbol
+166:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: cannot find symbol
+171:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: cannot find symbol
+176:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: cannot find symbol
+181:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:291: error: cannot find symbol
+186:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:295: error: cannot find symbol
+191:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:299: error: cannot find symbol
+196:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:303: error: cannot find symbol
+201:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:307: error: cannot find symbol
+206:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:311: error: cannot find symbol
+211:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:315: error: cannot find symbol
+216:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:319: error: cannot find symbol
+221:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:323: error: cannot find symbol
+226:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:327: error: cannot find symbol
+231:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:331: error: cannot find symbol
+236:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:335: error: cannot find symbol
+241:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:337: error: cannot find symbol
+246:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:341: error: cannot find symbol
+251:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:345: error: cannot find symbol
+256:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:349: error: cannot find symbol
+261:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:353: error: cannot find symbol
+266:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:355: error: cannot find symbol
+271:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:359: error: cannot find symbol
+276:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:363: error: cannot find symbol
+281:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:367: error: cannot find symbol
+286:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:371: error: cannot find symbol
+291:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:375: error: cannot find symbol
+296:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:379: error: cannot find symbol
+301:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:383: error: cannot find symbol
+306:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:387: error: cannot find symbol
+311:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:391: error: cannot find symbol
+316:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:395: error: cannot find symbol
+321:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:399: error: cannot find symbol
+326:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:403: error: cannot find symbol
+331:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:407: error: cannot find symbol
+336:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:411: error: cannot find symbol
+341:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:415: error: cannot find symbol
+346:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:419: error: cannot find symbol
+351:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:423: error: cannot find symbol
+356:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:427: error: cannot find symbol
+361:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:431: error: cannot find symbol
+366:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:435: error: cannot find symbol
+371:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:439: error: cannot find symbol
+376:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:443: error: cannot find symbol
+381:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:447: error: cannot find symbol
+386:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:451: error: cannot find symbol
+391:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:455: error: cannot find symbol
+396:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:459: error: cannot find symbol
+401:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:463: error: cannot find symbol
+406:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:467: error: cannot find symbol
+411:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:471: error: cannot find symbol
+416:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:475: error: cannot find symbol
+421:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:479: error: cannot find symbol
+426:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:483: error: cannot find symbol
+431:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:487: error: cannot find symbol
+436:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveSoundManager.java:49: error: stop() has protected access in AbstractTickableSoundInstance
+439:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveSoundManager.java:64: error: stop() has protected access in AbstractTickableSoundInstance
+442:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveSoundManager.java:84: error: stop() has protected access in AbstractTickableSoundInstance
+445:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveSoundManager.java:93: error: stop() has protected access in AbstractTickableSoundInstance
+455:FAILURE: Build failed with an exception.
+460:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/VehicleKeyConflictContext.java:12: error: VehicleKeyConflictContext is not abstract and does not override abstract method conflicts(IKeyConflictContext) in IKeyConflictContext
+463:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:11: error: cannot find symbol
+468:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:169: error: cannot find symbol
+473:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: cannot find symbol
+478:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:179: error: cannot find symbol
+483:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:185: error: cannot find symbol
+488:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:209: error: cannot find symbol
+493:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: cannot find symbol
+498:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:221: error: cannot find symbol
+503:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:223: error: cannot find symbol
+508:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:227: error: cannot find symbol
+513:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: cannot find symbol
+518:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: cannot find symbol
+523:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: cannot find symbol
+528:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: cannot find symbol
+533:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: cannot find symbol
+538:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: cannot find symbol
+543:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: cannot find symbol
+548:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: cannot find symbol
+553:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: cannot find symbol
+558:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: cannot find symbol
+563:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: cannot find symbol
+568:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: cannot find symbol
+573:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: cannot find symbol
+578:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: cannot find symbol
+583:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: cannot find symbol
+588:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:291: error: cannot find symbol
+593:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:295: error: cannot find symbol
+598:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:299: error: cannot find symbol
+603:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:303: error: cannot find symbol
+608:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:307: error: cannot find symbol
+613:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:311: error: cannot find symbol
+618:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:315: error: cannot find symbol
+623:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:319: error: cannot find symbol
+628:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:323: error: cannot find symbol
+633:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:327: error: cannot find symbol
+638:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:331: error: cannot find symbol
+643:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:335: error: cannot find symbol
+648:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:337: error: cannot find symbol
+653:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:341: error: cannot find symbol
+658:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:345: error: cannot find symbol
+663:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:349: error: cannot find symbol
+668:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:353: error: cannot find symbol
+673:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:355: error: cannot find symbol
+678:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:359: error: cannot find symbol
+683:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:363: error: cannot find symbol
+688:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:367: error: cannot find symbol
+693:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:371: error: cannot find symbol
+698:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:375: error: cannot find symbol
+703:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:379: error: cannot find symbol
+708:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:383: error: cannot find symbol
+713:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:387: error: cannot find symbol
+718:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:391: error: cannot find symbol
+723:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:395: error: cannot find symbol
+728:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:399: error: cannot find symbol
+733:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:403: error: cannot find symbol
+738:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:407: error: cannot find symbol
+743:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:411: error: cannot find symbol
+748:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:415: error: cannot find symbol
+753:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:419: error: cannot find symbol
+758:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:423: error: cannot find symbol
+763:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:427: error: cannot find symbol
+768:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:431: error: cannot find symbol
+773:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:435: error: cannot find symbol
+778:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:439: error: cannot find symbol
+783:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:443: error: cannot find symbol
+788:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:447: error: cannot find symbol
 
 ## Full javac error blocks:
 
 
 > Task :compileJava
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                           ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                                ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                     ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                          ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
-                                                                           ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                           ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                                ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                                     ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                                 ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                                  ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                                      ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
-                                                                                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ')' or ',' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
-                                                                            ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
-                                                                             ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
-                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:11: error: cannot find symbol
+import net.minecraft.client.model.geom.builders.PartPose;
+                                               ^
+  symbol:   class PartPose
+  location: package net.minecraft.client.model.geom.builders
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/VehicleKeyConflictContext.java:12: error: VehicleKeyConflictContext is not abstract and does not override abstract method conflicts(IKeyConflictContext) in IKeyConflictContext
+public enum VehicleKeyConflictContext implements IKeyConflictContext {
+       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/VehicleKeyConflictContext.java:26: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:169: error: cannot find symbol
+            , PartPose.ZERO);
+              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:179: error: cannot find symbol
+                , PartPose.offset(-2.7F, 5F, 2.6F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:185: error: cannot find symbol
+            , PartPose.offset(0F, 13.5F, -4.6F));
+              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:209: error: cannot find symbol
+                , PartPose.offset(0F, 1.4F, -0.2F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:221: error: cannot find symbol
+                    , PartPose.offset(0F, -6.2F, 0F));
+                      ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:223: error: cannot find symbol
+                        , PartPose.offset(0F, -3.9F, 0F));
+                          ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:227: error: cannot find symbol
+                            , PartPose.ZERO);
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:291: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.1051F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:295: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.8905F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:299: error: cannot find symbol
+                            , PartPose.ZERO);
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:303: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.7854F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:307: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.5708F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:311: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.3562F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:315: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:319: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.927F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:323: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.7124F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:327: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.4978F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:331: error: cannot find symbol
+                            , PartPose.ZERO);
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:335: error: cannot find symbol
+                            , PartPose.ZERO);
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:337: error: cannot find symbol
+                        , PartPose.offset(0F, -3.9F, 0F));
+                          ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:341: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1868F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:345: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.6755F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:349: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.1642F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:353: error: cannot find symbol
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.6529F, 0F, 0F));
+                              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:355: error: cannot find symbol
+            , PartPose.offset(0F, 4.4F, 10F));
+              ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:359: error: cannot find symbol
+                , PartPose.ZERO);
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:363: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:367: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:371: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:375: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:379: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:383: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:387: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:391: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:395: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:399: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:403: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:407: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:411: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:415: error: cannot find symbol
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343F, 0F, 0F));
+                  ^
+  symbol:   variable PartPose
+  location: class WaveModel
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:419: error: cannot find symbol
