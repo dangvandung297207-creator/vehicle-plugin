@@ -1,453 +1,185 @@
 # Build log (errors & context)
-50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-55:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-60:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:197: error: package net.minecraft.lang does not exist
-63:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:53: error: cannot find symbol
-68:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:55: error: cannot find symbol
-73:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:57: error: cannot find symbol
-78:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:59: error: cannot find symbol
-83:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:61: error: cannot find symbol
-88:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:63: error: cannot find symbol
-93:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:65: error: cannot find symbol
-98:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:67: error: cannot find symbol
-103:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:69: error: cannot find symbol
-108:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:71: error: cannot find symbol
-113:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:73: error: cannot find symbol
-118:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:75: error: cannot find symbol
-123:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:77: error: cannot find symbol
-128:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:79: error: cannot find symbol
-133:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:143: error: cannot find symbol
-137:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-143:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:677: error: method does not override or implement a method from a supertype
-146:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-149:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:39: error: cannot find symbol
-154:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-159:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
-164:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
-167:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
-170:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-185:FAILURE: Build failed with an exception.
-190:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-196:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-199:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-205:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-210:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-215:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-220:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
-225:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:677: error: method does not override or implement a method from a supertype
-228:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
-231:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
-235:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:143: error: cannot find symbol
-239:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:53: error: cannot find symbol
-244:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:55: error: cannot find symbol
-249:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:57: error: cannot find symbol
-254:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:59: error: cannot find symbol
-259:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:61: error: cannot find symbol
-264:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:63: error: cannot find symbol
-269:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:65: error: cannot find symbol
-274:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:67: error: cannot find symbol
-279:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:69: error: cannot find symbol
-284:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:71: error: cannot find symbol
-289:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:73: error: cannot find symbol
-294:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:75: error: cannot find symbol
-299:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:77: error: cannot find symbol
-304:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:79: error: cannot find symbol
-309:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:39: error: cannot find symbol
-314:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:197: error: package net.minecraft.lang does not exist
-326:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
-327:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
-328:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
-329:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
-330:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
-331:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-332:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-333:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-334:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-335:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-336:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-337:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-338:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-339:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-340:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-341:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-342:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-343:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-344:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-345:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-346:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-347:	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
-348:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
-349:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
-350:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
-351:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-352:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
-353:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
-354:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
-355:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-356:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-357:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-358:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-359:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-365:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-368:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-374:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-379:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-384:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-389:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
-394:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:677: error: method does not override or implement a method from a supertype
-397:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
-400:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
-404:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:143: error: cannot find symbol
-408:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:53: error: cannot find symbol
-413:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:55: error: cannot find symbol
-418:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:57: error: cannot find symbol
-423:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:59: error: cannot find symbol
-428:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:61: error: cannot find symbol
-433:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:63: error: cannot find symbol
-438:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:65: error: cannot find symbol
-443:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:67: error: cannot find symbol
-448:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:69: error: cannot find symbol
-453:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:71: error: cannot find symbol
-458:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:73: error: cannot find symbol
-463:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:75: error: cannot find symbol
-468:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:77: error: cannot find symbol
-473:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:79: error: cannot find symbol
-478:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:39: error: cannot find symbol
-483:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:197: error: package net.minecraft.lang does not exist
-488:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-489:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
-490:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-491:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-492:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-493:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-494:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-495:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-496:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-497:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-498:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
-499:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-500:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
-501:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-502:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-503:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-504:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-505:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-506:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
-507:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-508:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-509:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-510:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-511:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-512:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-513:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-514:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-515:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
-516:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
-517:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
-518:	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-519:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-520:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-521:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-522:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+61:FAILURE: Build failed with an exception.
+66:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+78:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+79:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+80:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+81:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+82:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+83:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+84:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+85:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+86:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+87:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+88:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+89:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+90:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+91:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+92:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+93:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+94:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+95:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+96:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+97:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+98:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+99:	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+100:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+101:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+102:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+103:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+104:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+105:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+106:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+107:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+108:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+109:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+110:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+111:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+116:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+117:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+118:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+119:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+120:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+121:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+122:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+123:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+124:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+125:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+126:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+127:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+128:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+129:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+130:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+131:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+132:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+133:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+134:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+135:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+136:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+137:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+138:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+139:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+140:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+141:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+142:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+143:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+144:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+145:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+146:	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+147:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+148:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+149:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+150:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+151:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+152:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+153:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+154:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+155:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+156:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+157:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+158:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+159:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+160:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+161:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+162:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+163:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+164:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+165:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+166:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+167:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+168:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+169:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+170:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+171:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+172:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+173:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+174:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+175:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+176:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+177:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+178:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+179:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+180:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+181:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+182:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+183:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+184:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+185:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+186:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+187:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+188:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+189:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+190:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+191:	at org.gradle.internal.execution.steps.BuildCacheStep.executeAndStoreInCache(BuildCacheStep.java:145)
+192:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$4(BuildCacheStep.java:101)
+193:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$5(BuildCacheStep.java:101)
+194:	at org.gradle.internal.Try$Success.map(Try.java:175)
+195:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithCache(BuildCacheStep.java:85)
+196:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$0(BuildCacheStep.java:74)
+197:	at org.gradle.internal.Either$Left.fold(Either.java:115)
+198:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+199:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+200:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+201:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+202:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+203:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+204:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+205:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+206:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+207:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+208:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+209:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+210:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+211:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+212:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+213:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+214:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+215:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+216:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+217:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+218:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+219:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+220:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+221:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+222:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+223:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+224:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+225:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+226:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+227:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+228:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
 
 ## Full javac error blocks:
 
 
 > Task :compileJava
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions entityDimensions, float scale) {
-                                                                 ^
-  symbol:   class EntityDimensions
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-import net.minecraft.commands.arguments.coordinates.AngleArgument;
-                                                   ^
-  symbol:   class AngleArgument
-  location: package net.minecraft.commands.arguments.coordinates
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:197: error: package net.minecraft.lang does not exist
-    @net.minecraft.lang.Nullable
-                       ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:53: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:55: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:57: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:59: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:61: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:63: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:65: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:67: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:69: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:71: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:73: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:75: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:77: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:79: error: cannot find symbol
-            defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-            ^
-  symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:143: error: cannot find symbol
-        this.maxUpStep = 0.55F;
-            ^
-  symbol: variable maxUpStep
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-        Vec3 attachment = passenger.getVehicleAttachmentPoint();
-                                   ^
-  required: Entity
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:677: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-        return super.getDismountLocationForPassenger(passenger);
-                                                     ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:39: error: cannot find symbol
-        CommandDispatcher<CommandSourceStack> dispatcher = event.getCommandDispatcher();
-                                                                ^
-  symbol:   method getCommandDispatcher()
-  location: variable event of type RegisterCommandsEvent
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-                        .then(Commands.argument("rotation", AngleArgument.angle())
-                                                            ^
-  symbol:   variable AngleArgument
-  location: class WaveCommands
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
-                                        AngleArgument.getAngle(ctx, "rotation")))))
-                                        ^
-  symbol:   variable AngleArgument
-  location: class WaveCommands
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
-@EventBusSubscriber(modid = WaveMod.MODID, bus = EventBusSubscriber.Bus.MOD)
---
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
-@EventBusSubscriber(modid = WaveMod.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                                   ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-            ENTITY_TYPES.register("wave_motorcycle", () -> EntityType.Builder
-                                 ^
-  where I,T are type-variables:
-    I extends EntityType<?> declared in method <I>register(String,Supplier<? extends I>)
-    T extends Object declared in class DeferredRegister
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+                   ^
+  attempting to assign weaker access privileges; was public
+1 error
+
+> Task :compileJava FAILED
 --
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-          Vec3 attachment = passenger.getVehicleAttachmentPoint();
-                                     ^
-    required: Entity
-    found:    no arguments
-    reason: actual and formal argument lists differ in length
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-          return super.getDismountLocationForPassenger(passenger);
-                                                       ^
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-              ENTITY_TYPES.register("wave_motorcycle", () -> EntityType.Builder
-                                   ^
-    where I,T are type-variables:
-      I extends EntityType<?> declared in method <I>register(String,Supplier<? extends I>)
-      T extends Object declared in class DeferredRegister
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-      protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions entityDimensions, float scale) {
-                                                                   ^
-    symbol:   class EntityDimensions
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-  import net.minecraft.commands.arguments.coordinates.AngleArgument;
-                                                     ^
-    symbol:   class AngleArgument
-    location: package net.minecraft.commands.arguments.coordinates
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-                          .then(Commands.argument("rotation", AngleArgument.angle())
-                                                              ^
-    symbol:   variable AngleArgument
-    location: class WaveCommands
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
-                                          AngleArgument.getAngle(ctx, "rotation")))))
-                                          ^
-    symbol:   variable AngleArgument
-    location: class WaveCommands
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:677: error: method does not override or implement a method from a supertype
-      @Override
-      ^
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
-  @EventBusSubscriber(modid = WaveMod.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                             ^
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/network/WaveNetwork.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
-  @EventBusSubscriber(modid = WaveMod.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                                     ^
-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:143: error: cannot find symbol
-          this.maxUpStep = 0.55F;
-              ^
-    symbol: variable maxUpStep
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:53: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:55: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:57: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:59: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.INT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Integer>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:61: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:63: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:65: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:67: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:69: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:71: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.BOOLEAN);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Boolean>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:73: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:75: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:77: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:79: error: cannot find symbol
-              defineId(WaveMotorcycleEntity.class, EntityDataSerializers.FLOAT);
-              ^
-    symbol:   method defineId(Class<WaveMotorcycleEntity>,EntityDataSerializer<Float>)
-    location: class WaveMotorcycleEntity
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:39: error: cannot find symbol
-          CommandDispatcher<CommandSourceStack> dispatcher = event.getCommandDispatcher();
-                                                                  ^
-    symbol:   method getCommandDispatcher()
-    location: variable event of type RegisterCommandsEvent
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:197: error: package net.minecraft.lang does not exist
-      @net.minecraft.lang.Nullable
-                         ^
-  25 errors
-  2 warnings
+  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+      protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+                     ^
+    attempting to assign weaker access privileges; was public
+  1 error
 
 * Try:
 --
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:662: error: method getVehicleAttachmentPoint in class Entity cannot be applied to given types;
-        Vec3 attachment = passenger.getVehicleAttachmentPoint();
-                                   ^
-  required: Entity
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:692: error: incompatible types: Entity cannot be converted to LivingEntity
-        return super.getDismountLocationForPassenger(passenger);
-                                                     ^
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/registry/WaveEntities.java:24: error: incompatible types: no instance(s) of type variable(s) I exist so that DeferredHolder<EntityType<?>,I> conforms to DeferredHolder<EntityType<WaveMotorcycleEntity>,EntityType<WaveMotorcycleEntity>>
-            ENTITY_TYPES.register("wave_motorcycle", () -> EntityType.Builder
-                                 ^
-  where I,T are type-variables:
-    I extends EntityType<?> declared in method <I>register(String,Supplier<? extends I>)
-    T extends Object declared in class DeferredRegister
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:626: error: cannot find symbol
-    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions entityDimensions, float scale) {
-                                                                 ^
-  symbol:   class EntityDimensions
-  location: class WaveMotorcycleEntity
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:14: error: cannot find symbol
-import net.minecraft.commands.arguments.coordinates.AngleArgument;
-                                                   ^
-  symbol:   class AngleArgument
-  location: package net.minecraft.commands.arguments.coordinates
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:50: error: cannot find symbol
-                        .then(Commands.argument("rotation", AngleArgument.angle())
-                                                            ^
-  symbol:   variable AngleArgument
-  location: class WaveCommands
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/command/WaveCommands.java:52: error: cannot find symbol
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
+    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+                   ^
+  attempting to assign weaker access privileges; was public
+1 error
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
