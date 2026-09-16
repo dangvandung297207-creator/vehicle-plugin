@@ -164,6 +164,8 @@ public class WaveMotorcycleEntity extends Entity {
     }
 
     private void clientTick() {
+        this.tickLerp();
+
         this.prevVisSteering = this.visSteering;
         this.prevVisLean = this.visLean;
         this.prevVisWheelie = this.visWheelie;
@@ -680,7 +682,7 @@ public class WaveMotorcycleEntity extends Entity {
     }
 
     @Override
-    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+    public Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
         // try the left side first, then right, then diagonal, then behind, then above
         double[][] candidates = {
                 {1.15, 0.0, 0.25}, {-1.15, 0.0, 0.25}, {0.9, 0.0, -0.9}, {-0.9, 0.0, -0.9},
@@ -1030,6 +1032,58 @@ public class WaveMotorcycleEntity extends Entity {
     // ==================================================================
     // Client-side render accessors (visual interpolation)
     // ==================================================================
+
+    // ----- client-side motion interpolation (minecart/boat style) -----
+
+    private int lerpSteps;
+    private double lerpX;
+    private double lerpY;
+    private double lerpZ;
+    private double lerpYRot;
+    private double lerpXRot;
+
+    private void tickLerp() {
+        if (this.lerpSteps > 0) {
+            this.lerpPositionAndRotationStep(this.lerpSteps, this.lerpX, this.lerpY, this.lerpZ,
+                    this.lerpYRot, this.lerpXRot);
+            this.lerpSteps--;
+        }
+    }
+
+    @Override
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
+        this.lerpX = x;
+        this.lerpY = y;
+        this.lerpZ = z;
+        this.lerpYRot = yRot;
+        this.lerpXRot = xRot;
+        this.lerpSteps = steps;
+    }
+
+    @Override
+    public double lerpTargetX() {
+        return this.lerpSteps > 0 ? this.lerpX : this.getX();
+    }
+
+    @Override
+    public double lerpTargetY() {
+        return this.lerpSteps > 0 ? this.lerpY : this.getY();
+    }
+
+    @Override
+    public double lerpTargetZ() {
+        return this.lerpSteps > 0 ? this.lerpZ : this.getZ();
+    }
+
+    @Override
+    public float lerpTargetXRot() {
+        return this.lerpSteps > 0 ? (float) this.lerpXRot : this.getXRot();
+    }
+
+    @Override
+    public float lerpTargetYRot() {
+        return this.lerpSteps > 0 ? (float) this.lerpYRot : this.getYRot();
+    }
 
     public float getRenderSteering(float partialTicks) {
         return Mth.lerp(partialTicks, prevVisSteering, visSteering);

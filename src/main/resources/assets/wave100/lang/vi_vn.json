@@ -1,0 +1,44 @@
+{
+  "itemGroup.wave100": "Xe máy Wave 100",
+
+  "item.wave100.wave_motorcycle": "Xe máy Wave 100",
+  "tooltip.wave100.place": "Đặt xuống mặt phẳng rồi chuột phải để lên xe",
+  "tooltip.wave100.ride": "R - máy, F - đèn trước, SPACE - bốc đầu, SHIFT - xuống xe",
+
+  "entity.wave100.wave_motorcycle": "Xe máy Wave 100",
+
+  "key.categories.wave100": "Xe máy Wave 100",
+  "key.wave100.toggle_engine": "Bật/tắt máy",
+  "key.wave100.toggle_headlight": "Bật/tắt đèn trước",
+
+  "hud.wave100.title": "WAVE 100",
+
+  "message.wave100.occupied": "Xe này đã có người lái.",
+  "message.wave100.locked": "Xe này đang bị khóa.",
+  "message.wave100.in_water": "Không thể đề máy dưới nước.",
+  "message.wave100.recovered": "Bạn nhấc xe lên.",
+  "message.wave100.refueled": "Đã đổ xăng cho xe.",
+  "message.wave100.tank_full": "Bình xăng đã đầy.",
+  "message.wave100.fuel_disabled": "Máy chủ này không bật chế độ xăng.",
+  "message.wave100.repaired": "Đã sửa xe.",
+  "message.wave100.repair_unneeded": "Xe không cần sửa.",
+  "message.wave100.on": "BẬT",
+  "message.wave100.off": "TẮT",
+
+  "message.wave100.info_header": "Wave 100 - %s",
+  "message.wave100.info_fuel": "  Xăng: %s / %s",
+  "message.wave100.info_durability": "  Tình trạng: %s / %s",
+  "message.wave100.info_owner": "  Chủ xe: %s",
+  "message.wave100.info_locked": "  Khóa: %s",
+  "message.wave100.info_hint": "  Lái bằng W/A/S/D. Nhấn R để đề máy.",
+
+  "commands.wave100.give": "Đã đưa xe Wave 100 cho %s",
+  "commands.wave100.spawned": "Đã tạo xe.",
+  "commands.wave100.spawn_blocked": "Không đủ chỗ để tạo xe ở đây.",
+  "commands.wave100.removed": "Đã xóa xe.",
+  "commands.wave100.removed_all": "Đã xóa %s xe.",
+  "commands.wave100.not_found": "Không có xe nào ở gần.",
+  "commands.wave100.not_yours": "Bạn không phải chủ xe này.",
+  "commands.wave100.reloaded": "Đã tải lại cấu hình Wave 100.",
+  "commands.wave100.fuel_set": "Đã đặt xăng thành %s."
+}

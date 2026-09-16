@@ -1,0 +1,44 @@
+{
+  "itemGroup.wave100": "Wave 100 Motorcycle",
+
+  "item.wave100.wave_motorcycle": "Wave 100 Motorcycle",
+  "tooltip.wave100.place": "Place on solid ground, then right-click to ride",
+  "tooltip.wave100.ride": "R - engine, F - headlight, SPACE - wheelie, SHIFT - dismount",
+
+  "entity.wave100.wave_motorcycle": "Wave 100 Motorcycle",
+
+  "key.categories.wave100": "Wave 100 Motorcycle",
+  "key.wave100.toggle_engine": "Toggle Engine",
+  "key.wave100.toggle_headlight": "Toggle Headlight",
+
+  "hud.wave100.title": "WAVE 100",
+
+  "message.wave100.occupied": "This motorcycle already has a driver.",
+  "message.wave100.locked": "This motorcycle is locked.",
+  "message.wave100.in_water": "The engine won't start under water.",
+  "message.wave100.recovered": "You pick the motorcycle back up.",
+  "message.wave100.refueled": "Refueled the motorcycle.",
+  "message.wave100.tank_full": "The tank is already full.",
+  "message.wave100.fuel_disabled": "Fuel consumption is disabled on this server.",
+  "message.wave100.repaired": "Repaired the motorcycle.",
+  "message.wave100.repair_unneeded": "The motorcycle doesn't need repairs.",
+  "message.wave100.on": "ON",
+  "message.wave100.off": "OFF",
+
+  "message.wave100.info_header": "Wave 100 - %s",
+  "message.wave100.info_fuel": "  Fuel: %s / %s",
+  "message.wave100.info_durability": "  Condition: %s / %s",
+  "message.wave100.info_owner": "  Owner: %s",
+  "message.wave100.info_locked": "  Locked: %s",
+  "message.wave100.info_hint": "  Ride it with W/A/S/D. R starts the engine.",
+
+  "commands.wave100.give": "Given a Wave 100 motorcycle to %s",
+  "commands.wave100.spawned": "Motorcycle spawned.",
+  "commands.wave100.spawn_blocked": "No room to spawn a motorcycle here.",
+  "commands.wave100.removed": "Motorcycle removed.",
+  "commands.wave100.removed_all": "Removed %s motorcycles.",
+  "commands.wave100.not_found": "No motorcycle nearby.",
+  "commands.wave100.not_yours": "You don't own this motorcycle.",
+  "commands.wave100.reloaded": "Wave 100 config reloaded.",
+  "commands.wave100.fuel_set": "Fuel set to %s."
+}

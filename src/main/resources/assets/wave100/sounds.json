@@ -1,0 +1,75 @@
+{
+  "wave_engine_start": {
+    "sounds": [
+      { "name": "minecraft:note/bd", "pitch": 0.65, "volume": 0.9 },
+      { "name": "minecraft:note/bd", "pitch": 0.5, "volume": 0.7 }
+    ]
+  },
+  "wave_engine_idle": {
+    "sounds": [
+      { "name": "minecraft:block/furnace/fire_crackle2", "pitch": 0.62, "volume": 0.55 }
+    ]
+  },
+  "wave_engine_running": {
+    "sounds": [
+      { "name": "minecraft:block/furnace/fire_crackle1", "pitch": 0.85, "volume": 0.8 },
+      { "name": "minecraft:block/furnace/fire_crackle3", "pitch": 0.9, "volume": 0.8 },
+      { "name": "minecraft:block/furnace/fire_crackle4", "pitch": 0.8, "volume": 0.8 }
+    ]
+  },
+  "wave_engine_stop": {
+    "sounds": [
+      { "name": "minecraft:random/fizz", "pitch": 0.9, "volume": 0.8 }
+    ]
+  },
+  "wave_brake": {
+    "sounds": [
+      { "name": "minecraft:step/sand2", "pitch": 0.8, "volume": 0.7 },
+      { "name": "minecraft:step/sand4", "pitch": 0.75, "volume": 0.7 }
+    ]
+  },
+  "wave_collision": {
+    "sounds": [
+      { "name": "minecraft:random/anvil_land", "pitch": 1.45, "volume": 0.55 },
+      { "name": "minecraft:step/stone3", "pitch": 0.7, "volume": 0.6 }
+    ]
+  },
+  "wave_crash": {
+    "sounds": [
+      { "name": "minecraft:random/anvil_land", "pitch": 1.0, "volume": 0.9 },
+      { "name": "minecraft:step/gravel2", "pitch": 0.65, "volume": 0.9 }
+    ]
+  },
+  "wave_wheelie": {
+    "sounds": [
+      { "name": "minecraft:note/bd", "pitch": 1.4, "volume": 0.8 }
+    ]
+  },
+  "wave_light_on": {
+    "sounds": [
+      { "name": "minecraft:random/click", "pitch": 1.1, "volume": 0.6 }
+    ]
+  },
+  "wave_light_off": {
+    "sounds": [
+      { "name": "minecraft:random/click", "pitch": 0.9, "volume": 0.5 }
+    ]
+  },
+  "wave_refuel": {
+    "sounds": [
+      { "name": "minecraft:item/bucket/fill1", "pitch": 1.0, "volume": 0.8 },
+      { "name": "minecraft:item/bucket/fill3", "pitch": 1.0, "volume": 0.8 }
+    ]
+  },
+  "wave_repair": {
+    "sounds": [
+      { "name": "minecraft:random/anvil_use", "pitch": 1.0, "volume": 0.8 }
+    ]
+  },
+  "wave_destroyed": {
+    "sounds": [
+      { "name": "minecraft:random/explode1", "pitch": 1.0, "volume": 1.0 },
+      { "name": "minecraft:random/explode4", "pitch": 0.95, "volume": 1.0 }
+    ]
+  }
+}
