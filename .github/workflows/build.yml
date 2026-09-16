@@ -66,3 +66,101 @@ jobs:
           name: mc-sources-reference
           path: /tmp/mcsrc
           if-no-files-found: ignore
+
+  api-dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+      - name: Prepare sources
+        run: |
+          chmod +x ./gradlew
+          ./gradlew compileJava --no-daemon -q > /dev/null 2>&1 || ./gradlew compileJava --no-daemon > /dev/null 2>&1 || true
+          SRC_JAR=$(find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources" | head -1)
+          echo "SOURCES JAR: $SRC_JAR"
+          if [ -z "$SRC_JAR" ]; then
+            echo "no sources jar found, listing candidates:"
+            find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "neoform|minecraft" | head -20
+            exit 0
+          fi
+          rm -rf /tmp/mcsrc && mkdir -p /tmp/mcsrc
+          unzip -oq "$SRC_JAR" -d /tmp/mcsrc
+          ls /tmp/mcsrc/net/minecraft | head -5 || true
+
+      - name: Dump API signatures
+        run: |
+          cd /tmp/mcsrc
+          dump() { echo ""; echo "@@@@@ FILE: $1 @@@@@"; if [ -f "$1" ]; then cat "$1"; else echo "MISSING"; fi; }
+          sig()  { echo ""; echo "@@@@@ SIGS: $1 @@@@@"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -220; else echo "MISSING"; fi; }
+          region(){ echo ""; echo "@@@@@ REGION: $1 :: $2 @@@@@"; grep -n -A "$3" "$2" "$1" | head -"$(( $3 + 2 ))"; }
+
+          sig net/minecraft/world/entity/Entity.java
+          region "protected void baseTick" net/minecraft/world/entity/Entity.java 8
+          region "void applyGravity" net/minecraft/world/entity/Entity.java 8
+          region "public void move(MoverType" net/minecraft/world/entity/Entity.java 60
+          region "protected void positionRider" net/minecraft/world/entity/Entity.java 14
+          region "getPassengerAttachmentPoint" net/minecraft/world/entity/Entity.java 10
+          region "getPassengerRidingPosition" net/minecraft/world/entity/Entity.java 12
+          region "onPassengerTurned" net/minecraft/world/entity/Entity.java 6
+          region "getDismountLocationForPassenger" net/minecraft/world/entity/Entity.java 12
+          region "defineSynchedData" net/minecraft/world/entity/Entity.java 6
+          region "public final void lerpTo" net/minecraft/world/entity/Entity.java 12
+          region "isControlledByLocalInstance" net/minecraft/world/entity/Entity.java 10
+          region "getControllingPassenger" net/minecraft/world/entity/Entity.java 6
+          region "public boolean hurt" net/minecraft/world/entity/Entity.java 10
+          region "public final boolean isInvulnerableTo" net/minecraft/world/entity/Entity.java 8
+          region "igniteForSeconds" net/minecraft/world/entity/Entity.java 4
+          region "maxUpStep" net/minecraft/world/entity/Entity.java 3
+
+          sig net/minecraft/world/entity/EntityType.java
+          sig net/minecraft/world/entity/EntityDimensions.java
+          dump net/minecraft/world/entity/EntityAttachment.java
+          dump net/minecraft/world/entity/EntityAttachments.java
+          sig net/minecraft/world/entity/player/Player.java
+          region "vehicleAttachmentPoint" net/minecraft/world/entity/player/Player.java 6
+          region "getVehicleAttachmentPoint" net/minecraft/world/entity/Entity.java 10
+          region "public void rideTick" net/minecraft/world/entity/player/Player.java 10
+          sig net/minecraft/world/entity/vehicle/AbstractBoat.java
+          region "getPassengerAttachmentPoint" net/minecraft/world/entity/vehicle/AbstractBoat.java 10
+          region "clampRotation" net/minecraft/world/entity/vehicle/AbstractBoat.java 20
+          region "getDismountLocationForPassenger" net/minecraft/world/entity/vehicle/AbstractBoat.java 25
+          sig net/minecraft/world/entity/vehicle/AbstractMinecart.java
+          region "public void tick" net/minecraft/world/entity/vehicle/AbstractMinecart.java 40
+          sig net/minecraft/server/level/ServerEntity.java
+          region "sendChanges" net/minecraft/server/level/ServerEntity.java 40
+
+          sig net/minecraft/client/renderer/entity/EntityRenderer.java
+          sig net/minecraft/client/model/HierarchicalModel.java
+          dump net/minecraft/client/model/EntityModel.java
+          sig net/minecraft/client/model/geom/ModelPart.java
+          sig net/minecraft/client/model/geom/builders/CubeListBuilder.java
+          sig net/minecraft/client/model/geom/builders/PartPose.java
+          sig net/minecraft/client/model/geom/builders/LayerDefinition.java
+          sig net/minecraft/client/model/geom/builders/MeshDefinition.java
+
+          dump net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java
+          sig net/minecraft/client/resources/sounds/SimpleSoundInstance.java
+          sig net/minecraft/client/resources/sounds/SoundInstance.java
+          dump net/minecraft/client/gui/LayeredDraw.java
+          sig net/minecraft/client/gui/GuiGraphics.java
+          sig net/minecraft/client/Options.java
+          sig net/minecraft/world/item/Item.java
+          sig net/minecraft/network/codec/StreamCodec.java
+          sig net/minecraft/network/codec/ByteBufCodecs.java
+          sig net/minecraft/sounds/SoundEvent.java
+          sig net/minecraft/server/level/ServerLevel.java
+          sig net/minecraft/world/InteractionResult.java
+          sig net/minecraft/world/entity/DismountHelper.java
+          sig net/minecraft/client/player/LocalPlayer.java
+          region "sendPosition" net/minecraft/client/player/LocalPlayer.java 25
+          region "rideTick" net/minecraft/client/player/LocalPlayer.java 20
+          sig net/minecraft/server/network/ServerGamePacketListenerImpl.java
+          region "handleMoveVehicle" net/minecraft/server/network/ServerGamePacketListenerImpl.java 25
+
