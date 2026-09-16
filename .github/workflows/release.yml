@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release tag (e.g. wave-v1.0.0)"
+        required: true
+        default: "wave-v1.0.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Build with Gradle
+        run: |
+          ./gradlew build --no-daemon --stacktrace 2>&1 \
+            | sed -E "s#$(echo $GITHUB_WORKSPACE)/##g" | tee /tmp/build.log
+          exit "${PIPESTATUS[0]}"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.version }}
+          name: Wave Motorcycle ${{ inputs.version }}
+          body: |
+            Wave Motorcycle — a rideable, physics-based Honda Wave-style underbone motorcycle for **Paper 26.2** (no client mods).
+
+            ## Files
+            - `WaveMotorcycle-1.0.0.jar` — the plugin. Drop it into your server's `plugins/` folder.
+            - `wave-motorcycle-pack-1.0.0.zip` — the resource pack (3D model + textures). Host it publicly, then set `resource-pack.url` and the file's `sha1` in `config.yml`.
+
+            ## Quick start
+            1. Put the jar in `plugins/`, start the server once, stop it.
+            2. Host the pack ZIP and fill in `resource-pack.url` + `sha1` in `config.yml`.
+            3. Start the server, then: `/wave give` → `/wave spawn` (or right-click the air holding the key) → ride.
+
+            Controls, commands, permissions and the full configuration reference are in the repository README.
+          files: |
+            build/libs/WaveMotorcycle-1.0.0.jar
+            build/resourcepacks/wave-motorcycle-pack-1.0.0.zip
+          draft: false
+          prerelease: false
