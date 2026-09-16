@@ -24,12 +24,33 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          set -o pipefail
           chmod +x ./gradlew
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
-          if grep -qE "error:|error]" build.log; then
-            echo "--- COMPILE ERRORS FOUND ---"
-            grep -B2 -A4 -E "error:|error]" build.log | head -200
-            exit 1
+
+      - name: Extract errors
+        if: always()
+        run: |
+          {
+            echo "# Build log (errors & context)"
+            grep -nE "error:|error\]|FAILURE|BUILD SUCCESS|BUILD FAILED|Caused by|\.java:[0-9]+" build.log | head -150
+            echo ""
+            echo "## Full javac error blocks:"
+            grep -B3 -A6 -E "error:" build.log | head -300
+          } > build-errors.txt || true
+          cat build-errors.txt | head -80
+
+      - name: Commit build status files
+        if: always()
+        run: |
+          git config user.name "arena-ai-coding-agent[bot]"
+          git config user.email "arena-ai-coding-agent[bot]@users.noreply.github.com"
+          git add build-errors.txt api-dump.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh build-errors.txt (bot)"
+            git push
           fi
 
       - name: Collect build jar
