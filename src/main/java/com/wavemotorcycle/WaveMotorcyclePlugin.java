@@ -8,7 +8,7 @@ import com.wavemotorcycle.events.WorldEventListener;
 import com.wavemotorcycle.motorcycle.Keys;
 import com.wavemotorcycle.motorcycle.MotorcycleManager;
 import com.wavemotorcycle.motorcycle.pack.ResourcePackManager;
-import org.bukkit.command.PluginCommand;
+import java.util.List;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -35,12 +35,9 @@ public final class WaveMotorcyclePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityEventListener(this), this);
         getServer().getPluginManager().registerEvents(new WorldEventListener(this), this);
 
-        PluginCommand command = getCommand("wave");
-        if (command != null) {
-            WaveCommand executor = new WaveCommand(this);
-            command.setExecutor(executor);
-            command.setTabCompleter(executor);
-        }
+        // Paper plugins do not support YAML command declarations; commands are
+        // registered programmatically via the modern BasicCommand API.
+        registerCommand("wave", "Wave motorcycle control command.", List.of("wv"), new WaveCommand(this));
 
         manager.start();
         getLogger().info("WaveMotorcycle enabled - " + manager.size() + " bike(s) active.");

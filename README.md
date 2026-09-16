@@ -60,10 +60,10 @@ Survival-mode friendly: fuel, damage, persistence, multiplayer-safe updates.
    ```
 
    Outputs:
-   - `build/libs/WaveMotorcycle-1.0.0.jar` — the plugin
-   - `build/resourcepacks/wave-motorcycle-pack-1.0.0.zip` — the resource pack
+   - `build/libs/WaveMotorcycle-1.0.1.jar` — the plugin
+   - `build/resourcepacks/wave-motorcycle-pack-1.0.1.zip` — the resource pack
 
-2. Drop `WaveMotorcycle-1.0.0.jar` into your server's `plugins/` folder.
+2. Drop `WaveMotorcycle-1.0.1.jar` into your server's `plugins/` folder.
 3. Start the server once (it creates `plugins/WaveMotorcycle/config.yml` and
    `messages.yml`), stop it, edit the config, start again.
 4. Set up the resource pack (next section).
@@ -88,7 +88,7 @@ only way to show custom geometry without a client mod.
    ./gradlew buildResourcePack
    ```
 
-   → `build/resourcepacks/wave-motorcycle-pack-1.0.0.zip`
+   → `build/resourcepacks/wave-motorcycle-pack-1.0.1.zip`
    (`pack_format` 88 = Minecraft 26.2; change `pack_format` in `pack.mcmeta`
    if you target a different version).
 
@@ -100,9 +100,9 @@ only way to show custom geometry without a client mod.
 3. **Compute the SHA-1** of the exact ZIP file you uploaded:
 
    ```bash
-   sha1sum wave-motorcycle-pack-1.0.0.zip
+   sha1sum wave-motorcycle-pack-1.0.1.zip
    # Windows (PowerShell):
-   Get-FileHash wave-motorcycle-pack-1.0.0.zip -Algorithm SHA1
+   Get-FileHash wave-motorcycle-pack-1.0.1.zip -Algorithm SHA1
    ```
 
 4. **Configure the plugin** in `config.yml`:
@@ -110,7 +110,7 @@ only way to show custom geometry without a client mod.
    ```yaml
    resource-pack:
      enabled: true
-     url: "https://your-host.example/wave-motorcycle-pack-1.0.0.zip"
+     url: "https://your-host.example/wave-motorcycle-pack-1.0.1.zip"
      sha1: "<40-character hash from step 3>"
      required: false
    ```

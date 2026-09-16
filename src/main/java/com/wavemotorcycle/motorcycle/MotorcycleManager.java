@@ -83,6 +83,11 @@ public final class MotorcycleManager {
             task.cancel();
             task = null;
         }
+        // start() may not have run (e.g. onEnable failed before it); nothing to
+        // persist or clean up in that case.
+        if (persistence == null) {
+            return;
+        }
         saveAll();
         for (MotorcycleController c : new ArrayList<>(bikes.values())) {
             c.model().remove();
@@ -270,6 +275,9 @@ public final class MotorcycleManager {
     }
 
     public void saveAll() {
+        if (persistence == null) {
+            return;
+        }
         List<Motorcycle> states = new ArrayList<>();
         for (MotorcycleController c : bikes.values()) {
             c.syncToState();

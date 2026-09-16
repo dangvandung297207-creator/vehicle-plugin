@@ -1,16 +1,14 @@
 name: WaveMotorcycle
-version: 1.0.0
+version: 1.0.1
 main: com.wavemotorcycle.WaveMotorcyclePlugin
 api-version: 26.2
 description: Fully rideable, physics-based Honda Wave-style motorcycle with a custom 3D resource-pack model.
 authors:
   - dangvandung2972
 
-commands:
-  wave:
-    description: Wave motorcycle control command.
-    usage: /wave <give|spawn|remove|reload|fuel|refuel|pack|light|debug|removeall|help>
-    aliases: [wv]
+# Note: Paper plugins do not support YAML command declarations.
+# The /wave command is registered programmatically in WaveMotorcyclePlugin
+# via JavaPlugin#registerCommand (aliases: wv).
 
 permissions:
   wavemotorcycle.use:

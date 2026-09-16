@@ -195,10 +195,13 @@ public final class ConfigManager {
             surfaceTraction.put("gravel", 0.75);
         }
 
-        // Messages
-        plugin.saveResource("messages.yml", false);
-        messages = YamlConfiguration.loadConfiguration(
-                new java.io.File(plugin.getDataFolder(), "messages.yml"));
+        // Messages (only extract the default when missing, so custom edits
+        // survive and no "already exists" warning is logged).
+        java.io.File messagesFile = new java.io.File(plugin.getDataFolder(), "messages.yml");
+        if (!messagesFile.exists()) {
+            plugin.saveResource("messages.yml", false);
+        }
+        messages = YamlConfiguration.loadConfiguration(messagesFile);
     }
 
     /** Returns a message from messages.yml with {@code &} color codes. */

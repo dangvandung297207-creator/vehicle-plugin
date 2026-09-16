@@ -39,8 +39,8 @@ jobs:
             Wave Motorcycle — a rideable, physics-based Honda Wave-style underbone motorcycle for **Paper 26.2** (no client mods).
 
             ## Files
-            - `WaveMotorcycle-1.0.0.jar` — the plugin. Drop it into your server's `plugins/` folder.
-            - `wave-motorcycle-pack-1.0.0.zip` — the resource pack (3D model + textures). Host it publicly, then set `resource-pack.url` and the file's `sha1` in `config.yml`.
+            - `WaveMotorcycle-1.0.1.jar` — the plugin. Drop it into your server's `plugins/` folder.
+            - `wave-motorcycle-pack-1.0.1.zip` — the resource pack (3D model + textures). Host it publicly, then set `resource-pack.url` and the file's `sha1` in `config.yml`.
 
             ## Quick start
             1. Put the jar in `plugins/`, start the server once, stop it.
@@ -49,7 +49,7 @@ jobs:
 
             Controls, commands, permissions and the full configuration reference are in the repository README.
           files: |
-            build/libs/WaveMotorcycle-1.0.0.jar
-            build/resourcepacks/wave-motorcycle-pack-1.0.0.zip
+            build/libs/WaveMotorcycle-1.0.1.jar
+            build/resourcepacks/wave-motorcycle-pack-1.0.1.zip
           draft: false
           prerelease: false

@@ -4,21 +4,25 @@ import com.wavemotorcycle.WaveMotorcyclePlugin;
 import com.wavemotorcycle.motorcycle.MotorcycleController;
 import com.wavemotorcycle.motorcycle.pack.ResourcePackManager;
 import com.wavemotorcycle.util.MathUtil;
+import io.papermc.paper.command.brigadier.BasicCommand;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 /**
  * /wave command with subcommands and tab completion.
+ *
+ * <p>Uses the modern Paper {@link BasicCommand} API (Paper plugins do not
+ * support YAML command declarations).
  */
-public final class WaveCommand implements TabExecutor {
+public final class WaveCommand implements BasicCommand {
 
     private final WaveMotorcyclePlugin plugin;
 
@@ -27,14 +31,15 @@ public final class WaveCommand implements TabExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public void execute(CommandSourceStack source, String[] args) {
+        CommandSender sender = source.getSender();
         WaveMotorcyclePlugin plugin = this.plugin;
         boolean isPlayer = sender instanceof Player;
         Player player = isPlayer ? (Player) sender : null;
 
         if (args.length == 0) {
             sendHelp(sender);
-            return true;
+            return;
         }
         String sub = args[0].toLowerCase(Locale.ROOT);
         switch (sub) {
@@ -44,12 +49,12 @@ public final class WaveCommand implements TabExecutor {
             case "give": {
                 if (!sender.hasPermission("wavemotorcycle.give")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 Player target = args.length > 1 ? Bukkit.getPlayerExact(args[1]) : player;
                 if (target == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.player_not_found"));
-                    return true;
+                    return;
                 }
                 target.getInventory().addItem(plugin.manager().keyItem().create(null));
                 target.sendMessage(plugin.cfg().msgC("msg.given"));
@@ -61,16 +66,16 @@ public final class WaveCommand implements TabExecutor {
             case "spawn": {
                 if (!sender.hasPermission("wavemotorcycle.spawn")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 Player target = args.length > 1 ? Bukkit.getPlayerExact(args[1]) : player;
                 if (target == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.player_not_found"));
-                    return true;
+                    return;
                 }
                 if (plugin.manager().ofPlayer(target) != null) {
                     target.sendMessage(plugin.cfg().msgC("msg.already_riding"));
-                    return true;
+                    return;
                 }
                 Location here = target.getLocation().clone();
                 // Spawn two blocks ahead on the horizontal plane (ignore look pitch).
@@ -85,16 +90,16 @@ public final class WaveCommand implements TabExecutor {
             case "remove": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 if (!isPlayer) {
                     sender.sendMessage(plugin.cfg().msgC("msg.players_only"));
-                    return true;
+                    return;
                 }
                 MotorcycleController bike = plugin.manager().nearest(player.getLocation(), 4.0);
                 if (bike == null) {
                     player.sendMessage(plugin.cfg().msgC("msg.no_bike_near"));
-                    return true;
+                    return;
                 }
                 bike.dismount(MotorcycleController.DismountReason.VANILLA);
                 plugin.manager().remove(bike, false);
@@ -105,7 +110,7 @@ public final class WaveCommand implements TabExecutor {
             case "reload": {
                 if (!sender.hasPermission("wavemotorcycle.reload")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 plugin.reloadAll();
                 sender.sendMessage(plugin.cfg().msgC("msg.reloaded"));
@@ -114,16 +119,16 @@ public final class WaveCommand implements TabExecutor {
             case "fuel": {
                 if (player == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.players_only"));
-                    return true;
+                    return;
                 }
                 Player target = args.length > 1 ? Bukkit.getPlayerExact(args[1]) : player;
                 if (target == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.player_not_found"));
-                    return true;
+                    return;
                 }
                 if (!target.equals(player) && !sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 MotorcycleController bike = plugin.manager().ofPlayer(target);
                 if (bike == null) {
@@ -131,11 +136,11 @@ public final class WaveCommand implements TabExecutor {
                 }
                 if (bike == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_bike_near"));
-                    return true;
+                    return;
                 }
                 if (!plugin.cfg().fuelEnabled) {
                     sender.sendMessage(plugin.cfg().msgC("msg.fuel_disabled"));
-                    return true;
+                    return;
                 }
                 sender.sendMessage(plugin.cfg().msg("msg.fuel")
                         .replace("<fuel>", String.valueOf((int) Math.ceil(bike.fuel())))
@@ -145,12 +150,12 @@ public final class WaveCommand implements TabExecutor {
             case "refuel": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 Player target = args.length > 1 ? Bukkit.getPlayerExact(args[1]) : player;
                 if (target == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.player_not_found"));
-                    return true;
+                    return;
                 }
                 MotorcycleController bike = plugin.manager().ofPlayer(target);
                 if (bike == null) {
@@ -158,7 +163,7 @@ public final class WaveCommand implements TabExecutor {
                 }
                 if (bike == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_bike_near"));
-                    return true;
+                    return;
                 }
                 refuel(bike);
                 sender.sendMessage(plugin.cfg().msgC("msg.refueled"));
@@ -167,7 +172,7 @@ public final class WaveCommand implements TabExecutor {
             case "pack": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 ResourcePackManager pack = plugin.packManager();
                 if (!pack.canSend()) {
@@ -196,7 +201,7 @@ public final class WaveCommand implements TabExecutor {
             case "reloadpack": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 plugin.reloadAll();
                 ResourcePackManager pack = plugin.packManager();
@@ -213,12 +218,12 @@ public final class WaveCommand implements TabExecutor {
             case "light": {
                 if (player == null) {
                     sender.sendMessage(plugin.cfg().msgC("msg.players_only"));
-                    return true;
+                    return;
                 }
                 MotorcycleController bike = plugin.manager().ofPlayer(player);
                 if (bike == null) {
                     player.sendMessage(plugin.cfg().msgC("msg.not_riding"));
-                    return true;
+                    return;
                 }
                 boolean on = bike.toggleHeadlight();
                 player.sendMessage(plugin.cfg().msgC(on ? "msg.light_on" : "msg.light_off"));
@@ -227,11 +232,11 @@ public final class WaveCommand implements TabExecutor {
             case "debug": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 if (!isPlayer) {
                     sender.sendMessage(plugin.cfg().msgC("msg.players_only"));
-                    return true;
+                    return;
                 }
                 MotorcycleController bike = plugin.manager().ofPlayer(player);
                 if (bike == null) {
@@ -239,7 +244,7 @@ public final class WaveCommand implements TabExecutor {
                 }
                 if (bike == null) {
                     player.sendMessage(plugin.cfg().msgC("msg.no_bike_near"));
-                    return true;
+                    return;
                 }
                 Location l = bike.location();
                 player.sendMessage("§6=== Wave debug ===");
@@ -259,7 +264,7 @@ public final class WaveCommand implements TabExecutor {
             case "removeall": {
                 if (!sender.hasPermission("wavemotorcycle.admin")) {
                     sender.sendMessage(plugin.cfg().msgC("msg.no_permission"));
-                    return true;
+                    return;
                 }
                 int count = plugin.manager().size();
                 plugin.manager().removeAll();
@@ -270,7 +275,6 @@ public final class WaveCommand implements TabExecutor {
                 sendHelp(sender);
                 break;
         }
-        return true;
     }
 
     private void refuel(MotorcycleController bike) {
@@ -297,7 +301,7 @@ public final class WaveCommand implements TabExecutor {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public Collection<String> suggest(CommandSourceStack source, String[] args) {
         List<String> out = new ArrayList<>();
         if (args.length == 1) {
             String partial = args[0].toLowerCase(Locale.ROOT);
