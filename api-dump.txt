@@ -1,290 +1,644 @@
 # Vanilla 1.21.1 API signature dump (auto-generated, dev reference)
 
-@@@@@ SIGS: net/minecraft/world/entity/Entity.java @@@@
-131:public abstract class Entity extends net.neoforged.neoforge.attachment.AttachmentHolder implements SyncedDataHolder, Nameable, EntityAccess, CommandSource, ScoreHolder, net.neoforged.neoforge.common.extensions.IEntityExtension {
-132:    private static final Logger LOGGER = LogUtils.getLogger();
-133:    public static final String ID_TAG = "id";
-134:    public static final String PASSENGERS_TAG = "Passengers";
-135:    protected static final AtomicInteger ENTITY_COUNTER = new AtomicInteger();
-136:    public static final int CONTENTS_SLOT_INDEX = 0;
-137:    public static final int BOARDING_COOLDOWN = 60;
-138:    public static final int TOTAL_AIR_SUPPLY = 300;
-139:    public static final int MAX_ENTITY_TAG_COUNT = 1024;
-140:    public static final float DELTA_AFFECTED_BY_BLOCKS_BELOW_0_2 = 0.2F;
-141:    public static final double DELTA_AFFECTED_BY_BLOCKS_BELOW_0_5 = 0.500001;
-142:    public static final double DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0 = 0.999999;
-143:    public static final int BASE_TICKS_REQUIRED_TO_FREEZE = 140;
-144:    public static final int FREEZE_HURT_FREQUENCY = 40;
-145:    public static final int BASE_SAFE_FALL_DISTANCE = 3;
-146:    private static final AABB INITIAL_AABB = new AABB(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-147:    private static final double WATER_FLOW_SCALE = 0.014;
-148:    private static final double LAVA_FAST_FLOW_SCALE = 0.007;
-149:    private static final double LAVA_SLOW_FLOW_SCALE = 0.0023333333333333335;
-150:    public static final String UUID_TAG = "UUID";
-151:    private static double viewScale = 1.0;
-153:    private final EntityType<?> type;
-154:    private int id = ENTITY_COUNTER.incrementAndGet();
-155:    public boolean blocksBuilding;
-156:    private ImmutableList<Entity> passengers = ImmutableList.of();
-157:    protected int boardingCooldown;
-159:    private Entity vehicle;
-160:    private Level level;
-161:    public double xo;
-162:    public double yo;
-163:    public double zo;
-164:    private Vec3 position;
-165:    private BlockPos blockPosition;
-166:    private ChunkPos chunkPosition;
-167:    private Vec3 deltaMovement = Vec3.ZERO;
-168:    private float yRot;
-169:    private float xRot;
-170:    public float yRotO;
-171:    public float xRotO;
-172:    private AABB bb = INITIAL_AABB;
-173:    private boolean onGround;
-174:    public boolean horizontalCollision;
-175:    public boolean verticalCollision;
-176:    public boolean verticalCollisionBelow;
-177:    public boolean minorHorizontalCollision;
-178:    public boolean hurtMarked;
-179:    protected Vec3 stuckSpeedMultiplier = Vec3.ZERO;
-181:    private Entity.RemovalReason removalReason;
-182:    public static final float DEFAULT_BB_WIDTH = 0.6F;
-183:    public static final float DEFAULT_BB_HEIGHT = 1.8F;
-184:    public float walkDistO;
-185:    public float walkDist;
-186:    public float moveDist;
-187:    public float flyDist;
-188:    public float fallDistance;
-189:    private float nextStep = 1.0F;
-190:    public double xOld;
-191:    public double yOld;
-192:    public double zOld;
-193:    public boolean noPhysics;
-194:    protected final RandomSource random = RandomSource.create();
-195:    public int tickCount;
-196:    private int remainingFireTicks = -this.getFireImmuneTicks();
-197:    protected boolean wasTouchingWater;
-199:    protected Object2DoubleMap<TagKey<Fluid>> fluidHeight = new Object2DoubleArrayMap<>(2);
-200:    protected boolean wasEyeInWater;
-202:    private final Set<TagKey<Fluid>> fluidOnEyes = new HashSet<>();
-203:    public int invulnerableTime;
-204:    protected boolean firstTick = true;
-205:    protected final SynchedEntityData entityData;
-206:    protected static final EntityDataAccessor<Byte> DATA_SHARED_FLAGS_ID = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.BYTE);
-207:    protected static final int FLAG_ONFIRE = 0;
-208:    private static final int FLAG_SHIFT_KEY_DOWN = 1;
-209:    private static final int FLAG_SPRINTING = 3;
-210:    private static final int FLAG_SWIMMING = 4;
-211:    private static final int FLAG_INVISIBLE = 5;
-212:    protected static final int FLAG_GLOWING = 6;
-213:    protected static final int FLAG_FALL_FLYING = 7;
-214:    private static final EntityDataAccessor<Integer> DATA_AIR_SUPPLY_ID = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.INT);
-215:    private static final EntityDataAccessor<Optional<Component>> DATA_CUSTOM_NAME = SynchedEntityData.defineId(
-218:    private static final EntityDataAccessor<Boolean> DATA_CUSTOM_NAME_VISIBLE = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.BOOLEAN);
-219:    private static final EntityDataAccessor<Boolean> DATA_SILENT = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.BOOLEAN);
-220:    private static final EntityDataAccessor<Boolean> DATA_NO_GRAVITY = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.BOOLEAN);
-221:    protected static final EntityDataAccessor<Pose> DATA_POSE = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.POSE);
-222:    private static final EntityDataAccessor<Integer> DATA_TICKS_FROZEN = SynchedEntityData.defineId(Entity.class, EntityDataSerializers.INT);
-223:    private EntityInLevelCallback levelCallback = EntityInLevelCallback.NULL;
-224:    private final VecDeltaCodec packetPositionCodec = new VecDeltaCodec();
-225:    public boolean noCulling;
-226:    public boolean hasImpulse;
-228:    public PortalProcessor portalProcess;
-229:    private int portalCooldown;
-230:    private boolean invulnerable;
-231:    protected UUID uuid = Mth.createInsecureUUID(this.random);
-232:    protected String stringUUID = this.uuid.toString();
-233:    private boolean hasGlowingTag;
-234:    private final Set<String> tags = Sets.newHashSet();
-235:    private final double[] pistonDeltas = new double[]{0.0, 0.0, 0.0};
-236:    private long pistonDeltasGameTime;
-237:    private EntityDimensions dimensions;
-238:    private float eyeHeight;
-239:    public boolean isInPowderSnow;
-240:    public boolean wasInPowderSnow;
-241:    public boolean wasOnFire;
-242:    public Optional<BlockPos> mainSupportingBlockPos = Optional.empty();
-243:    private boolean onGroundNoBlocks = false;
-244:    private float crystalSoundIntensity;
-245:    private int lastCrystalSoundPlayTick;
-246:    private boolean hasVisualFire;
-248:    private BlockState inBlockState = null;
-250:    public Entity(EntityType<?> p_19870_, Level p_19871_) {
-275:    public boolean isColliding(BlockPos p_20040_, BlockState p_20041_) {
-281:    public int getTeamColor() {
-286:    public boolean isSpectator() {
-290:    public final void unRide() {
-300:    public void syncPacketPositionCodec(double p_217007_, double p_217008_, double p_217009_) {
-304:    public VecDeltaCodec getPositionCodec() {
-308:    public EntityType<?> getType() {
-313:    public int getId() {
-317:    public void setId(int p_20235_) {
-321:    public Set<String> getTags() {
-325:    public boolean addTag(String p_20050_) {
-329:    public boolean removeTag(String p_20138_) {
-333:    public void kill() {
-338:    public final void discard() {
-342:    protected abstract void defineSynchedData(SynchedEntityData.Builder p_326003_);
-344:    public SynchedEntityData getEntityData() {
-349:    public boolean equals(Object p_20245_) {
-354:    public int hashCode() {
-358:    public void remove(Entity.RemovalReason p_146834_) {
-362:    public void onClientRemoval() {
-365:    public void setPose(Pose p_20125_) {
-369:    public Pose getPose() {
-373:    public boolean hasPose(Pose p_217004_) {
-377:    public boolean closerThan(Entity p_19951_, double p_19952_) {
-381:    public boolean closerThan(Entity p_216993_, double p_216994_, double p_216995_) {
-388:    protected void setRot(float p_19916_, float p_19917_) {
-393:    public final void setPos(Vec3 p_146885_) {
-397:    public void setPos(double p_20210_, double p_20211_, double p_20212_) {
-402:    protected AABB makeBoundingBox() {
-406:    protected void reapplyPosition() {
-410:    public void turn(double p_19885_, double p_19886_) {
-424:    public void tick() {
-428:    public void baseTick() {
-492:    public void setSharedFlagOnFire(boolean p_146869_) {
-496:    public void checkBelowWorld() {
-502:    public void setPortalCooldown() {
-506:    public void setPortalCooldown(int p_287760_) {
-510:    public int getPortalCooldown() {
-514:    public boolean isOnPortalCooldown() {
-518:    protected void processPortalCooldown() {
-524:    public void lavaHurt() {
-533:    public final void igniteForSeconds(float p_345382_) {
-537:    public void igniteForTicks(int p_320711_) {
-543:    public void setRemainingFireTicks(int p_20269_) {
-547:    public int getRemainingFireTicks() {
-551:    public void clearFire() {
-555:    protected void onBelowWorld() {
-559:    public boolean isFree(double p_20230_, double p_20231_, double p_20232_) {
-563:    private boolean isFree(AABB p_20132_) {
-567:    public void setOnGround(boolean p_20181_) {
-572:    public void setOnGroundWithMovement(boolean p_289661_, Vec3 p_289653_) {
-577:    public boolean isSupportedBy(BlockPos p_287613_) {
-581:    protected void checkSupportingBlock(boolean p_289694_, @Nullable Vec3 p_289680_) {
-603:    public boolean onGround() {
-607:    public void move(MoverType p_19973_, Vec3 p_19974_) {
-740:    private boolean isStateClimbable(BlockState p_286733_) {
-744:    private boolean vibrationAndSoundEffectsFromBlock(BlockPos p_286221_, BlockState p_286549_, boolean p_286708_, boolean p_286543_, Vec3 p_286448_) {
-765:    protected boolean isHorizontalCollisionMinor(Vec3 p_196625_) {
-769:    protected void tryCheckInsideBlocks() {
-780:    protected void playEntityOnFireExtinguishedSound() {
-784:    public void extinguishFire() {
-792:    protected void processFlappingMovement() {
-802:    public BlockPos getOnPosLegacy() {
-806:    public BlockPos getBlockPosBelowThatAffectsMyMovement() {
-810:    public BlockPos getOnPos() {
-814:    protected BlockPos getOnPos(float p_216987_) {
-833:    protected float getBlockJumpFactor() {
-839:    protected float getBlockSpeedFactor() {
-849:    protected Vec3 maybeBackOffFromEdge(Vec3 p_20019_, MoverType p_20020_) {
-853:    protected Vec3 limitPistonMovement(Vec3 p_20134_) {
-878:    private double applyPistonMovementRestriction(Direction.Axis p_20043_, double p_20044_) {
-886:    private Vec3 collide(Vec3 p_20273_) {
-917:    private static float[] collectCandidateStepUpHeights(AABB p_345729_, List<VoxelShape> p_345260_, float p_346165_, float p_345968_) {
-938:    public static Vec3 collideBoundingBox(@Nullable Entity p_198895_, Vec3 p_198896_, AABB p_198897_, Level p_198898_, List<VoxelShape> p_198899_) {
-943:    private static List<VoxelShape> collectColliders(@Nullable Entity p_344804_, Level p_345583_, List<VoxelShape> p_345198_, AABB p_345837_) {
-959:    private static Vec3 collideWithShapes(Vec3 p_198901_, AABB p_198902_, List<VoxelShape> p_198903_) {
-996:    protected float nextStep() {
-1000:    protected SoundEvent getSwimSound() {
-1004:    protected SoundEvent getSwimSplashSound() {
-1008:    protected SoundEvent getSwimHighSpeedSplashSound() {
-1012:    protected void checkInsideBlocks() {
-1044:    protected void onInsideBlock(BlockState p_20005_) {
-1047:    public BlockPos adjustSpawnLocation(ServerLevel p_352356_, BlockPos p_352343_) {
-1054:    public void gameEvent(Holder<GameEvent> p_316133_, @Nullable Entity p_146854_) {
-1058:    public void gameEvent(Holder<GameEvent> p_316256_) {
-1062:    private void walkingStepSound(BlockPos p_281828_, BlockState p_282118_) {
-1069:    protected void waterSwimSound() {
-1077:    protected BlockPos getPrimaryStepSoundBlockPos(BlockPos p_278049_) {
-1083:    protected void playCombinationStepSounds(BlockState p_277472_, BlockState p_277630_, BlockPos primaryPos, BlockPos secondaryPos) {
-1089:    protected void playMuffledStepSound(BlockState p_283110_, BlockPos pos) {
-1094:    protected void playStepSound(BlockPos p_20135_, BlockState p_20136_) {
-1099:    private boolean shouldPlayAmethystStepSound(BlockState p_278069_) {
-1103:    private void playAmethystStepSound() {
-1112:    protected void playSwimSound(float p_20213_) {
-1116:    protected void onFlap() {
-1119:    protected boolean isFlapping() {
-1123:    public void playSound(SoundEvent p_19938_, float p_19939_, float p_19940_) {
-1129:    public void playSound(SoundEvent p_216991_) {
-1135:    public boolean isSilent() {
-1139:    public void setSilent(boolean p_20226_) {
-1143:    public boolean isNoGravity() {
-1147:    public void setNoGravity(boolean p_20243_) {
-1151:    protected double getDefaultGravity() {
-1155:    public final double getGravity() {
-1159:    protected void applyGravity() {
-1166:    protected Entity.MovementEmission getMovementEmission() {
-1170:    public boolean dampensVibrations() {
-1174:    protected void checkFallDamage(double p_19911_, boolean p_19912_, BlockState p_19913_, BlockPos p_19914_) {
-1194:    public boolean fireImmune() {
-1198:    public boolean causeFallDamage(float p_146828_, float p_146829_, DamageSource p_146830_) {
-1212:    public boolean isInWater() {
-1216:    private boolean isInRain() {
-1222:    private boolean isInBubbleColumn() {
-1226:    public boolean isInWaterOrRain() {
-1230:    public boolean isInWaterRainOrBubble() {
-1234:    public boolean isInWaterOrBubble() {
-1238:    public boolean isInLiquid() {
-1242:    public boolean isUnderWater() {
-1246:    public void updateSwimming() {
-1256:    protected boolean updateInWaterStateAndDoFluidPushing() {
-1286:    private void updateFluidOnEyes() {
-1303:    protected void doWaterSplashEffect() {
-1335:    protected BlockState getBlockStateOnLegacy() {
-1339:    public BlockState getBlockStateOn() {
-1343:    public boolean canSpawnSprintParticle() {
-1347:    protected void spawnSprintParticle() {
-1369:    public boolean isEyeInFluid(TagKey<Fluid> p_204030_) {
-1375:    public boolean isInLava() {
-1379:    public void moveRelative(float p_19921_, Vec3 p_19922_) {
-1384:    private static Vec3 getInputVector(Vec3 p_20016_, float p_20017_, float p_20018_) {
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: positionRider @@@@
 
-@@@@@ REGION: protected void baseTick :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getPassengerAttachmentPoint @@@@
 
-@@@@@ REGION: void applyGravity :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getPassengerRidingPosition @@@@
 
-@@@@@ REGION: public void move(MoverType :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getVehicleAttachmentPoint @@@@
 
-@@@@@ REGION: protected void positionRider :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: onPassengerTurned @@@@
 
-@@@@@ REGION: getPassengerAttachmentPoint :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getDismountLocationForPassenger @@@@
 
-@@@@@ REGION: getPassengerRidingPosition :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: canAddPassenger @@@@
 
-@@@@@ REGION: onPassengerTurned :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getControllingPassenger @@@@
 
-@@@@@ REGION: getDismountLocationForPassenger :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: isControlledByLocalInstance @@@@
 
-@@@@@ REGION: defineSynchedData :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: public final void lerpTo @@@@
 
-@@@@@ REGION: public final void lerpTo :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getDefaultGravity @@@@
 
-@@@@@ REGION: isControlledByLocalInstance :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: maxUpStep @@@@
 
-@@@@@ REGION: getControllingPassenger :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: shouldRenderAtSqrDistance @@@@
 
-@@@@@ REGION: public boolean hurt :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: public boolean isPickable @@@@
 
-@@@@@ REGION: public final boolean isInvulnerableTo :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: getPickResult @@@@
 
-@@@@@ REGION: igniteForSeconds :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: public boolean isPushable @@@@
 
-@@@@@ REGION: maxUpStep :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ GRAB: net/minecraft/world/entity/Entity.java :: startRiding @@@@
 
-@@@@@ REGION: shouldRenderAtSqrDistance :: net/minecraft/world/entity/Entity.java @@@@
+@@@@@ LINES: baseTick :: net/minecraft/world/entity/Entity.java (424-495) @@@@
+    public void tick() {
+        this.baseTick();
+    }
 
-@@@@@ REGION: getPickResult :: net/minecraft/world/entity/Entity.java @@@@
+    public void baseTick() {
+        this.level().getProfiler().push("entityBaseTick");
+        this.inBlockState = null;
+        if (this.isPassenger() && this.getVehicle().isRemoved()) {
+            this.stopRiding();
+        }
 
-@@@@@ REGION: canAddPassenger :: net/minecraft/world/entity/Entity.java @@@@
+        if (this.boardingCooldown > 0) {
+            this.boardingCooldown--;
+        }
 
-@@@@@ REGION: push(Entity :: net/minecraft/world/entity/Entity.java @@@@
+        this.walkDistO = this.walkDist;
+        this.xRotO = this.getXRot();
+        this.yRotO = this.getYRot();
+        this.handlePortal();
+        if (this.canSpawnSprintParticle()) {
+            this.spawnSprintParticle();
+        }
 
-@@@@@ REGION: isPickable :: net/minecraft/world/entity/Entity.java @@@@
+        this.wasInPowderSnow = this.isInPowderSnow;
+        this.isInPowderSnow = false;
+        this.updateInWaterStateAndDoFluidPushing();
+        this.updateFluidOnEyes();
+        this.updateSwimming();
+        if (this.level().isClientSide) {
+            this.clearFire();
+        } else if (this.remainingFireTicks > 0) {
+            if (this.fireImmune()) {
+                this.setRemainingFireTicks(this.remainingFireTicks - 4);
+                if (this.remainingFireTicks < 0) {
+                    this.clearFire();
+                }
+            } else {
+                if (this.remainingFireTicks % 20 == 0 && !this.isInLava()) {
+                    this.hurt(this.damageSources().onFire(), 1.0F);
+                }
 
-@@@@@ REGION: getAddCarriageLimit :: net/minecraft/world/entity/Entity.java @@@@
+                this.setRemainingFireTicks(this.remainingFireTicks - 1);
+            }
+
+            if (this.getTicksFrozen() > 0) {
+                this.setTicksFrozen(0);
+                this.level().levelEvent(null, 1009, this.blockPosition, 1);
+            }
+        }
+
+        if (this.isInLava()) {
+            this.lavaHurt();
+            this.fallDistance *= this.getFluidFallDistanceModifier(net.neoforged.neoforge.common.NeoForgeMod.LAVA_TYPE.value());
+        }
+
+        this.checkBelowWorld();
+        if (!this.level().isClientSide) {
+            this.setSharedFlagOnFire(this.remainingFireTicks > 0);
+        }
+
+        this.firstTick = false;
+        if (!this.level().isClientSide && this instanceof Leashable) {
+            Leashable.tickLeash((Entity & Leashable)this);
+        }
+
+        this.level().getProfiler().pop();
+    }
+
+    public void setSharedFlagOnFire(boolean p_146869_) {
+        this.setSharedFlag(0, p_146869_ || this.hasVisualFire);
+    }
+
+
+@@@@@ LINES: applyGravity+move :: net/minecraft/world/entity/Entity.java (1151-1180) @@@@
+    protected double getDefaultGravity() {
+        return 0.0;
+    }
+
+    public final double getGravity() {
+        return this.isNoGravity() ? 0.0 : this.getDefaultGravity();
+    }
+
+    protected void applyGravity() {
+        double d0 = this.getGravity();
+        if (d0 != 0.0) {
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -d0, 0.0));
+        }
+    }
+
+    protected Entity.MovementEmission getMovementEmission() {
+        return Entity.MovementEmission.ALL;
+    }
+
+    public boolean dampensVibrations() {
+        return false;
+    }
+
+    protected void checkFallDamage(double p_19911_, boolean p_19912_, BlockState p_19913_, BlockPos p_19914_) {
+        if (p_19912_) {
+            if (this.fallDistance > 0.0F) {
+                p_19913_.getBlock().fallOn(this.level(), p_19913_, p_19914_, this, this.fallDistance);
+                this.level()
+                    .gameEvent(
+                        GameEvent.HIT_GROUND,
+
+@@@@@ LINES: move :: net/minecraft/world/entity/Entity.java (605-745) @@@@
+    }
+
+    public void move(MoverType p_19973_, Vec3 p_19974_) {
+        if (this.noPhysics) {
+            this.setPos(this.getX() + p_19974_.x, this.getY() + p_19974_.y, this.getZ() + p_19974_.z);
+        } else {
+            this.wasOnFire = this.isOnFire();
+            if (p_19973_ == MoverType.PISTON) {
+                p_19974_ = this.limitPistonMovement(p_19974_);
+                if (p_19974_.equals(Vec3.ZERO)) {
+                    return;
+                }
+            }
+
+            this.level().getProfiler().push("move");
+            if (this.stuckSpeedMultiplier.lengthSqr() > 1.0E-7) {
+                p_19974_ = p_19974_.multiply(this.stuckSpeedMultiplier);
+                this.stuckSpeedMultiplier = Vec3.ZERO;
+                this.setDeltaMovement(Vec3.ZERO);
+            }
+
+            p_19974_ = this.maybeBackOffFromEdge(p_19974_, p_19973_);
+            Vec3 vec3 = this.collide(p_19974_);
+            double d0 = vec3.lengthSqr();
+            if (d0 > 1.0E-7) {
+                if (this.fallDistance != 0.0F && d0 >= 1.0) {
+                    BlockHitResult blockhitresult = this.level()
+                        .clip(
+                            new ClipContext(this.position(), this.position().add(vec3), ClipContext.Block.FALLDAMAGE_RESETTING, ClipContext.Fluid.WATER, this)
+                        );
+                    if (blockhitresult.getType() != HitResult.Type.MISS) {
+                        this.resetFallDistance();
+                    }
+                }
+
+                this.setPos(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z);
+            }
+
+            this.level().getProfiler().pop();
+            this.level().getProfiler().push("rest");
+            boolean flag4 = !Mth.equal(p_19974_.x, vec3.x);
+            boolean flag = !Mth.equal(p_19974_.z, vec3.z);
+            this.horizontalCollision = flag4 || flag;
+            this.verticalCollision = p_19974_.y != vec3.y;
+            this.verticalCollisionBelow = this.verticalCollision && p_19974_.y < 0.0;
+            if (this.horizontalCollision) {
+                this.minorHorizontalCollision = this.isHorizontalCollisionMinor(vec3);
+            } else {
+                this.minorHorizontalCollision = false;
+            }
+
+            this.setOnGroundWithMovement(this.verticalCollisionBelow, vec3);
+            BlockPos blockpos = this.getOnPosLegacy();
+            BlockState blockstate = this.level().getBlockState(blockpos);
+            this.checkFallDamage(vec3.y, this.onGround(), blockstate, blockpos);
+            if (this.isRemoved()) {
+                this.level().getProfiler().pop();
+            } else {
+                if (this.horizontalCollision) {
+                    Vec3 vec31 = this.getDeltaMovement();
+                    this.setDeltaMovement(flag4 ? 0.0 : vec31.x, vec31.y, flag ? 0.0 : vec31.z);
+                }
+
+                Block block = blockstate.getBlock();
+                if (p_19974_.y != vec3.y) {
+                    block.updateEntityAfterFallOn(this.level(), this);
+                }
+
+                if (this.onGround()) {
+                    block.stepOn(this.level(), blockpos, blockstate, this);
+                }
+
+                Entity.MovementEmission entity$movementemission = this.getMovementEmission();
+                if (entity$movementemission.emitsAnything() && !this.isPassenger()) {
+                    double d1 = vec3.x;
+                    double d2 = vec3.y;
+                    double d3 = vec3.z;
+                    this.flyDist = (float)((double)this.flyDist + vec3.length() * 0.6D);
+                    BlockPos blockpos1 = this.getOnPos();
+                    BlockState blockstate1 = this.level().getBlockState(blockpos1);
+                    boolean flag1 = this.isStateClimbable(blockstate1);
+                    if (!flag1) {
+                        d2 = 0.0;
+                    }
+
+                    this.walkDist = this.walkDist + (float)vec3.horizontalDistance() * 0.6F;
+                    this.moveDist = this.moveDist + (float)Math.sqrt(d1 * d1 + d2 * d2 + d3 * d3) * 0.6F;
+                    if (this.moveDist > this.nextStep && !blockstate1.isAir()) {
+                        boolean flag2 = blockpos1.equals(blockpos);
+                        boolean flag3 = this.vibrationAndSoundEffectsFromBlock(blockpos, blockstate, entity$movementemission.emitsSounds(), flag2, p_19974_);
+                        if (!flag2) {
+                            flag3 |= this.vibrationAndSoundEffectsFromBlock(blockpos1, blockstate1, false, entity$movementemission.emitsEvents(), p_19974_);
+                        }
+
+                        if (flag3) {
+                            this.nextStep = this.nextStep();
+                        } else if (this.isInWater()) {
+                            this.nextStep = this.nextStep();
+                            if (entity$movementemission.emitsSounds()) {
+                                this.waterSwimSound();
+                            }
+
+                            if (entity$movementemission.emitsEvents()) {
+                                this.gameEvent(GameEvent.SWIM);
+                            }
+                        }
+                    } else if (blockstate1.isAir()) {
+                        this.processFlappingMovement();
+                    }
+                }
+
+                this.tryCheckInsideBlocks();
+                float f = this.getBlockSpeedFactor();
+                this.setDeltaMovement(this.getDeltaMovement().multiply((double)f, 1.0, (double)f));
+                if (this.level()
+                    .getBlockStatesIfLoaded(this.getBoundingBox().deflate(1.0E-6))
+                    .noneMatch(p_20127_ -> p_20127_.is(BlockTags.FIRE) || p_20127_.is(Blocks.LAVA))) {
+                    if (this.remainingFireTicks <= 0) {
+                        this.setRemainingFireTicks(-this.getFireImmuneTicks());
+                    }
+
+                    if (this.wasOnFire && (this.isInPowderSnow || this.isInWaterRainOrBubble() || this.isInFluidType((fluidType, height) -> this.canFluidExtinguish(fluidType)))) {
+                        this.playEntityOnFireExtinguishedSound();
+                    }
+                }
+
+                if (this.isOnFire() && (this.isInPowderSnow || this.isInWaterRainOrBubble() || this.isInFluidType((fluidType, height) -> this.canFluidExtinguish(fluidType)))) {
+                    this.setRemainingFireTicks(-this.getFireImmuneTicks());
+                }
+
+                this.level.getProfiler().pop();
+            }
+        }
+    }
+
+    private boolean isStateClimbable(BlockState p_286733_) {
+        return p_286733_.is(BlockTags.CLIMBABLE) || p_286733_.is(Blocks.POWDER_SNOW);
+    }
+
+    private boolean vibrationAndSoundEffectsFromBlock(BlockPos p_286221_, BlockState p_286549_, boolean p_286708_, boolean p_286543_, Vec3 p_286448_) {
+        if (p_286549_.isAir()) {
+
+@@@@@ GRAB: net/minecraft/world/entity/player/Player.java :: DEFAULT_VEHICLE_ATTACHMENT @@@@
+
+@@@@@ LINES: rideTick :: net/minecraft/world/entity/player/Player.java (505-545) @@@@
+    }
+
+    @Override
+    public void rideTick() {
+        if (!this.level().isClientSide && this.wantsToStopRiding() && this.isPassenger()) {
+            this.stopRiding();
+            this.setShiftKeyDown(false);
+        } else {
+            super.rideTick();
+            this.oBob = this.bob;
+            this.bob = 0.0F;
+        }
+    }
+
+    @Override
+    protected void serverAiStep() {
+        super.serverAiStep();
+        this.updateSwingTime();
+        this.yHeadRot = this.getYRot();
+    }
+
+    @Override
+    public void aiStep() {
+        if (this.jumpTriggerTime > 0) {
+            this.jumpTriggerTime--;
+        }
+
+        if (this.level().getDifficulty() == Difficulty.PEACEFUL && this.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)) {
+            if (this.getHealth() < this.getMaxHealth() && this.tickCount % 20 == 0) {
+                this.heal(1.0F);
+            }
+
+            if (this.foodData.getSaturationLevel() < 20.0F && this.tickCount % 20 == 0) {
+                this.foodData.setSaturation(this.foodData.getSaturationLevel() + 1.0F);
+            }
+
+            if (this.foodData.needsFood() && this.tickCount % 10 == 0) {
+                this.foodData.setFoodLevel(this.foodData.getFoodLevel() + 1);
+            }
+        }
+
+
+@@@@@ GRAB: net/minecraft/world/entity/vehicle/AbstractBoat.java :: clampRotation @@@@
+
+@@@@@ GRAB: net/minecraft/world/entity/vehicle/AbstractBoat.java :: getPassengerAttachmentPoint @@@@
+
+@@@@@ GRAB: net/minecraft/world/entity/vehicle/AbstractBoat.java :: getDismountLocationForPassenger @@@@
+
+@@@@@ GRAB: net/minecraft/world/entity/vehicle/AbstractBoat.java :: onPassengerTurned @@@@
+
+@@@@@ SIGS: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
+MISSING
+
+@@@@@ GRAB: net/minecraft/world/entity/vehicle/AbstractMinecart.java :: public void tick @@@@
+
+@@@@@ LINES: sendChanges :: net/minecraft/server/level/ServerEntity.java (86-228) @@@@
+    public void sendChanges() {
+        List<Entity> list = this.entity.getPassengers();
+        if (!list.equals(this.lastPassengers)) {
+            this.broadcast.accept(new ClientboundSetPassengersPacket(this.entity));
+            removedPassengers(list, this.lastPassengers)
+                .forEach(
+                    p_352697_ -> {
+                        if (p_352697_ instanceof ServerPlayer serverplayer1) {
+                            serverplayer1.connection
+                                .teleport(serverplayer1.getX(), serverplayer1.getY(), serverplayer1.getZ(), serverplayer1.getYRot(), serverplayer1.getXRot());
+                        }
+                    }
+                );
+            this.lastPassengers = list;
+        }
+
+        if (this.entity instanceof ItemFrame itemframe && this.tickCount % 10 == 0) {
+            ItemStack itemstack = itemframe.getItem();
+            if (true) {
+                MapId mapid = itemstack.get(DataComponents.MAP_ID);
+                MapItemSavedData mapitemsaveddata = MapItem.getSavedData(itemstack, this.level);
+                if (mapitemsaveddata != null) {
+                    for (ServerPlayer serverplayer : this.level.players()) {
+                        mapitemsaveddata.tickCarriedBy(serverplayer, itemstack);
+                        Packet<?> packet = mapitemsaveddata.getUpdatePacket(mapid, serverplayer);
+                        if (packet != null) {
+                            serverplayer.connection.send(packet);
+                        }
+                    }
+                }
+            }
+
+            this.sendDirtyEntityData();
+        }
+
+        if (this.tickCount % this.updateInterval == 0 || this.entity.hasImpulse || this.entity.getEntityData().isDirty()) {
+            if (this.entity.isPassenger()) {
+                int i1 = Mth.floor(this.entity.getYRot() * 256.0F / 360.0F);
+                int l1 = Mth.floor(this.entity.getXRot() * 256.0F / 360.0F);
+                boolean flag3 = Math.abs(i1 - this.lastSentYRot) >= 1 || Math.abs(l1 - this.lastSentXRot) >= 1;
+                if (flag3) {
+                    this.broadcast.accept(new ClientboundMoveEntityPacket.Rot(this.entity.getId(), (byte)i1, (byte)l1, this.entity.onGround()));
+                    this.lastSentYRot = i1;
+                    this.lastSentXRot = l1;
+                }
+
+                this.positionCodec.setBase(this.entity.trackingPosition());
+                this.sendDirtyEntityData();
+                this.wasRiding = true;
+            } else {
+                this.teleportDelay++;
+                int l = Mth.floor(this.entity.getYRot() * 256.0F / 360.0F);
+                int k1 = Mth.floor(this.entity.getXRot() * 256.0F / 360.0F);
+                Vec3 vec31 = this.entity.trackingPosition();
+                boolean flag4 = this.positionCodec.delta(vec31).lengthSqr() >= 7.6293945E-6F;
+                Packet<?> packet1 = null;
+                boolean flag5 = flag4 || this.tickCount % 60 == 0;
+                boolean flag6 = Math.abs(l - this.lastSentYRot) >= 1 || Math.abs(k1 - this.lastSentXRot) >= 1;
+                boolean flag = false;
+                boolean flag1 = false;
+                long i = this.positionCodec.encodeX(vec31);
+                long j = this.positionCodec.encodeY(vec31);
+                long k = this.positionCodec.encodeZ(vec31);
+                boolean flag2 = i < -32768L || i > 32767L || j < -32768L || j > 32767L || k < -32768L || k > 32767L;
+                if (flag2 || this.teleportDelay > 400 || this.wasRiding || this.wasOnGround != this.entity.onGround()) {
+                    this.wasOnGround = this.entity.onGround();
+                    this.teleportDelay = 0;
+                    packet1 = new ClientboundTeleportEntityPacket(this.entity);
+                    flag = true;
+                    flag1 = true;
+                } else if ((!flag5 || !flag6) && !(this.entity instanceof AbstractArrow)) {
+                    if (flag5) {
+                        packet1 = new ClientboundMoveEntityPacket.Pos(
+                            this.entity.getId(), (short)((int)i), (short)((int)j), (short)((int)k), this.entity.onGround()
+                        );
+                        flag = true;
+                    } else if (flag6) {
+                        packet1 = new ClientboundMoveEntityPacket.Rot(this.entity.getId(), (byte)l, (byte)k1, this.entity.onGround());
+                        flag1 = true;
+                    }
+                } else {
+                    packet1 = new ClientboundMoveEntityPacket.PosRot(
+                        this.entity.getId(), (short)((int)i), (short)((int)j), (short)((int)k), (byte)l, (byte)k1, this.entity.onGround()
+                    );
+                    flag = true;
+                    flag1 = true;
+                }
+
+                if ((this.trackDelta || this.entity.hasImpulse || this.entity instanceof LivingEntity && ((LivingEntity)this.entity).isFallFlying())
+                    && this.tickCount > 0) {
+                    Vec3 vec3 = this.entity.getDeltaMovement();
+                    double d0 = vec3.distanceToSqr(this.lastSentMovement);
+                    if (d0 > 1.0E-7 || d0 > 0.0 && vec3.lengthSqr() == 0.0) {
+                        this.lastSentMovement = vec3;
+                        if (this.entity instanceof AbstractHurtingProjectile abstracthurtingprojectile) {
+                            this.broadcast
+                                .accept(
+                                    new ClientboundBundlePacket(
+                                        List.of(
+                                            new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement),
+                                            new ClientboundProjectilePowerPacket(abstracthurtingprojectile.getId(), abstracthurtingprojectile.accelerationPower)
+                                        )
+                                    )
+                                );
+                        } else {
+                            this.broadcast.accept(new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement));
+                        }
+                    }
+                }
+
+                if (packet1 != null) {
+                    this.broadcast.accept(packet1);
+                }
+
+                this.sendDirtyEntityData();
+                if (flag) {
+                    this.positionCodec.setBase(vec31);
+                }
+
+                if (flag1) {
+                    this.lastSentYRot = l;
+                    this.lastSentXRot = k1;
+                }
+
+                this.wasRiding = false;
+            }
+
+            int j1 = Mth.floor(this.entity.getYHeadRot() * 256.0F / 360.0F);
+            if (Math.abs(j1 - this.lastSentYHeadRot) >= 1) {
+                this.broadcast.accept(new ClientboundRotateHeadPacket(this.entity, (byte)j1));
+                this.lastSentYHeadRot = j1;
+            }
+
+            this.entity.hasImpulse = false;
+        }
+
+        this.tickCount++;
+        if (this.entity.hurtMarked) {
+            this.entity.hurtMarked = false;
+            this.broadcastAndSend(new ClientboundSetEntityMotionPacket(this.entity));
+        }
+    }
+
+
+@@@@@ FILE: net/minecraft/client/resources/sounds/AbstractSoundInstance.java @@@@
+package net.minecraft.client.resources.sounds;
+
+import net.minecraft.client.sounds.SoundManager;
+import net.minecraft.client.sounds.WeighedSoundEvents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+
+@OnlyIn(Dist.CLIENT)
+public abstract class AbstractSoundInstance implements SoundInstance {
+    protected Sound sound;
+    protected final SoundSource source;
+    protected final ResourceLocation location;
+    protected float volume = 1.0F;
+    protected float pitch = 1.0F;
+    protected double x;
+    protected double y;
+    protected double z;
+    protected boolean looping;
+    protected int delay;
+    protected SoundInstance.Attenuation attenuation = SoundInstance.Attenuation.LINEAR;
+    protected boolean relative;
+    protected RandomSource random;
+
+    protected AbstractSoundInstance(SoundEvent p_235072_, SoundSource p_235073_, RandomSource p_235074_) {
+        this(p_235072_.getLocation(), p_235073_, p_235074_);
+    }
+
+    protected AbstractSoundInstance(ResourceLocation p_235068_, SoundSource p_235069_, RandomSource p_235070_) {
+        this.location = p_235068_;
+        this.source = p_235069_;
+        this.random = p_235070_;
+    }
+
+    @Override
+    public ResourceLocation getLocation() {
+        return this.location;
+    }
+
+    @Override
+    public WeighedSoundEvents resolve(SoundManager p_119591_) {
+        if (this.location.equals(SoundManager.INTENTIONALLY_EMPTY_SOUND_LOCATION)) {
+            this.sound = SoundManager.INTENTIONALLY_EMPTY_SOUND;
+            return SoundManager.INTENTIONALLY_EMPTY_SOUND_EVENT;
+        } else {
+            WeighedSoundEvents weighedsoundevents = p_119591_.getSoundEvent(this.location);
+            if (weighedsoundevents == null) {
+                this.sound = SoundManager.EMPTY_SOUND;
+            } else {
+                this.sound = weighedsoundevents.getSound(this.random);
+            }
+
+            return weighedsoundevents;
+        }
+    }
+
+    @Override
+    public Sound getSound() {
+        return this.sound;
+    }
+
+    @Override
+    public SoundSource getSource() {
+        return this.source;
+    }
+
+    @Override
+    public boolean isLooping() {
+        return this.looping;
+    }
+
+    @Override
+    public int getDelay() {
+        return this.delay;
+    }
+
+    @Override
+    public float getVolume() {
+        return this.volume * this.sound.getVolume().sample(this.random);
+    }
+
+    @Override
+    public float getPitch() {
+        return this.pitch * this.sound.getPitch().sample(this.random);
+    }
+
+    @Override
+    public double getX() {
+        return this.x;
+    }
+
+    @Override
+    public double getY() {
+        return this.y;
+    }
+
+    @Override
+    public double getZ() {
+        return this.z;
+    }
+
+    @Override
+    public SoundInstance.Attenuation getAttenuation() {
+        return this.attenuation;
+    }
+
+    @Override
+    public boolean isRelative() {
+        return this.relative;
+    }
+
+    @Override
+    public String toString() {
+        return "SoundInstance[" + this.location + "]";
+    }
+}
+
+@@@@@ FILE: net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java @@@@
+package net.minecraft.client.resources.sounds;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+
+@OnlyIn(Dist.CLIENT)
+public abstract class AbstractTickableSoundInstance extends AbstractSoundInstance implements TickableSoundInstance {
+    private boolean stopped;
+
+    protected AbstractTickableSoundInstance(SoundEvent p_235076_, SoundSource p_235077_, RandomSource p_235078_) {
+        super(p_235076_, p_235077_, p_235078_);
+    }
+
+    @Override
+    public boolean isStopped() {
+        return this.stopped;
+    }
+
+    protected final void stop() {
+        this.stopped = true;
+        this.looping = false;
+    }
+}
+
+@@@@@ SIGS: net/minecraft/client/resources/sounds/SoundInstance.java @@@@
+13:public interface SoundInstance {
+49:    static RandomSource createUnseededRandom() {
+54:    public static enum Attenuation {
 
 @@@@@ SIGS: net/minecraft/world/entity/EntityType.java @@@@
 173:public class EntityType<T extends Entity> implements FeatureElement, EntityTypeTest<Entity, T> {
@@ -528,1705 +882,174 @@
 1358:        public EntityType.Builder<T> updateInterval(int p_20718_) {
 1363:        public EntityType.Builder<T> requiredFeatures(FeatureFlag... p_251646_) {
 
-@@@@@ SIGS: net/minecraft/world/entity/EntityDimensions.java @@@@
-6:public record EntityDimensions(float width, float height, float eyeHeight, EntityAttachments attachments, boolean fixed) {
-7:    private EntityDimensions(float p_20381_, float p_20382_, boolean p_20383_) {
-11:    private static float defaultEyeHeight(float p_316329_) {
-15:    public AABB makeBoundingBox(Vec3 p_20394_) {
-19:    public AABB makeBoundingBox(double p_20385_, double p_20386_, double p_20387_) {
-25:    public EntityDimensions scale(float p_20389_) {
-29:    public EntityDimensions scale(float p_20391_, float p_20392_) {
-37:    public static EntityDimensions scalable(float p_20396_, float p_20397_) {
-41:    public static EntityDimensions fixed(float p_20399_, float p_20400_) {
-45:    public EntityDimensions withEyeHeight(float p_316487_) {
-49:    public EntityDimensions withAttachments(EntityAttachments.Builder p_316576_) {
+@@@@@ LINES: builder :: net/minecraft/world/entity/EntityType.java (1242-1420) @@@@
+    public static class Builder<T extends Entity> {
+        private final EntityType.EntityFactory<T> factory;
+        private final MobCategory category;
+        private ImmutableSet<Block> immuneTo = ImmutableSet.of();
+        private boolean serialize = true;
+        private boolean summon = true;
+        private boolean fireImmune;
+        private boolean canSpawnFarFromPlayer;
+        private int clientTrackingRange = 5;
+        private int updateInterval = 3;
+        private EntityDimensions dimensions = EntityDimensions.scalable(0.6F, 1.8F);
+        private float spawnDimensionsScale = 1.0F;
+        private EntityAttachments.Builder attachments = EntityAttachments.builder();
+        private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
 
-@@@@@ FILE: net/minecraft/world/entity/EntityAttachment.java @@@@
-package net.minecraft.world.entity;
+        private java.util.function.Predicate<EntityType<?>> velocityUpdateSupplier = EntityType::defaultTrackDeltasSupplier;
+        private java.util.function.ToIntFunction<EntityType<?>> trackingRangeSupplier = EntityType::defaultTrackingRangeSupplier;
+        private java.util.function.ToIntFunction<EntityType<?>> updateIntervalSupplier = EntityType::defaultUpdateIntervalSupplier;
 
-import java.util.List;
-import net.minecraft.world.phys.Vec3;
-
-public enum EntityAttachment {
-    PASSENGER(EntityAttachment.Fallback.AT_HEIGHT),
-    VEHICLE(EntityAttachment.Fallback.AT_FEET),
-    NAME_TAG(EntityAttachment.Fallback.AT_HEIGHT),
-    WARDEN_CHEST(EntityAttachment.Fallback.AT_CENTER);
-
-    private final EntityAttachment.Fallback fallback;
-
-    private EntityAttachment(EntityAttachment.Fallback p_316243_) {
-        this.fallback = p_316243_;
-    }
-
-    public List<Vec3> createFallbackPoints(float p_316596_, float p_316153_) {
-        return this.fallback.create(p_316596_, p_316153_);
-    }
-
-    public interface Fallback {
-        List<Vec3> ZERO = List.of(Vec3.ZERO);
-        EntityAttachment.Fallback AT_FEET = (p_316289_, p_316334_) -> ZERO;
-        EntityAttachment.Fallback AT_HEIGHT = (p_316259_, p_316219_) -> List.of(new Vec3(0.0, (double)p_316219_, 0.0));
-        EntityAttachment.Fallback AT_CENTER = (p_319580_, p_319581_) -> List.of(new Vec3(0.0, (double)p_319581_ / 2.0, 0.0));
-
-        List<Vec3> create(float p_316360_, float p_316865_);
-    }
-}
-
-@@@@@ FILE: net/minecraft/world/entity/EntityAttachments.java @@@@
-package net.minecraft.world.entity;
-
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class EntityAttachments {
-    private final Map<EntityAttachment, List<Vec3>> attachments;
-
-    EntityAttachments(Map<EntityAttachment, List<Vec3>> p_316675_) {
-        this.attachments = p_316675_;
-    }
-
-    public static EntityAttachments createDefault(float p_316906_, float p_316905_) {
-        return builder().build(p_316906_, p_316905_);
-    }
-
-    public static EntityAttachments.Builder builder() {
-        return new EntityAttachments.Builder();
-    }
-
-    public EntityAttachments scale(float p_316378_, float p_316683_, float p_316463_) {
-        Map<EntityAttachment, List<Vec3>> map = new EnumMap<>(EntityAttachment.class);
-
-        for (Entry<EntityAttachment, List<Vec3>> entry : this.attachments.entrySet()) {
-            map.put(entry.getKey(), scalePoints(entry.getValue(), p_316378_, p_316683_, p_316463_));
+        private Builder(EntityType.EntityFactory<T> p_20696_, MobCategory p_20697_) {
+            this.factory = p_20696_;
+            this.category = p_20697_;
+            this.canSpawnFarFromPlayer = p_20697_ == MobCategory.CREATURE || p_20697_ == MobCategory.MISC;
         }
 
-        return new EntityAttachments(map);
-    }
-
-    private static List<Vec3> scalePoints(List<Vec3> p_316879_, float p_316759_, float p_316371_, float p_316711_) {
-        List<Vec3> list = new ArrayList<>(p_316879_.size());
-
-        for (Vec3 vec3 : p_316879_) {
-            list.add(vec3.multiply((double)p_316759_, (double)p_316371_, (double)p_316711_));
+        public static <T extends Entity> EntityType.Builder<T> of(EntityType.EntityFactory<T> p_20705_, MobCategory p_20706_) {
+            return new EntityType.Builder<>(p_20705_, p_20706_);
         }
 
-        return list;
-    }
-
-    @Nullable
-    public Vec3 getNullable(EntityAttachment p_316263_, int p_316709_, float p_316113_) {
-        List<Vec3> list = this.attachments.get(p_316263_);
-        return p_316709_ >= 0 && p_316709_ < list.size() ? transformPoint(list.get(p_316709_), p_316113_) : null;
-    }
-
-    public Vec3 get(EntityAttachment p_316290_, int p_316517_, float p_316296_) {
-        Vec3 vec3 = this.getNullable(p_316290_, p_316517_, p_316296_);
-        if (vec3 == null) {
-            throw new IllegalStateException("Had no attachment point of type: " + p_316290_ + " for index: " + p_316517_);
-        } else {
-            return vec3;
-        }
-    }
-
-    public Vec3 getClamped(EntityAttachment p_316117_, int p_316379_, float p_316900_) {
-        List<Vec3> list = this.attachments.get(p_316117_);
-        if (list.isEmpty()) {
-            throw new IllegalStateException("Had no attachment points of type: " + p_316117_);
-        } else {
-            Vec3 vec3 = list.get(Mth.clamp(p_316379_, 0, list.size() - 1));
-            return transformPoint(vec3, p_316900_);
-        }
-    }
-
-    private static Vec3 transformPoint(Vec3 p_316742_, float p_316708_) {
-        return p_316742_.yRot(-p_316708_ * (float) (Math.PI / 180.0));
-    }
-
-    public static class Builder {
-        private final Map<EntityAttachment, List<Vec3>> attachments = new EnumMap<>(EntityAttachment.class);
-
-        Builder() {
+        public static <T extends Entity> EntityType.Builder<T> createNothing(MobCategory p_20711_) {
+            return new EntityType.Builder<>((p_20708_, p_20709_) -> null, p_20711_);
         }
 
-        public EntityAttachments.Builder attach(EntityAttachment p_316395_, float p_316627_, float p_316510_, float p_316313_) {
-            return this.attach(p_316395_, new Vec3((double)p_316627_, (double)p_316510_, (double)p_316313_));
-        }
-
-        public EntityAttachments.Builder attach(EntityAttachment p_316903_, Vec3 p_316337_) {
-            this.attachments.computeIfAbsent(p_316903_, p_316616_ -> new ArrayList<>(1)).add(p_316337_);
+        public EntityType.Builder<T> sized(float p_20700_, float p_20701_) {
+            this.dimensions = EntityDimensions.scalable(p_20700_, p_20701_);
             return this;
         }
 
-        public EntityAttachments build(float p_316746_, float p_316254_) {
-            Map<EntityAttachment, List<Vec3>> map = new EnumMap<>(EntityAttachment.class);
-
-            for (EntityAttachment entityattachment : EntityAttachment.values()) {
-                List<Vec3> list = this.attachments.get(entityattachment);
-                map.put(entityattachment, list != null ? List.copyOf(list) : entityattachment.createFallbackPoints(p_316746_, p_316254_));
-            }
-
-            return new EntityAttachments(map);
+        public EntityType.Builder<T> spawnDimensionsScale(float p_338311_) {
+            this.spawnDimensionsScale = p_338311_;
+            return this;
         }
-    }
-}
 
-@@@@@ SIGS: net/minecraft/world/entity/player/Player.java @@@@
-116:public abstract class Player extends LivingEntity implements net.neoforged.neoforge.common.extensions.IPlayerExtension {
-117:    public static final String PERSISTED_NBT_TAG = "PlayerPersisted";
-118:    private static final Logger LOGGER = LogUtils.getLogger();
-119:    public static final HumanoidArm DEFAULT_MAIN_HAND = HumanoidArm.RIGHT;
-120:    public static final int DEFAULT_MODEL_CUSTOMIZATION = 0;
-121:    public static final int MAX_HEALTH = 20;
-122:    public static final int SLEEP_DURATION = 100;
-123:    public static final int WAKE_UP_DURATION = 10;
-124:    public static final int ENDER_SLOT_OFFSET = 200;
-125:    public static final int HELD_ITEM_SLOT = 499;
-126:    public static final int CRAFTING_SLOT_OFFSET = 500;
-127:    public static final float DEFAULT_BLOCK_INTERACTION_RANGE = 4.5F;
-128:    public static final float DEFAULT_ENTITY_INTERACTION_RANGE = 3.0F;
-129:    public static final float CROUCH_BB_HEIGHT = 1.5F;
-130:    public static final float SWIMMING_BB_WIDTH = 0.6F;
-131:    public static final float SWIMMING_BB_HEIGHT = 0.6F;
-132:    public static final float DEFAULT_EYE_HEIGHT = 1.62F;
-133:    private static final int CURRENT_IMPULSE_CONTEXT_RESET_GRACE_TIME_TICKS = 40;
-134:    public static final Vec3 DEFAULT_VEHICLE_ATTACHMENT = new Vec3(0.0, 0.6, 0.0);
-135:    public static final EntityDimensions STANDING_DIMENSIONS = EntityDimensions.scalable(0.6F, 1.8F)
-138:    private static final Map<Pose, EntityDimensions> POSES = ImmutableMap.<Pose, EntityDimensions>builder()
-152:    private static final EntityDataAccessor<Float> DATA_PLAYER_ABSORPTION_ID = SynchedEntityData.defineId(Player.class, EntityDataSerializers.FLOAT);
-153:    private static final EntityDataAccessor<Integer> DATA_SCORE_ID = SynchedEntityData.defineId(Player.class, EntityDataSerializers.INT);
-154:    protected static final EntityDataAccessor<Byte> DATA_PLAYER_MODE_CUSTOMISATION = SynchedEntityData.defineId(Player.class, EntityDataSerializers.BYTE);
-155:    protected static final EntityDataAccessor<Byte> DATA_PLAYER_MAIN_HAND = SynchedEntityData.defineId(Player.class, EntityDataSerializers.BYTE);
-156:    protected static final EntityDataAccessor<CompoundTag> DATA_SHOULDER_LEFT = SynchedEntityData.defineId(Player.class, EntityDataSerializers.COMPOUND_TAG);
-157:    protected static final EntityDataAccessor<CompoundTag> DATA_SHOULDER_RIGHT = SynchedEntityData.defineId(Player.class, EntityDataSerializers.COMPOUND_TAG);
-158:    private long timeEntitySatOnShoulder;
-159:    final Inventory inventory = new Inventory(this);
-160:    protected PlayerEnderChestContainer enderChestInventory = new PlayerEnderChestContainer();
-161:    public final InventoryMenu inventoryMenu;
-162:    public AbstractContainerMenu containerMenu;
-163:    protected FoodData foodData = new FoodData();
-164:    protected int jumpTriggerTime;
-165:    public float oBob;
-166:    public float bob;
-167:    public int takeXpDelay;
-168:    public double xCloakO;
-169:    public double yCloakO;
-170:    public double zCloakO;
-171:    public double xCloak;
-172:    public double yCloak;
-173:    public double zCloak;
-174:    private int sleepCounter;
-175:    protected boolean wasUnderwater;
-176:    private final Abilities abilities = new Abilities();
-177:    public int experienceLevel;
-178:    public int totalExperience;
-179:    public float experienceProgress;
-180:    protected int enchantmentSeed;
-181:    protected final float defaultFlySpeed = 0.02F;
-182:    private int lastLevelUpTime;
-183:    private final GameProfile gameProfile;
-184:    private boolean reducedDebugInfo;
-185:    private ItemStack lastItemInMainHand = ItemStack.EMPTY;
-186:    private final ItemCooldowns cooldowns = this.createItemCooldowns();
-187:    private Optional<GlobalPos> lastDeathLocation = Optional.empty();
-189:    public FishingHook fishing;
-190:    protected float hurtDir;
-192:    public Vec3 currentImpulseImpactPos;
-194:    public Entity currentExplosionCause;
-195:    private boolean ignoreFallDamageFromCurrentImpulse;
-196:    private int currentImpulseContextResetGraceTime;
-197:    private final java.util.Collection<MutableComponent> prefixes = new java.util.LinkedList<>();
-198:    private final java.util.Collection<MutableComponent> suffixes = new java.util.LinkedList<>();
-200:    private long lastDayTimeTick = -1L; // Neo: Used to limit TIME_SINCE_REST increases when day length is non-standard. No need to persist, at most Phantoms will spawn one tick too early for each save/load cycle.
-202:    public Player(Level p_250508_, BlockPos p_250289_, float p_251702_, GameProfile p_252153_) {
-212:    public boolean blockActionRestricted(Level p_36188_, BlockPos p_36189_, GameType p_36190_) {
-225:    public static AttributeSupplier.Builder createAttributes() {
-242:    protected void defineSynchedData(SynchedEntityData.Builder p_326117_) {
-253:    public void tick() {
-336:    protected float getMaxHeadRotationRelativeToBody() {
-340:    public boolean isSecondaryUseActive() {
-344:    protected boolean wantsToStopRiding() {
-348:    protected boolean isStayingOnGroundSurface() {
-352:    protected boolean updateIsUnderwater() {
-357:    private void turtleHelmetTick() {
-364:    protected ItemCooldowns createItemCooldowns() {
-368:    private void moveCloak() {
-411:    protected void updatePlayerPose() {
-445:    protected boolean canPlayerFitWithinBlocksAndEntitiesWhen(Pose p_294172_) {
-450:    protected SoundEvent getSwimSound() {
-455:    protected SoundEvent getSwimSplashSound() {
-460:    protected SoundEvent getSwimHighSpeedSplashSound() {
-465:    public int getDimensionChangingDelay() {
-470:    public void playSound(SoundEvent p_36137_, float p_36138_, float p_36139_) {
-474:    public void playNotifySound(SoundEvent p_36140_, SoundSource p_36141_, float p_36142_, float p_36143_) {
-478:    public SoundSource getSoundSource() {
-483:    protected int getFireImmuneTicks() {
-488:    public void handleEntityEvent(byte p_36120_) {
-500:    public void closeContainer() {
-504:    protected void doCloseContainer() {
-508:    public void rideTick() {
-520:    protected void serverAiStep() {
-527:    public void aiStep() {
-589:    private void playShoulderEntityAmbientSound(@Nullable CompoundTag p_36368_) {
-614:    private void touch(Entity p_36278_) {
-618:    public int getScore() {
-622:    public void setScore(int p_36398_) {
-626:    public void increaseScore(int p_36402_) {
-631:    public void startAutoSpinAttack(int p_204080_, float p_346316_, ItemStack p_345401_) {
-643:    public ItemStack getWeaponItem() {
-648:    public void die(DamageSource p_36152_) {
-675:    protected void dropEquipment() {
-683:    protected void destroyVanishingCursedItems() {
-693:    protected SoundEvent getHurtSound(DamageSource p_36310_) {
-698:    protected SoundEvent getDeathSound() {
-703:    public ItemEntity drop(ItemStack p_36177_, boolean p_36178_) {
-708:    public ItemEntity drop(ItemStack p_36179_, boolean p_36180_, boolean p_36181_) {
-747:    public float getDestroySpeed(BlockState p_36282_) {
-751:    public float getDigSpeed(BlockState p_36282_, @Nullable BlockPos pos) {
-784:    public boolean hasCorrectToolForDrops(BlockState p_36299_) {
-788:    public boolean hasCorrectToolForDrops(BlockState state, Level level, BlockPos pos) {
-793:    public void readAdditionalSaveData(CompoundTag p_36215_) {
-840:    public void addAdditionalSaveData(CompoundTag p_36265_) {
-874:    public boolean isInvulnerableTo(DamageSource p_36249_) {
-889:    public boolean hurt(DamageSource p_36154_, float p_36155_) {
-925:    protected void blockUsingShield(LivingEntity p_36295_) {
-933:    public boolean canBeSeenAsEnemy() {
-937:    public boolean canHarmPlayer(Player p_36169_) {
-948:    protected void hurtArmor(DamageSource p_36251_, float p_36252_) {
-953:    protected void hurtHelmet(DamageSource p_150103_, float p_150104_) {
-958:    protected void hurtCurrentlyUsedShield(float p_36383_) {
-989:    protected void actuallyHurt(DamageSource p_36312_, float p_36313_) {
-1018:    public boolean isTextFilteringEnabled() {
-1022:    public void openTextEdit(SignBlockEntity p_36193_, boolean p_277837_) {
-1025:    public void openMinecartCommandBlock(BaseCommandBlock p_36182_) {
-1028:    public void openCommandBlock(CommandBlockEntity p_36191_) {
-1031:    public void openStructureBlock(StructureBlockEntity p_36194_) {
-1034:    public void openJigsawBlock(JigsawBlockEntity p_36192_) {
-1037:    public void openHorseInventory(AbstractHorse p_36167_, Container p_36168_) {
-1040:    public OptionalInt openMenu(@Nullable MenuProvider p_36150_) {
-1044:    public void sendMerchantOffers(int p_36121_, MerchantOffers p_36122_, int p_36123_, int p_36124_, boolean p_36125_, boolean p_36126_) {
-1047:    public void openItemGui(ItemStack p_36174_, InteractionHand p_36175_) {
-1050:    public InteractionResult interactOn(Entity p_36158_, InteractionHand p_36159_) {
-1096:    public void removeVehicle() {
-1102:    protected boolean isImmobile() {
-1107:    public boolean isAffectedByFluids() {
-1113:    protected Vec3 maybeBackOffFromEdge(Vec3 p_36201_, MoverType p_36202_) {
-1163:    private boolean isAboveGround(float p_341626_) {
-1167:    private boolean canFallAtLeast(double p_341664_, double p_341597_, float p_341613_) {
-1183:    public void attack(Entity p_36347_) {
-1380:    protected float getEnchantedDamage(Entity p_345248_, float p_345836_, DamageSource p_345745_) {
-1385:    protected void doAutoAttackOnTouch(LivingEntity p_36355_) {
-1389:    public void disableShield() {
-1395:    public void crit(Entity p_36156_) {
-1398:    public void magicCrit(Entity p_36253_) {
-1401:    public void sweepAttack() {
-1409:    public void respawn() {
-1413:    public void remove(Entity.RemovalReason p_150097_) {
-1421:    public boolean isLocalPlayer() {
-1425:    public GameProfile getGameProfile() {
-1429:    public Inventory getInventory() {
-1433:    public Abilities getAbilities() {
-1438:    public boolean hasInfiniteMaterials() {
-1442:    public void updateTutorialInventoryAction(ItemStack p_150098_, ItemStack p_150099_, ClickAction p_150100_) {
-1445:    public boolean hasContainerOpen() {
-1449:    public Either<Player.BedSleepingProblem, Unit> startSleepInBed(BlockPos p_36203_) {
-1455:    public void stopSleepInBed(boolean p_36226_, boolean p_36227_) {
-1466:    public void stopSleeping() {
-1470:    public boolean isSleepingLongEnough() {
-1474:    public int getSleepTimer() {
-1478:    public void displayClientMessage(Component p_36216_, boolean p_36217_) {
-1481:    public void awardStat(ResourceLocation p_36221_) {
-1485:    public void awardStat(ResourceLocation p_36223_, int p_36224_) {
-1489:    public void awardStat(Stat<?> p_36247_) {
-1493:    public void awardStat(Stat<?> p_36145_, int p_36146_) {
-1496:    public void resetStat(Stat<?> p_36144_) {
-1499:    public int awardRecipes(Collection<RecipeHolder<?>> p_36213_) {
-1503:    public void triggerRecipeCrafted(RecipeHolder<?> p_301080_, List<ItemStack> p_283609_) {
-1506:    public void awardRecipesByKey(List<ResourceLocation> p_312922_) {
-1509:    public int resetRecipes(Collection<RecipeHolder<?>> p_36263_) {
-1514:    public void jumpFromGround() {
-1525:    public void travel(Vec3 p_36359_) {
-1550:    public void updateSwimming() {
-1558:    protected boolean freeAt(BlockPos p_36351_) {
-1563:    public float getSpeed() {
-1568:    public boolean causeFallDamage(float p_150093_, float p_150094_, DamageSource p_150095_) {
-1599:    public boolean tryToStartFallFlying() {
-1611:    public void startFallFlying() {
-1615:    public void stopFallFlying() {
-1621:    protected void doWaterSplashEffect() {
-1628:    protected void playStepSound(BlockPos p_282121_, BlockState p_282194_) {
-1648:    public LivingEntity.Fallsounds getFallSounds() {
-1653:    public boolean killedEntity(ServerLevel p_219735_, LivingEntity p_219736_) {
-1659:    public void makeStuckInBlock(BlockState p_36196_, Vec3 p_36197_) {
-1667:    public void giveExperiencePoints(int p_36291_) {
-1694:    public int getEnchantmentSeed() {
-1698:    public void onEnchantmentPerformed(ItemStack p_36172_, int p_36173_) {
-1709:    public void giveExperienceLevels(int p_36276_) {
-1728:    public int getXpNeededForNextLevel() {
-1736:    public void causeFoodExhaustion(float p_36400_) {
-1744:    public Optional<WardenSpawnTracker> getWardenSpawnTracker() {
-1748:    public FoodData getFoodData() {
-1752:    public boolean canEat(boolean p_36392_) {
-1756:    public boolean isHurt() {
-1760:    public boolean mayBuild() {
-1764:    public boolean mayUseItemAt(BlockPos p_36205_, Direction p_36206_, ItemStack p_36207_) {
-1775:    protected int getBaseExperienceReward() {
-1785:    protected boolean isAlwaysExperienceDropper() {
-1790:    public boolean shouldShowName() {
-1795:    protected Entity.MovementEmission getMovementEmission() {
-1799:    public void onUpdateAbilities() {
-1803:    public Component getName() {
-1807:    public PlayerEnderChestContainer getEnderChestInventory() {
-1812:    public ItemStack getItemBySlot(EquipmentSlot p_36257_) {
-1823:    protected boolean doesEmitEquipEvent(EquipmentSlot p_219741_) {
-1828:    public void setItemSlot(EquipmentSlot p_36161_, ItemStack p_36162_) {
-1839:    public boolean addItem(ItemStack p_36357_) {
-1844:    public Iterable<ItemStack> getHandSlots() {
-1849:    public Iterable<ItemStack> getArmorSlots() {
-1854:    public boolean canUseSlot(EquipmentSlot p_326160_) {
-1858:    public boolean setEntityOnShoulder(CompoundTag p_36361_) {
-1874:    protected void removeEntitiesOnShoulder() {
-1883:    private void respawnEntityOnShoulder(CompoundTag p_36371_) {
-1897:    public abstract boolean isSpectator();
-1900:    public boolean canBeHitByProjectile() {
-1905:    public boolean isSwimming() {
-1909:    public abstract boolean isCreative();
-1912:    public boolean isPushedByFluid() {
-1916:    public Scoreboard getScoreboard() {
-1921:    public Component getDisplayName() {
-1930:    private MutableComponent decorateDisplayNameComponent(MutableComponent p_36219_) {
-1940:    public String getScoreboardName() {
-1945:    protected void internalSetAbsorptionAmount(float p_296426_) {
-1950:    public float getAbsorptionAmount() {
-1954:    public boolean isModelPartShown(PlayerModelPart p_36171_) {
-1959:    public SlotAccess getSlot(int p_150112_) {
-1963:                public ItemStack get() {
-1968:                public boolean set(ItemStack p_332675_) {
-1974:            final int i = p_150112_ - 500;
-1978:                    public ItemStack get() {
-1983:                    public boolean set(ItemStack p_332810_) {
-2000:    public boolean isReducedDebugInfo() {
-2004:    public void setReducedDebugInfo(boolean p_36394_) {
-2009:    public void setRemainingFireTicks(int p_36353_) {
-2014:    public HumanoidArm getMainArm() {
-2018:    public void setMainArm(HumanoidArm p_36164_) {
-2022:    public CompoundTag getShoulderEntityLeft() {
-2026:    protected void setShoulderEntityLeft(CompoundTag p_36363_) {
+        public EntityType.Builder<T> eyeHeight(float p_316663_) {
+            this.dimensions = this.dimensions.withEyeHeight(p_316663_);
+            return this;
+        }
 
-@@@@@ REGION: getVehicleAttachmentPoint :: net/minecraft/world/entity/Entity.java @@@@
-
-@@@@@ REGION: public void rideTick :: net/minecraft/world/entity/player/Player.java @@@@
-
-@@@@@ SIGS: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
-MISSING
-
-@@@@@ REGION: getPassengerAttachmentPoint :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
-
-@@@@@ REGION: clampRotation :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
-
-@@@@@ REGION: getDismountLocationForPassenger :: net/minecraft/world/entity/vehicle/AbstractBoat.java @@@@
-
-@@@@@ SIGS: net/minecraft/world/entity/vehicle/AbstractMinecart.java @@@@
-48:public abstract class AbstractMinecart extends VehicleEntity implements net.neoforged.neoforge.common.extensions.IAbstractMinecartExtension {
-49:    private static final Vec3 LOWERED_PASSENGER_ATTACHMENT = new Vec3(0.0, 0.0, 0.0);
-50:    private static final EntityDataAccessor<Integer> DATA_ID_DISPLAY_BLOCK = SynchedEntityData.defineId(AbstractMinecart.class, EntityDataSerializers.INT);
-51:    private static final EntityDataAccessor<Integer> DATA_ID_DISPLAY_OFFSET = SynchedEntityData.defineId(AbstractMinecart.class, EntityDataSerializers.INT);
-52:    private static final EntityDataAccessor<Boolean> DATA_ID_CUSTOM_DISPLAY = SynchedEntityData.defineId(AbstractMinecart.class, EntityDataSerializers.BOOLEAN);
-53:    private static final ImmutableMap<Pose, ImmutableList<Integer>> POSE_DISMOUNT_HEIGHTS = ImmutableMap.of(
-56:    protected static final float WATER_SLOWDOWN_FACTOR = 0.95F;
-57:    private boolean flipped;
-58:    private boolean onRails;
-59:    private int lerpSteps;
-60:    private double lerpX;
-61:    private double lerpY;
-62:    private double lerpZ;
-63:    private double lerpYRot;
-64:    private double lerpXRot;
-65:    private Vec3 targetDeltaMovement = Vec3.ZERO;
-66:    private boolean canBePushed = true;
-67:    private static final Map<RailShape, Pair<Vec3i, Vec3i>> EXITS = Util.make(Maps.newEnumMap(RailShape.class), p_38135_ -> {
-87:    private static net.neoforged.neoforge.common.IMinecartCollisionHandler COLLISIONS = null;
-89:    protected AbstractMinecart(EntityType<?> p_38087_, Level p_38088_) {
-94:    protected AbstractMinecart(EntityType<?> p_38090_, Level p_38091_, double p_38092_, double p_38093_, double p_38094_) {
-102:    public net.neoforged.neoforge.common.IMinecartCollisionHandler getCollisionHandler() {
-106:    public static void registerCollisionHandler(@Nullable net.neoforged.neoforge.common.IMinecartCollisionHandler handler) {
-133:    protected Entity.MovementEmission getMovementEmission() {
-138:    protected void defineSynchedData(SynchedEntityData.Builder p_326247_) {
-146:    public boolean canCollideWith(Entity p_38168_) {
-151:    public boolean isPushable() {
-156:    public Vec3 getRelativePortalPosition(Direction.Axis p_38132_, BlockUtil.FoundRectangle p_38133_) {
-161:    protected Vec3 getPassengerAttachmentPoint(Entity p_294753_, EntityDimensions p_295251_, float p_296054_) {
-167:    public Vec3 getDismountLocationForPassenger(LivingEntity p_38145_) {
-221:    protected float getBlockSpeedFactor() {
-227:    public void animateHurt(float p_265349_) {
-234:    public boolean isPickable() {
-238:    private static Pair<Vec3i, Vec3i> exits(RailShape p_38126_) {
-243:    public Direction getMotionDirection() {
-248:    protected double getDefaultGravity() {
-253:    public void tick() {
-347:    protected double getMaxSpeed() {
-351:    public void activateMinecart(int p_38111_, int p_38112_, int p_38113_, boolean p_38114_) {
-354:    protected void comeOffTrack() {
-375:    protected void moveAlongTrack(BlockPos p_38156_, BlockState p_38157_) {
-538:    public boolean isOnRails() {
-542:    private boolean isRedstoneConductor(BlockPos p_38130_) {
-546:    protected void applyNaturalSlowdown() {
-558:    public Vec3 getPosOffs(double p_38097_, double p_38098_, double p_38099_, double p_38100_) {
-597:    public Vec3 getPos(double p_38180_, double p_38181_, double p_38182_) {
-647:    public AABB getBoundingBoxForCulling() {
-653:    protected void readAdditionalSaveData(CompoundTag p_38137_) {
-661:    protected void addAdditionalSaveData(CompoundTag p_38151_) {
-670:    public void push(Entity p_38165_) {
-740:    public void lerpTo(double p_38102_, double p_38103_, double p_38104_, float p_38105_, float p_38106_, int p_38107_) {
-751:    public double lerpTargetX() {
-756:    public double lerpTargetY() {
-761:    public double lerpTargetZ() {
-766:    public float lerpTargetXRot() {
-771:    public float lerpTargetYRot() {
-776:    public void lerpMotion(double p_38171_, double p_38172_, double p_38173_) {
-781:    public abstract AbstractMinecart.Type getMinecartType();
-783:    public BlockState getDisplayBlockState() {
-787:    public BlockState getDefaultDisplayBlockState() {
-791:    public int getDisplayOffset() {
-795:    public int getDefaultDisplayOffset() {
-799:    public void setDisplayBlockState(BlockState p_38147_) {
-804:    public void setDisplayOffset(int p_38175_) {
-809:    public boolean hasCustomDisplay() {
-813:    public void setCustomDisplay(boolean p_38139_) {
-818:    private boolean canUseRail = true;
-821:    public boolean canUseRail() {
-826:    public void setCanUseRail(boolean value) {
-831:    private float currentSpeedCapOnRail = getMaxCartSpeedOnRail();
-834:    public float getCurrentCartSpeedCapOnRail() {
-839:    public void setCurrentCartSpeedCapOnRail(float value) {
-844:    public double getMaxSpeedWithRail() { //Non-default because getMaximumSpeed is protected
-856:    private Float maxSpeedAirLateral = null;
-859:    public float getMaxSpeedAirLateral() {
-864:    public void setMaxSpeedAirLateral(float value) {
-869:    private float maxSpeedAirVertical = DEFAULT_MAX_SPEED_AIR_VERTICAL;
-872:    public float getMaxSpeedAirVertical() {
-877:    public void setMaxSpeedAirVertical(float value) {
-882:    private double dragAir = DEFAULT_AIR_DRAG;
-885:    public double getDragAir() {
-890:    public void setDragAir(double value) {
-896:    public void moveMinecartOnRail(BlockPos pos) { //Non-default because getMaximumSpeed is protected
-905:    public ItemStack getPickResult() {
-916:    public static enum Type {
-
-@@@@@ REGION: public void tick :: net/minecraft/world/entity/vehicle/AbstractMinecart.java @@@@
-
-@@@@@ SIGS: net/minecraft/server/level/ServerEntity.java @@@@
-47:public class ServerEntity {
-48:    private static final Logger LOGGER = LogUtils.getLogger();
-49:    private static final int TOLERANCE_LEVEL_ROTATION = 1;
-50:    private static final double TOLERANCE_LEVEL_POSITION = 7.6293945E-6F;
-51:    public static final int FORCED_POS_UPDATE_PERIOD = 60;
-52:    private static final int FORCED_TELEPORT_PERIOD = 400;
-53:    private final ServerLevel level;
-54:    private final Entity entity;
-55:    private final int updateInterval;
-56:    private final boolean trackDelta;
-57:    private final Consumer<Packet<?>> broadcast;
-58:    private final VecDeltaCodec positionCodec = new VecDeltaCodec();
-59:    private int lastSentYRot;
-60:    private int lastSentXRot;
-61:    private int lastSentYHeadRot;
-62:    private Vec3 lastSentMovement;
-63:    private int tickCount;
-64:    private int teleportDelay;
-65:    private List<Entity> lastPassengers = Collections.emptyList();
-66:    private boolean wasRiding;
-67:    private boolean wasOnGround;
-69:    private List<SynchedEntityData.DataValue<?>> trackedDataValues;
-71:    public ServerEntity(ServerLevel p_8528_, Entity p_8529_, int p_8530_, boolean p_8531_, Consumer<Packet<?>> p_8532_) {
-86:    public void sendChanges() {
-229:    private static Stream<Entity> removedPassengers(List<Entity> p_277592_, List<Entity> p_277658_) {
-233:    public void removePairing(ServerPlayer p_8535_) {
-239:    public void addPairing(ServerPlayer p_8542_) {
-247:    public void sendPairingData(ServerPlayer p_289562_, net.neoforged.neoforge.network.bundle.PacketAndPayloadAcceptor<net.minecraft.network.protocol.game.ClientGamePacketListener> p_289563_) {
-305:    public Vec3 getPositionBase() {
-309:    public Vec3 getLastSentMovement() {
-313:    public float getLastSentXRot() {
-317:    public float getLastSentYRot() {
-321:    public float getLastSentYHeadRot() {
-325:    private void sendDirtyEntityData() {
-343:    private void broadcastAndSend(Packet<?> p_8539_) {
-
-@@@@@ REGION: sendChanges :: net/minecraft/server/level/ServerEntity.java @@@@
-
-@@@@@ SIGS: net/minecraft/client/renderer/entity/EntityRenderer.java @@@@
-26:public abstract class EntityRenderer<T extends Entity> {
-27:    protected static final float NAMETAG_SCALE = 0.025F;
-28:    public static final int LEASH_RENDER_STEPS = 24;
-29:    protected final EntityRenderDispatcher entityRenderDispatcher;
-30:    private final Font font;
-31:    protected float shadowRadius;
-32:    protected float shadowStrength = 1.0F;
-34:    protected EntityRenderer(EntityRendererProvider.Context p_174008_) {
-39:    public final int getPackedLightCoords(T p_114506_, float p_114507_) {
-44:    protected int getSkyLightLevel(T p_114509_, BlockPos p_114510_) {
-48:    protected int getBlockLightLevel(T p_114496_, BlockPos p_114497_) {
-52:    public boolean shouldRender(T p_114491_, Frustum p_114492_, double p_114493_, double p_114494_, double p_114495_) {
-85:    public Vec3 getRenderOffset(T p_114483_, float p_114484_) {
-89:    public void render(T p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_, MultiBufferSource p_114489_, int p_114490_) {
-105:    private <E extends Entity> void renderLeash(T p_352225_, float p_352465_, PoseStack p_352205_, MultiBufferSource p_352444_, E p_352269_) {
-175:    protected boolean shouldShowName(T p_114504_) {
-179:    public abstract ResourceLocation getTextureLocation(T p_114482_);
-181:    public Font getFont() {
-185:    protected void renderNameTag(T p_114498_, Component p_114499_, PoseStack p_114500_, MultiBufferSource p_114501_, int p_114502_, float p_316698_) {
-213:    protected float getShadowRadius(T p_316475_) {
-
-@@@@@ SIGS: net/minecraft/client/model/HierarchicalModel.java @@@@
-19:public abstract class HierarchicalModel<E extends Entity> extends EntityModel<E> {
-20:    private static final Vector3f ANIMATION_VECTOR_CACHE = new Vector3f();
-22:    public HierarchicalModel() {
-26:    public HierarchicalModel(Function<ResourceLocation, RenderType> p_170623_) {
-30:    protected static net.neoforged.neoforge.client.entity.animation.json.AnimationHolder getAnimation(ResourceLocation key) {
-35:    public void renderToBuffer(PoseStack p_170625_, VertexConsumer p_170626_, int p_170627_, int p_170628_, int p_350603_) {
-39:    public abstract ModelPart root();
-41:    public Optional<ModelPart> getAnyDescendantWithName(String p_233394_) {
-47:    protected void animate(AnimationState p_233382_, AnimationDefinition p_233383_, float p_233384_) {
-51:    protected void animate(AnimationState animationState, net.neoforged.neoforge.client.entity.animation.json.AnimationHolder animation, float ageInTicks) {
-55:    protected void animateWalk(AnimationDefinition p_268159_, float p_268057_, float p_268347_, float p_268138_, float p_268165_) {
-61:    protected void animateWalk(net.neoforged.neoforge.client.entity.animation.json.AnimationHolder animation, float limbSwing, float limbSwingAmount, float maxAnimationSpeed, float animationScaleFactor) {
-65:    protected void animate(AnimationState p_233386_, AnimationDefinition p_233387_, float p_233388_, float p_233389_) {
-70:    protected void animate(AnimationState animationState, net.neoforged.neoforge.client.entity.animation.json.AnimationHolder animation, float ageInTicks, float speed) {
-74:    protected void applyStatic(AnimationDefinition p_288996_) {
-78:    protected void applyStatic(net.neoforged.neoforge.client.entity.animation.json.AnimationHolder animation) {
-
-@@@@@ FILE: net/minecraft/client/model/EntityModel.java @@@@
-package net.minecraft.client.model;
-
-import java.util.function.Function;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class EntityModel<T extends Entity> extends Model {
-    public float attackTime;
-    public boolean riding;
-    public boolean young = true;
-
-    protected EntityModel() {
-        this(RenderType::entityCutoutNoCull);
-    }
-
-    protected EntityModel(Function<ResourceLocation, RenderType> p_102613_) {
-        super(p_102613_);
-    }
-
-    public abstract void setupAnim(T p_102618_, float p_102619_, float p_102620_, float p_102621_, float p_102622_, float p_102623_);
-
-    public void prepareMobModel(T p_102614_, float p_102615_, float p_102616_, float p_102617_) {
-    }
-
-    public void copyPropertiesTo(EntityModel<T> p_102625_) {
-        p_102625_.attackTime = this.attackTime;
-        p_102625_.riding = this.riding;
-        p_102625_.young = this.young;
-    }
-}
-
-@@@@@ SIGS: net/minecraft/client/model/geom/ModelPart.java @@@@
-19:public final class ModelPart {
-20:    public static final float DEFAULT_SCALE = 1.0F;
-21:    public float x;
-22:    public float y;
-23:    public float z;
-24:    public float xRot;
-25:    public float yRot;
-26:    public float zRot;
-27:    public float xScale = 1.0F;
-28:    public float yScale = 1.0F;
-29:    public float zScale = 1.0F;
-30:    public boolean visible = true;
-31:    public boolean skipDraw;
-32:    private final List<ModelPart.Cube> cubes;
-33:    private final Map<String, ModelPart> children;
-34:    private PartPose initialPose = PartPose.ZERO;
-36:    public ModelPart(List<ModelPart.Cube> p_171306_, Map<String, ModelPart> p_171307_) {
-41:    public PartPose storePose() {
-45:    public PartPose getInitialPose() {
-49:    public void setInitialPose(PartPose p_233561_) {
-53:    public void resetPose() {
-57:    public void loadPose(PartPose p_171323_) {
-69:    public void copyFrom(ModelPart p_104316_) {
-81:    public boolean hasChild(String p_233563_) {
-85:    public ModelPart getChild(String p_171325_) {
-94:    public void setPos(float p_104228_, float p_104229_, float p_104230_) {
-100:    public void setRotation(float p_171328_, float p_171329_, float p_171330_) {
-106:    public void render(PoseStack p_104302_, VertexConsumer p_104303_, int p_104304_, int p_104305_) {
-110:    public void render(PoseStack p_104307_, VertexConsumer p_104308_, int p_104309_, int p_104310_, int p_350978_) {
-128:    public void visit(PoseStack p_171310_, ModelPart.Visitor p_171311_) {
-132:    private void visit(PoseStack p_171313_, ModelPart.Visitor p_171314_, String p_171315_) {
-148:    public void translateAndRotate(PoseStack p_104300_) {
-159:    private void compile(PoseStack.Pose p_104291_, VertexConsumer p_104292_, int p_104293_, int p_104294_, int p_350388_) {
-165:    public ModelPart.Cube getRandomCube(RandomSource p_233559_) {
-169:    public boolean isEmpty() {
-173:    public void offsetPos(Vector3f p_253873_) {
-179:    public void offsetRotation(Vector3f p_253983_) {
-185:    public void offsetScale(Vector3f p_253957_) {
-191:    public Stream<ModelPart> getAllParts() {
-196:    public static class Cube {
-197:        private final ModelPart.Polygon[] polygons;
-198:        public final float minX;
-199:        public final float minY;
-200:        public final float minZ;
-201:        public final float maxX;
-202:        public final float maxY;
-203:        public final float maxZ;
-347:        public void compile(PoseStack.Pose p_171333_, VertexConsumer p_171334_, int p_171335_, int p_171336_, int p_350744_) {
-371:    static class Polygon {
-372:        public final ModelPart.Vertex[] vertices;
-373:        public final Vector3f normal;
-411:    static class Vertex {
-412:        public final Vector3f pos;
-413:        public final float u;
-414:        public final float v;
-416:        public Vertex(float p_104375_, float p_104376_, float p_104377_, float p_104378_, float p_104379_) {
-420:        public ModelPart.Vertex remap(float p_104385_, float p_104386_) {
-424:        public Vertex(Vector3f p_253667_, float p_253662_, float p_254308_) {
-433:    public interface Visitor {
-
-@@@@@ SIGS: net/minecraft/client/model/geom/builders/CubeListBuilder.java @@@@
-13:public class CubeListBuilder {
-14:    private static final Set<Direction> ALL_VISIBLE = EnumSet.allOf(Direction.class);
-15:    private final List<CubeDefinition> cubes = Lists.newArrayList();
-16:    private int xTexOffs;
-17:    private int yTexOffs;
-18:    private boolean mirror;
-20:    public CubeListBuilder texOffs(int p_171515_, int p_171516_) {
-26:    public CubeListBuilder mirror() {
-30:    public CubeListBuilder mirror(boolean p_171556_) {
-96:    public CubeListBuilder addBox(float p_171482_, float p_171483_, float p_171484_, float p_171485_, float p_171486_, float p_171487_) {
-144:    public CubeListBuilder addBox(String p_171518_, float p_171519_, float p_171520_, float p_171521_, float p_171522_, float p_171523_, float p_171524_) {
-192:    public CubeListBuilder addBox(float p_171507_, float p_171508_, float p_171509_, float p_171510_, float p_171511_, float p_171512_, boolean p_171513_) {
-273:    public List<CubeDefinition> getCubes() {
-277:    public static CubeListBuilder create() {
-
-@@@@@ SIGS: net/minecraft/client/model/geom/builders/PartPose.java @@@@
-MISSING
-
-@@@@@ SIGS: net/minecraft/client/model/geom/builders/LayerDefinition.java @@@@
-8:public class LayerDefinition {
-9:    private final MeshDefinition mesh;
-10:    private final MaterialDefinition material;
-12:    private LayerDefinition(MeshDefinition p_171562_, MaterialDefinition p_171563_) {
-17:    public ModelPart bakeRoot() {
-21:    public static LayerDefinition create(MeshDefinition p_171566_, int p_171567_, int p_171568_) {
-
-@@@@@ SIGS: net/minecraft/client/model/geom/builders/MeshDefinition.java @@@@
-9:public class MeshDefinition {
-10:    private final PartDefinition root = new PartDefinition(ImmutableList.of(), PartPose.ZERO);
-12:    public PartDefinition getRoot() {
-
-@@@@@ FILE: net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java @@@@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractTickableSoundInstance extends AbstractSoundInstance implements TickableSoundInstance {
-    private boolean stopped;
-
-    protected AbstractTickableSoundInstance(SoundEvent p_235076_, SoundSource p_235077_, RandomSource p_235078_) {
-        super(p_235076_, p_235077_, p_235078_);
-    }
-
-    @Override
-    public boolean isStopped() {
-        return this.stopped;
-    }
-
-    protected final void stop() {
-        this.stopped = true;
-        this.looping = false;
-    }
-}
-
-@@@@@ SIGS: net/minecraft/client/resources/sounds/SimpleSoundInstance.java @@@@
-14:public class SimpleSoundInstance extends AbstractSoundInstance {
-15:    public SimpleSoundInstance(SoundEvent p_235109_, SoundSource p_235110_, float p_235111_, float p_235112_, RandomSource p_235113_, BlockPos p_235114_) {
-28:    public static SimpleSoundInstance forUI(SoundEvent p_119753_, float p_119754_) {
-32:    public static SimpleSoundInstance forUI(Holder<SoundEvent> p_263418_, float p_263405_) {
-36:    public static SimpleSoundInstance forUI(SoundEvent p_119756_, float p_119757_, float p_119758_) {
-53:    public static SimpleSoundInstance forMusic(SoundEvent p_119746_) {
-70:    public static SimpleSoundInstance forJukeboxSong(SoundEvent p_249575_, Vec3 p_249600_) {
-86:    public static SimpleSoundInstance forLocalAmbience(SoundEvent p_119767_, float p_119768_, float p_119769_) {
-103:    public static SimpleSoundInstance forAmbientAddition(SoundEvent p_119760_) {
-107:    public static SimpleSoundInstance forAmbientMood(SoundEvent p_235128_, RandomSource p_235129_, double p_235130_, double p_235131_, double p_235132_) {
-
-@@@@@ SIGS: net/minecraft/client/resources/sounds/SoundInstance.java @@@@
-13:public interface SoundInstance {
-49:    static RandomSource createUnseededRandom() {
-54:    public static enum Attenuation {
-
-@@@@@ FILE: net/minecraft/client/gui/LayeredDraw.java @@@@
-package net.minecraft.client.gui;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import net.minecraft.client.DeltaTracker;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LayeredDraw {
-    public static final float Z_SEPARATION = 200.0F;
-    private final List<LayeredDraw.Layer> layers = new ArrayList<>();
-
-    public LayeredDraw add(LayeredDraw.Layer p_316797_) {
-        this.layers.add(p_316797_);
-        return this;
-    }
-
-    public LayeredDraw add(LayeredDraw p_316830_, BooleanSupplier p_316449_) {
-        return this.add((p_348091_, p_348092_) -> {
-            if (p_316449_.getAsBoolean()) {
-                p_316830_.renderInner(p_348091_, p_348092_);
+        public EntityType.Builder<T> passengerAttachments(float... p_316352_) {
+            for (float f : p_316352_) {
+                this.attachments = this.attachments.attach(EntityAttachment.PASSENGER, 0.0F, f, 0.0F);
             }
-        });
-    }
 
-    public void render(GuiGraphics p_316283_, DeltaTracker p_348508_) {
-        p_316283_.pose().pushPose();
-        this.renderInner(p_316283_, p_348508_);
-        p_316283_.pose().popPose();
-    }
+            return this;
+        }
 
-    private void renderInner(GuiGraphics p_316483_, DeltaTracker p_348478_) {
-        for (LayeredDraw.Layer layereddraw$layer : this.layers) {
-            layereddraw$layer.render(p_316483_, p_348478_);
-            p_316483_.pose().translate(0.0F, 0.0F, 200.0F);
+        public EntityType.Builder<T> passengerAttachments(Vec3... p_316160_) {
+            for (Vec3 vec3 : p_316160_) {
+                this.attachments = this.attachments.attach(EntityAttachment.PASSENGER, vec3);
+            }
+
+            return this;
+        }
+
+        public EntityType.Builder<T> vehicleAttachment(Vec3 p_316758_) {
+            return this.attach(EntityAttachment.VEHICLE, p_316758_);
+        }
+
+        public EntityType.Builder<T> ridingOffset(float p_316455_) {
+            return this.attach(EntityAttachment.VEHICLE, 0.0F, -p_316455_, 0.0F);
+        }
+
+        public EntityType.Builder<T> nameTagOffset(float p_316662_) {
+            return this.attach(EntityAttachment.NAME_TAG, 0.0F, p_316662_, 0.0F);
+        }
+
+        public EntityType.Builder<T> attach(EntityAttachment p_320654_, float p_320819_, float p_320871_, float p_320278_) {
+            this.attachments = this.attachments.attach(p_320654_, p_320819_, p_320871_, p_320278_);
+            return this;
+        }
+
+        public EntityType.Builder<T> attach(EntityAttachment p_320601_, Vec3 p_320745_) {
+            this.attachments = this.attachments.attach(p_320601_, p_320745_);
+            return this;
+        }
+
+        public EntityType.Builder<T> noSummon() {
+            this.summon = false;
+            return this;
+        }
+
+        public EntityType.Builder<T> noSave() {
+            this.serialize = false;
+            return this;
+        }
+
+        public EntityType.Builder<T> fireImmune() {
+            this.fireImmune = true;
+            return this;
+        }
+
+        public EntityType.Builder<T> immuneTo(Block... p_20715_) {
+            this.immuneTo = ImmutableSet.copyOf(p_20715_);
+            return this;
+        }
+
+        public EntityType.Builder<T> canSpawnFarFromPlayer() {
+            this.canSpawnFarFromPlayer = true;
+            return this;
+        }
+
+        public EntityType.Builder<T> clientTrackingRange(int p_20703_) {
+            this.clientTrackingRange = p_20703_;
+            return this;
+        }
+
+        public EntityType.Builder<T> updateInterval(int p_20718_) {
+            this.updateInterval = p_20718_;
+            return this;
+        }
+
+        public EntityType.Builder<T> requiredFeatures(FeatureFlag... p_251646_) {
+            this.requiredFeatures = FeatureFlags.REGISTRY.subset(p_251646_);
+            return this;
+        }
+
+        public EntityType.Builder<T> setUpdateInterval(int interval) {
+             this.updateIntervalSupplier = t->interval;
+             return this;
+        }
+
+        public EntityType.Builder<T> setTrackingRange(int range) {
+             this.trackingRangeSupplier = t->range;
+             return this;
+        }
+
+        public EntityType.Builder<T> setShouldReceiveVelocityUpdates(boolean value) {
+             this.velocityUpdateSupplier = t->value;
+             return this;
+        }
+
+        public EntityType<T> build(String p_20713_) {
+            if (this.serialize) {
+                Util.fetchChoiceType(References.ENTITY_TREE, p_20713_);
+            }
+
+            return new EntityType<>(
+                this.factory,
+                this.category,
+                this.serialize,
+                this.summon,
+                this.fireImmune,
+                this.canSpawnFarFromPlayer,
+                this.immuneTo,
+                this.dimensions.withAttachments(this.attachments),
+                this.spawnDimensionsScale,
+                this.clientTrackingRange,
+                this.updateInterval,
+                this.requiredFeatures,
+                velocityUpdateSupplier,
+                trackingRangeSupplier,
+                updateIntervalSupplier
+            );
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public interface Layer {
-        void render(GuiGraphics p_316811_, DeltaTracker p_348559_);
+    public interface EntityFactory<T extends Entity> {
+        T create(EntityType<T> p_20722_, Level p_20723_);
     }
 }
-
-@@@@@ SIGS: net/minecraft/client/gui/GuiGraphics.java @@@@
-59:public class GuiGraphics implements net.neoforged.neoforge.client.extensions.IGuiGraphicsExtension {
-60:    public static final float MAX_GUI_Z = 10000.0F;
-61:    public static final float MIN_GUI_Z = -10000.0F;
-62:    private static final int EXTRA_SPACE_AFTER_FIRST_TOOLTIP_LINE = 2;
-63:    private final Minecraft minecraft;
-64:    private final PoseStack pose;
-65:    private final MultiBufferSource.BufferSource bufferSource;
-66:    private final GuiGraphics.ScissorStack scissorStack = new GuiGraphics.ScissorStack();
-67:    private final GuiSpriteManager sprites;
-68:    private boolean managed;
-70:    private GuiGraphics(Minecraft p_282144_, PoseStack p_281551_, MultiBufferSource.BufferSource p_281460_) {
-77:    public GuiGraphics(Minecraft p_283406_, MultiBufferSource.BufferSource p_282238_) {
-82:    public void drawManaged(Runnable p_286277_) {
-91:    private void flushIfUnmanaged() {
-98:    private void flushIfManaged() {
-104:    public int guiWidth() {
-108:    public int guiHeight() {
-112:    public PoseStack pose() {
-116:    public MultiBufferSource.BufferSource bufferSource() {
-120:    public void flush() {
-126:    public void hLine(int p_283318_, int p_281662_, int p_281346_, int p_281672_) {
-130:    public void hLine(RenderType p_286630_, int p_286453_, int p_286247_, int p_286814_, int p_286623_) {
-140:    public void vLine(int p_282951_, int p_281591_, int p_281568_, int p_282718_) {
-144:    public void vLine(RenderType p_286607_, int p_286309_, int p_286480_, int p_286707_, int p_286855_) {
-154:    public void enableScissor(int p_281479_, int p_282788_, int p_282924_, int p_282826_) {
-158:    public void disableScissor() {
-162:    public boolean containsPointInScissor(int p_332689_, int p_332771_) {
-166:    private void applyScissor(@Nullable ScreenRectangle p_281569_) {
-182:    public void setColor(float p_281272_, float p_281734_, float p_282022_, float p_281752_) {
-187:    public void fill(int p_282988_, int p_282861_, int p_281278_, int p_281710_, int p_281470_) {
-191:    public void fill(int p_281437_, int p_283660_, int p_282606_, int p_283413_, int p_283428_, int p_283253_) {
-195:    public void fill(RenderType p_286602_, int p_286738_, int p_286614_, int p_286741_, int p_286610_, int p_286560_) {
-199:    public void fill(RenderType p_286711_, int p_286234_, int p_286444_, int p_286244_, int p_286411_, int p_286671_, int p_286599_) {
-221:    public void fillGradient(int p_283290_, int p_283278_, int p_282670_, int p_281698_, int p_283374_, int p_283076_) {
-225:    public void fillGradient(int p_282702_, int p_282331_, int p_281415_, int p_283118_, int p_282419_, int p_281954_, int p_282607_) {
-229:    public void fillGradient(RenderType p_286522_, int p_286535_, int p_286839_, int p_286242_, int p_286856_, int p_286809_, int p_286833_, int p_286706_) {
-235:    private void fillGradient(VertexConsumer p_286862_, int p_283414_, int p_281397_, int p_283587_, int p_281521_, int p_283505_, int p_283131_, int p_282949_) {
-243:    public void fillRenderType(RenderType p_331805_, int p_330261_, int p_330693_, int p_331143_, int p_331708_, int p_330497_) {
-253:    public void drawCenteredString(Font p_282122_, String p_282898_, int p_281490_, int p_282853_, int p_281258_) {
-257:    public void drawCenteredString(Font p_282901_, Component p_282456_, int p_283083_, int p_282276_, int p_281457_) {
-262:    public void drawCenteredString(Font p_282592_, FormattedCharSequence p_281854_, int p_281573_, int p_283511_, int p_282577_) {
-266:    public int drawString(Font p_282003_, @Nullable String p_281403_, int p_282714_, int p_282041_, int p_281908_) {
-270:    public int drawString(Font p_283343_, @Nullable String p_281896_, int p_283569_, int p_283418_, int p_281560_, boolean p_282130_) {
-275:    public int drawString(Font p_283343_, @Nullable String p_281896_, float p_283569_, float p_283418_, int p_281560_, boolean p_282130_) {
-297:    public int drawString(Font p_283019_, FormattedCharSequence p_283376_, int p_283379_, int p_283346_, int p_282119_) {
-301:    public int drawString(Font p_282636_, FormattedCharSequence p_281596_, int p_281586_, int p_282816_, int p_281743_, boolean p_282394_) {
-306:    public int drawString(Font p_282636_, FormattedCharSequence p_281596_, float p_281586_, float p_282816_, int p_281743_, boolean p_282394_) {
-323:    public int drawString(Font p_281653_, Component p_283140_, int p_283102_, int p_282347_, int p_281429_) {
-327:    public int drawString(Font p_281547_, Component p_282131_, int p_282857_, int p_281250_, int p_282195_, boolean p_282791_) {
-331:    public void drawWordWrap(Font p_281494_, FormattedText p_283463_, int p_282183_, int p_283250_, int p_282564_, int p_282629_) {
-338:    public int drawStringWithBackdrop(Font p_348650_, Component p_348614_, int p_348465_, int p_348495_, int p_348581_, int p_348666_) {
-348:    public void blit(int p_282225_, int p_281487_, int p_281985_, int p_281329_, int p_283035_, TextureAtlasSprite p_281614_) {
-382:    public void renderOutline(int p_281496_, int p_282076_, int p_281334_, int p_283576_, int p_283618_) {
-389:    public void blitSprite(ResourceLocation p_294915_, int p_295058_, int p_294415_, int p_294535_, int p_295510_) {
-393:    public void blitSprite(ResourceLocation p_294549_, int p_294560_, int p_295075_, int p_294098_, int p_295872_, int p_294414_) {
-473:    private void blitSprite(TextureAtlasSprite p_295122_, int p_295850_, int p_296348_, int p_295804_, int p_296465_, int p_295717_) {
-490:    public void blit(ResourceLocation p_283377_, int p_281970_, int p_282111_, int p_283134_, int p_282778_, int p_281478_, int p_281821_) {
-790:    public void renderItem(ItemStack p_281978_, int p_282647_, int p_281944_) {
-794:    public void renderItem(ItemStack p_282262_, int p_283221_, int p_283496_, int p_283435_) {
-798:    public void renderItem(ItemStack p_282786_, int p_282502_, int p_282976_, int p_281592_, int p_282314_) {
-802:    public void renderFakeItem(ItemStack p_281946_, int p_283299_, int p_283674_) {
-806:    public void renderFakeItem(ItemStack p_312904_, int p_312257_, int p_312674_, int p_312138_) {
-810:    public void renderItem(LivingEntity p_282154_, ItemStack p_282777_, int p_282110_, int p_281371_, int p_283572_) {
-814:    private void renderItem(@Nullable LivingEntity p_283524_, @Nullable Level p_282461_, ItemStack p_283653_, int p_283141_, int p_282560_, int p_282425_) {
-853:    public void renderItemDecorations(Font p_281721_, ItemStack p_281514_, int p_282056_, int p_282683_) {
-857:    public void renderItemDecorations(Font p_282005_, ItemStack p_283349_, int p_282641_, int p_282146_, @Nullable String p_282803_) {
-890:    private ItemStack tooltipStack = ItemStack.EMPTY;
-892:    public void renderTooltip(Font p_282308_, ItemStack p_282781_, int p_282687_, int p_282292_) {
-898:    public void renderTooltip(Font font, List<Component> textComponents, Optional<TooltipComponent> tooltipComponent, ItemStack stack, int mouseX, int mouseY) {
-904:    public void renderTooltip(Font p_283128_, List<Component> p_282716_, Optional<TooltipComponent> p_281682_, int p_283678_, int p_281696_) {
-909:    public void renderTooltip(Font p_282269_, Component p_282572_, int p_282044_, int p_282545_) {
-913:    public void renderComponentTooltip(Font p_282739_, List<Component> p_281832_, int p_282191_, int p_282446_) {
-918:    public void renderComponentTooltip(Font font, List<? extends net.minecraft.network.chat.FormattedText> tooltips, int mouseX, int mouseY, ItemStack stack) {
-925:    public void renderComponentTooltipFromElements(Font font, List<com.mojang.datafixers.util.Either<FormattedText, TooltipComponent>> elements, int mouseX, int mouseY, ItemStack stack) {
-932:    public void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_) {
-942:    public void renderTooltip(Font p_281627_, List<FormattedCharSequence> p_283313_, ClientTooltipPositioner p_283571_, int p_282367_, int p_282806_) {
-948:    private void renderTooltipInternal(Font p_282675_, List<ClientTooltipComponent> p_282615_, int p_283230_, int p_283417_, ClientTooltipPositioner p_282442_) {
-994:    public void renderComponentHoverEffect(Font p_282584_, @Nullable Style p_282156_, int p_283623_, int p_282114_) {
-1017:    static class ScissorStack {
-1018:        private final Deque<ScreenRectangle> stack = new ArrayDeque<>();
-1020:        public ScreenRectangle push(ScreenRectangle p_281812_) {
-1033:        public ScreenRectangle pop() {
-1042:        public boolean containsPoint(int p_332682_, int p_332655_) {
-
-@@@@@ SIGS: net/minecraft/client/Options.java @@@@
-80:public class Options {
-81:    static final Logger LOGGER = LogUtils.getLogger();
-82:    static final Gson GSON = new Gson();
-83:    private static final TypeToken<List<String>> LIST_OF_STRINGS_TYPE = new TypeToken<List<String>>() {
-85:    public static final int RENDER_DISTANCE_TINY = 2;
-86:    public static final int RENDER_DISTANCE_SHORT = 4;
-87:    public static final int RENDER_DISTANCE_NORMAL = 8;
-88:    public static final int RENDER_DISTANCE_FAR = 12;
-89:    public static final int RENDER_DISTANCE_REALLY_FAR = 16;
-90:    public static final int RENDER_DISTANCE_EXTREME = 32;
-91:    private static final Splitter OPTION_SPLITTER = Splitter.on(':').limit(2);
-92:    public static final String DEFAULT_SOUND_DEVICE = "";
-93:    private static final Component ACCESSIBILITY_TOOLTIP_DARK_MOJANG_BACKGROUND = Component.translatable("options.darkMojangStudiosBackgroundColor.tooltip");
-94:    private final OptionInstance<Boolean> darkMojangStudiosBackground = OptionInstance.createBoolean(
-97:    private static final Component ACCESSIBILITY_TOOLTIP_HIDE_LIGHTNING_FLASHES = Component.translatable("options.hideLightningFlashes.tooltip");
-98:    private final OptionInstance<Boolean> hideLightningFlash = OptionInstance.createBoolean(
-101:    private static final Component ACCESSIBILITY_TOOLTIP_HIDE_SPLASH_TEXTS = Component.translatable("options.hideSplashTexts.tooltip");
-102:    private final OptionInstance<Boolean> hideSplashTexts = OptionInstance.createBoolean(
-105:    private final OptionInstance<Double> sensitivity = new OptionInstance<>(
-122:    private final OptionInstance<Integer> renderDistance;
-123:    private final OptionInstance<Integer> simulationDistance;
-124:    private int serverRenderDistance = 0;
-125:    private final OptionInstance<Double> entityDistanceScaling = new OptionInstance<>(
-135:    public static final int UNLIMITED_FRAMERATE_CUTOFF = 260;
-136:    private final OptionInstance<Integer> framerateLimit = new OptionInstance<>(
-147:    private final OptionInstance<CloudStatus> cloudStatus = new OptionInstance<>(
-165:    private static final Component GRAPHICS_TOOLTIP_FAST = Component.translatable("options.graphics.fast.tooltip");
-166:    private static final Component GRAPHICS_TOOLTIP_FABULOUS = Component.translatable(
-169:    private static final Component GRAPHICS_TOOLTIP_FANCY = Component.translatable("options.graphics.fancy.tooltip");
-170:    private final OptionInstance<GraphicsStatus> graphicsMode = new OptionInstance<>(
-203:    private final OptionInstance<Boolean> ambientOcclusion = OptionInstance.createBoolean(
-206:    private static final Component PRIORITIZE_CHUNK_TOOLTIP_NONE = Component.translatable("options.prioritizeChunkUpdates.none.tooltip");
-207:    private static final Component PRIORITIZE_CHUNK_TOOLTIP_PLAYER_AFFECTED = Component.translatable("options.prioritizeChunkUpdates.byPlayer.tooltip");
-208:    private static final Component PRIORITIZE_CHUNK_TOOLTIP_NEARBY = Component.translatable("options.prioritizeChunkUpdates.nearby.tooltip");
-209:    private final OptionInstance<PrioritizeChunkUpdates> prioritizeChunkUpdates = new OptionInstance<>(
-224:    public List<String> resourcePacks = Lists.newArrayList();
-225:    public List<String> incompatibleResourcePacks = Lists.newArrayList();
-226:    private final OptionInstance<ChatVisiblity> chatVisibility = new OptionInstance<>(
-235:    private final OptionInstance<Double> chatOpacity = new OptionInstance<>(
-243:    private final OptionInstance<Double> chatLineSpacing = new OptionInstance<>(
-247:    private static final Component MENU_BACKGROUND_BLURRINESS_TOOLTIP = Component.translatable("options.accessibility.menu_background_blurriness.tooltip");
-248:    private static final int BLURRINESS_DEFAULT_VALUE = 5;
-249:    private final OptionInstance<Integer> menuBackgroundBlurriness = new OptionInstance<>(
-258:    private final OptionInstance<Double> textBackgroundOpacity = new OptionInstance<>(
-266:    private final OptionInstance<Double> panoramaSpeed = new OptionInstance<>(
-270:    private static final Component ACCESSIBILITY_TOOLTIP_CONTRAST_MODE = Component.translatable("options.accessibility.high_contrast.tooltip");
-271:    private final OptionInstance<Boolean> highContrast = OptionInstance.createBoolean(
-284:    private final OptionInstance<Boolean> narratorHotkey = OptionInstance.createBoolean(
-294:    public String fullscreenVideoModeString;
-295:    public boolean hideServerAddress;
-296:    public boolean advancedItemTooltips;
-297:    public boolean pauseOnLostFocus = true;
-298:    private final Set<PlayerModelPart> modelParts = EnumSet.allOf(PlayerModelPart.class);
-299:    private final OptionInstance<HumanoidArm> mainHand = new OptionInstance<>(
-307:    public int overrideWidth;
-308:    public int overrideHeight;
-309:    private final OptionInstance<Double> chatScale = new OptionInstance<>(
-317:    private final OptionInstance<Double> chatWidth = new OptionInstance<>(
-325:    private final OptionInstance<Double> chatHeightUnfocused = new OptionInstance<>(
-333:    private final OptionInstance<Double> chatHeightFocused = new OptionInstance<>(
-341:    private final OptionInstance<Double> chatDelay = new OptionInstance<>(
-352:    private static final Component ACCESSIBILITY_TOOLTIP_NOTIFICATION_DISPLAY_TIME = Component.translatable("options.notifications.display_time.tooltip");
-353:    private final OptionInstance<Double> notificationDisplayTime = new OptionInstance<>(
-363:    private final OptionInstance<Integer> mipmapLevels = new OptionInstance<>(
-372:    public boolean useNativeTransport = true;
-373:    private final OptionInstance<AttackIndicatorStatus> attackIndicator = new OptionInstance<>(
-382:    public TutorialSteps tutorialStep = TutorialSteps.MOVEMENT;
-383:    public boolean joinedFirstServer = false;
-384:    public boolean hideBundleTutorial = false;
-385:    private final OptionInstance<Integer> biomeBlendRadius = new OptionInstance<>(
-391:    private final OptionInstance<Double> mouseWheelSensitivity = new OptionInstance<>(
-401:    private final OptionInstance<Boolean> rawMouseInput = OptionInstance.createBoolean("options.rawMouseInput", true, p_232062_ -> {
-407:    public int glDebugVerbosity = 1;
-408:    private final OptionInstance<Boolean> autoJump = OptionInstance.createBoolean("options.autoJump", false);
-409:    private final OptionInstance<Boolean> operatorItemsTab = OptionInstance.createBoolean("options.operatorItemsTab", false);
-410:    private final OptionInstance<Boolean> autoSuggestions = OptionInstance.createBoolean("options.autoSuggestCommands", true);
-411:    private final OptionInstance<Boolean> chatColors = OptionInstance.createBoolean("options.chat.color", true);
-412:    private final OptionInstance<Boolean> chatLinks = OptionInstance.createBoolean("options.chat.links", true);
-413:    private final OptionInstance<Boolean> chatLinksPrompt = OptionInstance.createBoolean("options.chat.links.prompt", true);
-414:    private final OptionInstance<Boolean> enableVsync = OptionInstance.createBoolean("options.vsync", true, p_232052_ -> {
-419:    private final OptionInstance<Boolean> entityShadows = OptionInstance.createBoolean("options.entityShadows", true);
-420:    private final OptionInstance<Boolean> forceUnicodeFont = OptionInstance.createBoolean("options.forceUnicodeFont", false, p_325464_ -> updateFontOptions());
-421:    private final OptionInstance<Boolean> japaneseGlyphVariants = OptionInstance.createBoolean(
-427:    private final OptionInstance<Boolean> invertYMouse = OptionInstance.createBoolean("options.invertMouse", false);
-428:    private final OptionInstance<Boolean> discreteMouseScroll = OptionInstance.createBoolean("options.discrete_mouse_scroll", false);
-429:    private static final Component REALMS_NOTIFICATIONS_TOOLTIP = Component.translatable("options.realmsNotifications.tooltip");
-430:    private final OptionInstance<Boolean> realmsNotifications = OptionInstance.createBoolean(
-433:    private static final Component ALLOW_SERVER_LISTING_TOOLTIP = Component.translatable("options.allowServerListing.tooltip");
-434:    private final OptionInstance<Boolean> allowServerListing = OptionInstance.createBoolean(
-437:    private final OptionInstance<Boolean> reducedDebugInfo = OptionInstance.createBoolean("options.reducedDebugInfo", false);
-438:    private final Map<SoundSource, OptionInstance<Double>> soundSourceVolumes = Util.make(new EnumMap<>(SoundSource.class), p_247766_ -> {
-443:    private final OptionInstance<Boolean> showSubtitles = OptionInstance.createBoolean("options.showSubtitles", false);
-444:    private static final Component DIRECTIONAL_AUDIO_TOOLTIP_ON = Component.translatable("options.directionalAudio.on.tooltip");
-445:    private static final Component DIRECTIONAL_AUDIO_TOOLTIP_OFF = Component.translatable("options.directionalAudio.off.tooltip");
-446:    private final OptionInstance<Boolean> directionalAudio = OptionInstance.createBoolean(
-456:    private final OptionInstance<Boolean> backgroundForChatOnly = new OptionInstance<>(
-467:    private final OptionInstance<Boolean> touchscreen = OptionInstance.createBoolean("options.touchscreen", false);
-468:    private final OptionInstance<Boolean> fullscreen = OptionInstance.createBoolean("options.fullscreen", false, p_231970_ -> {
-475:    private final OptionInstance<Boolean> bobView = OptionInstance.createBoolean("options.viewBobbing", true);
-476:    private static final Component MOVEMENT_TOGGLE = Component.translatable("options.key.toggle");
-477:    private static final Component MOVEMENT_HOLD = Component.translatable("options.key.hold");
-478:    private final OptionInstance<Boolean> toggleCrouch = new OptionInstance<>(
-487:    private final OptionInstance<Boolean> toggleSprint = new OptionInstance<>(
-496:    public boolean skipMultiplayerWarning;
-497:    private static final Component CHAT_TOOLTIP_HIDE_MATCHED_NAMES = Component.translatable("options.hideMatchedNames.tooltip");
-498:    private final OptionInstance<Boolean> hideMatchedNames = OptionInstance.createBoolean(
-501:    private final OptionInstance<Boolean> showAutosaveIndicator = OptionInstance.createBoolean("options.autosaveIndicator", true);
-502:    private static final Component CHAT_TOOLTIP_ONLY_SHOW_SECURE = Component.translatable("options.onlyShowSecureChat.tooltip");
-503:    private final OptionInstance<Boolean> onlyShowSecureChat = OptionInstance.createBoolean(
-506:    public final KeyMapping keyUp = new KeyMapping("key.forward", 87, "key.categories.movement");
-507:    public final KeyMapping keyLeft = new KeyMapping("key.left", 65, "key.categories.movement");
-508:    public final KeyMapping keyDown = new KeyMapping("key.back", 83, "key.categories.movement");
-509:    public final KeyMapping keyRight = new KeyMapping("key.right", 68, "key.categories.movement");
-510:    public final KeyMapping keyJump = new KeyMapping("key.jump", 32, "key.categories.movement");
-511:    public final KeyMapping keyShift = new ToggleKeyMapping("key.sneak", 340, "key.categories.movement", this.toggleCrouch::get);
-512:    public final KeyMapping keySprint = new ToggleKeyMapping("key.sprint", 341, "key.categories.movement", this.toggleSprint::get);
-513:    public final KeyMapping keyInventory = new KeyMapping("key.inventory", 69, "key.categories.inventory");
-514:    public final KeyMapping keySwapOffhand = new KeyMapping("key.swapOffhand", 70, "key.categories.inventory");
-515:    public final KeyMapping keyDrop = new KeyMapping("key.drop", 81, "key.categories.inventory");
-516:    public final KeyMapping keyUse = new KeyMapping("key.use", InputConstants.Type.MOUSE, 1, "key.categories.gameplay");
-517:    public final KeyMapping keyAttack = new KeyMapping("key.attack", InputConstants.Type.MOUSE, 0, "key.categories.gameplay");
-518:    public final KeyMapping keyPickItem = new KeyMapping("key.pickItem", InputConstants.Type.MOUSE, 2, "key.categories.gameplay");
-519:    public final KeyMapping keyChat = new KeyMapping("key.chat", 84, "key.categories.multiplayer");
-520:    public final KeyMapping keyPlayerList = new KeyMapping("key.playerlist", 258, "key.categories.multiplayer");
-521:    public final KeyMapping keyCommand = new KeyMapping("key.command", 47, "key.categories.multiplayer");
-522:    public final KeyMapping keySocialInteractions = new KeyMapping("key.socialInteractions", 80, "key.categories.multiplayer");
-523:    public final KeyMapping keyScreenshot = new KeyMapping("key.screenshot", 291, "key.categories.misc");
-524:    public final KeyMapping keyTogglePerspective = new KeyMapping("key.togglePerspective", 294, "key.categories.misc");
-525:    public final KeyMapping keySmoothCamera = new KeyMapping("key.smoothCamera", InputConstants.UNKNOWN.getValue(), "key.categories.misc");
-526:    public final KeyMapping keyFullscreen = new KeyMapping("key.fullscreen", 300, "key.categories.misc");
-527:    public final KeyMapping keySpectatorOutlines = new KeyMapping("key.spectatorOutlines", InputConstants.UNKNOWN.getValue(), "key.categories.misc");
-528:    public final KeyMapping keyAdvancements = new KeyMapping("key.advancements", 76, "key.categories.misc");
-529:    public final KeyMapping[] keyHotbarSlots = new KeyMapping[]{
-540:    public final KeyMapping keySaveHotbarActivator = new KeyMapping("key.saveToolbarActivator", 67, "key.categories.creative");
-541:    public final KeyMapping keyLoadHotbarActivator = new KeyMapping("key.loadToolbarActivator", 88, "key.categories.creative");
-542:    public KeyMapping[] keyMappings = ArrayUtils.addAll(
-572:    protected Minecraft minecraft;
-573:    private final File optionsFile;
-574:    public boolean hideGui;
-575:    private CameraType cameraType = CameraType.FIRST_PERSON;
-576:    public String lastMpIp = "";
-577:    public boolean smoothCamera;
-578:    private final OptionInstance<Integer> fov = new OptionInstance<>(
-593:    private static final Component TELEMETRY_TOOLTIP = Component.translatable(
-596:    private final OptionInstance<Boolean> telemetryOptInExtra = OptionInstance.createBoolean(
-613:    private static final Component ACCESSIBILITY_TOOLTIP_SCREEN_EFFECT = Component.translatable("options.screenEffectScale.tooltip");
-614:    private final OptionInstance<Double> screenEffectScale = new OptionInstance<>(
-623:    private static final Component ACCESSIBILITY_TOOLTIP_FOV_EFFECT = Component.translatable("options.fovEffectScale.tooltip");
-624:    private final OptionInstance<Double> fovEffectScale = new OptionInstance<>(
-634:    private static final Component ACCESSIBILITY_TOOLTIP_DARKNESS_EFFECT = Component.translatable("options.darknessEffectScale.tooltip");
-635:    private final OptionInstance<Double> darknessEffectScale = new OptionInstance<>(
-644:    private static final Component ACCESSIBILITY_TOOLTIP_GLINT_SPEED = Component.translatable("options.glintSpeed.tooltip");
-645:    private final OptionInstance<Double> glintSpeed = new OptionInstance<>(
-654:    private static final Component ACCESSIBILITY_TOOLTIP_GLINT_STRENGTH = Component.translatable("options.glintStrength.tooltip");
-655:    private final OptionInstance<Double> glintStrength = new OptionInstance<>(
-663:    private static final Component ACCESSIBILITY_TOOLTIP_DAMAGE_TILT_STRENGTH = Component.translatable("options.damageTiltStrength.tooltip");
-664:    private final OptionInstance<Double> damageTiltStrength = new OptionInstance<>(
-673:    private final OptionInstance<Double> gamma = new OptionInstance<>("options.gamma", OptionInstance.noTooltip(), (p_231913_, p_231914_) -> {
-684:    public static final int AUTO_GUI_SCALE = 0;
-685:    private static final int MAX_GUI_SCALE_INCLUSIVE = 2147483646;
-686:    private final OptionInstance<Integer> guiScale = new OptionInstance<>(
-697:    private final OptionInstance<ParticleStatus> particles = new OptionInstance<>(
-706:    private final OptionInstance<NarratorStatus> narrator = new OptionInstance<>(
-716:    public String languageCode = "en_us";
-717:    private final OptionInstance<String> soundDevice = new OptionInstance<>(
-746:    public boolean onboardAccessibility = true;
-747:    public boolean syncWrites;
-749:    public OptionInstance<Boolean> darkMojangStudiosBackground() {
-753:    public OptionInstance<Boolean> hideLightningFlash() {
-757:    public OptionInstance<Boolean> hideSplashTexts() {
-761:    public OptionInstance<Double> sensitivity() {
-765:    public OptionInstance<Integer> renderDistance() {
-769:    public OptionInstance<Integer> simulationDistance() {
-773:    public OptionInstance<Double> entityDistanceScaling() {
-777:    public OptionInstance<Integer> framerateLimit() {
-781:    public OptionInstance<CloudStatus> cloudStatus() {
-785:    public OptionInstance<GraphicsStatus> graphicsMode() {
-789:    public OptionInstance<Boolean> ambientOcclusion() {
-793:    public OptionInstance<PrioritizeChunkUpdates> prioritizeChunkUpdates() {
-797:    public void updateResourcePacks(PackRepository p_275268_) {
-818:    public OptionInstance<ChatVisiblity> chatVisibility() {
-822:    public OptionInstance<Double> chatOpacity() {
-826:    public OptionInstance<Double> chatLineSpacing() {
-830:    public OptionInstance<Integer> menuBackgroundBlurriness() {
-834:    public int getMenuBackgroundBlurriness() {
-838:    public OptionInstance<Double> textBackgroundOpacity() {
-842:    public OptionInstance<Double> panoramaSpeed() {
-846:    public OptionInstance<Boolean> highContrast() {
-850:    public OptionInstance<Boolean> narratorHotkey() {
-854:    public OptionInstance<HumanoidArm> mainHand() {
-858:    public OptionInstance<Double> chatScale() {
-862:    public OptionInstance<Double> chatWidth() {
-866:    public OptionInstance<Double> chatHeightUnfocused() {
-870:    public OptionInstance<Double> chatHeightFocused() {
-874:    public OptionInstance<Double> chatDelay() {
-878:    public OptionInstance<Double> notificationDisplayTime() {
-882:    public OptionInstance<Integer> mipmapLevels() {
-886:    public OptionInstance<AttackIndicatorStatus> attackIndicator() {
-890:    public OptionInstance<Integer> biomeBlendRadius() {
-894:    private static double logMouse(int p_231966_) {
-898:    private static int unlogMouse(double p_231840_) {
-902:    public OptionInstance<Double> mouseWheelSensitivity() {
-906:    public OptionInstance<Boolean> rawMouseInput() {
-910:    public OptionInstance<Boolean> autoJump() {
-914:    public OptionInstance<Boolean> operatorItemsTab() {
-918:    public OptionInstance<Boolean> autoSuggestions() {
-922:    public OptionInstance<Boolean> chatColors() {
-926:    public OptionInstance<Boolean> chatLinks() {
-930:    public OptionInstance<Boolean> chatLinksPrompt() {
-934:    public OptionInstance<Boolean> enableVsync() {
-938:    public OptionInstance<Boolean> entityShadows() {
-942:    private static void updateFontOptions() {
-950:    public OptionInstance<Boolean> forceUnicodeFont() {
-954:    private static boolean japaneseGlyphVariantsDefault() {
-958:    public OptionInstance<Boolean> japaneseGlyphVariants() {
-962:    public OptionInstance<Boolean> invertYMouse() {
-966:    public OptionInstance<Boolean> discreteMouseScroll() {
-970:    public OptionInstance<Boolean> realmsNotifications() {
-974:    public OptionInstance<Boolean> allowServerListing() {
-978:    public OptionInstance<Boolean> reducedDebugInfo() {
-982:    public final float getSoundSourceVolume(SoundSource p_92148_) {
-986:    public final OptionInstance<Double> getSoundSourceOptionInstance(SoundSource p_251574_) {
-990:    private OptionInstance<Double> createSoundSliderOptionInstance(String p_250353_, SoundSource p_249262_) {
-1001:    public OptionInstance<Boolean> showSubtitles() {
-1005:    public OptionInstance<Boolean> directionalAudio() {
-1009:    public OptionInstance<Boolean> backgroundForChatOnly() {
-1013:    public OptionInstance<Boolean> touchscreen() {
-1017:    public OptionInstance<Boolean> fullscreen() {
-1021:    public OptionInstance<Boolean> bobView() {
-1025:    public OptionInstance<Boolean> toggleCrouch() {
-1029:    public OptionInstance<Boolean> toggleSprint() {
-1033:    public OptionInstance<Boolean> hideMatchedNames() {
-1037:    public OptionInstance<Boolean> showAutosaveIndicator() {
-1041:    public OptionInstance<Boolean> onlyShowSecureChat() {
-1045:    public OptionInstance<Integer> fov() {
-1049:    public OptionInstance<Boolean> telemetryOptInExtra() {
-1053:    public OptionInstance<Double> screenEffectScale() {
-1057:    public OptionInstance<Double> fovEffectScale() {
-1061:    public OptionInstance<Double> darknessEffectScale() {
-1065:    public OptionInstance<Double> glintSpeed() {
-
-@@@@@ SIGS: net/minecraft/world/item/Item.java @@@@
-59:public class Item implements FeatureElement, ItemLike, net.neoforged.neoforge.common.extensions.IItemExtension {
-60:    private static final Logger LOGGER = LogUtils.getLogger();
-61:    public static final Map<Block, Item> BY_BLOCK = net.neoforged.neoforge.registries.GameData.getBlockItemMap();
-62:    public static final ResourceLocation BASE_ATTACK_DAMAGE_ID = ResourceLocation.withDefaultNamespace("base_attack_damage");
-63:    public static final ResourceLocation BASE_ATTACK_SPEED_ID = ResourceLocation.withDefaultNamespace("base_attack_speed");
-64:    public static final int DEFAULT_MAX_STACK_SIZE = 64;
-65:    public static final int ABSOLUTE_MAX_STACK_SIZE = 99;
-66:    public static final int MAX_BAR_WIDTH = 13;
-67:    private final Holder.Reference<Item> builtInRegistryHolder = BuiltInRegistries.ITEM.createIntrusiveHolder(this);
-68:    private DataComponentMap components;
-70:    private final Item craftingRemainingItem;
-72:    private String descriptionId;
-73:    private final FeatureFlagSet requiredFeatures;
-75:    public static int getId(Item p_41394_) {
-79:    public static Item byId(int p_41446_) {
-84:    public static Item byBlock(Block p_41440_) {
-88:    public Item(Item.Properties p_41383_) {
-102:    public Holder.Reference<Item> builtInRegistryHolder() {
-106:    public DataComponentMap components() {
-112:    public void modifyDefaultComponentsFrom(net.minecraft.core.component.DataComponentPatch patch) {
-119:    public int getDefaultMaxStackSize() {
-123:    public void onUseTick(Level p_41428_, LivingEntity p_41429_, ItemStack p_41430_, int p_41431_) {
-128:    public void onDestroyed(ItemEntity p_150887_) {
-131:    public void verifyComponentsAfterLoad(ItemStack p_331627_) {
-134:    public boolean canAttackBlock(BlockState p_41441_, Level p_41442_, BlockPos p_41443_, Player p_41444_) {
-139:    public Item asItem() {
-143:    public InteractionResult useOn(UseOnContext p_41427_) {
-147:    public float getDestroySpeed(ItemStack p_41425_, BlockState p_41426_) {
-152:    public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
-167:    public ItemStack finishUsingItem(ItemStack p_41409_, Level p_41410_, LivingEntity p_41411_) {
-172:    public boolean isBarVisible(ItemStack p_150899_) {
-176:    public int getBarWidth(ItemStack p_150900_) {
-180:    public int getBarColor(ItemStack p_150901_) {
-187:    public boolean overrideStackedOnOther(ItemStack p_150888_, Slot p_150889_, ClickAction p_150890_, Player p_150891_) {
-197:    public float getAttackDamageBonus(Entity p_345249_, float p_336179_, DamageSource p_345403_) {
-201:    public boolean hurtEnemy(ItemStack p_41395_, LivingEntity p_41396_, LivingEntity p_41397_) {
-205:    public void postHurtEnemy(ItemStack p_346136_, LivingEntity p_346250_, LivingEntity p_346014_) {
-208:    public boolean mineBlock(ItemStack p_41416_, Level p_41417_, BlockState p_41418_, BlockPos p_41419_, LivingEntity p_41420_) {
-221:    public boolean isCorrectToolForDrops(ItemStack p_336002_, BlockState p_41450_) {
-226:    public InteractionResult interactLivingEntity(ItemStack p_41398_, Player p_41399_, LivingEntity p_41400_, InteractionHand p_41401_) {
-230:    public Component getDescription() {
-235:    public String toString() {
-239:    protected String getOrCreateDescriptionId() {
-247:    public String getDescriptionId() {
-251:    public String getDescriptionId(ItemStack p_41455_) {
-257:    public final Item getCraftingRemainingItem() {
-262:    public boolean hasCraftingRemainingItem() {
-266:    public void inventoryTick(ItemStack p_41404_, Level p_41405_, Entity p_41406_, int p_41407_, boolean p_41408_) {
-269:    public void onCraftedBy(ItemStack p_41447_, Level p_41448_, Player p_41449_) {
-273:    public void onCraftedPostProcess(ItemStack p_307483_, Level p_307537_) {
-276:    public boolean isComplex() {
-280:    public UseAnim getUseAnimation(ItemStack p_41452_) {
-284:    public int getUseDuration(ItemStack p_41454_, LivingEntity p_344979_) {
-289:    public void releaseUsing(ItemStack p_41412_, Level p_41413_, LivingEntity p_41414_, int p_41415_) {
-292:    public void appendHoverText(ItemStack p_41421_, Item.TooltipContext p_339594_, List<Component> p_41423_, TooltipFlag p_41424_) {
-295:    public Optional<TooltipComponent> getTooltipImage(ItemStack p_150902_) {
-299:    public Component getName(ItemStack p_41458_) {
-303:    public boolean isFoil(ItemStack p_41453_) {
-307:    public boolean isEnchantable(ItemStack p_41456_) {
-311:    public static BlockHitResult getPlayerPOVHitResult(Level p_41436_, Player p_41437_, ClipContext.Fluid p_41438_) {
-319:    public int getEnchantmentValue() {
-323:    public boolean isValidRepairItem(ItemStack p_41402_, ItemStack p_41403_) {
-331:    public ItemAttributeModifiers getDefaultAttributeModifiers() {
-335:    protected final boolean canRepair;
-338:    public boolean isRepairable(ItemStack stack) {
-342:    public boolean useOnRelease(ItemStack p_41464_) {
-346:    public ItemStack getDefaultInstance() {
-350:    public SoundEvent getDrinkingSound() {
-354:    public SoundEvent getEatingSound() {
-358:    public SoundEvent getBreakingSound() {
-368:    public boolean canFitInsideContainerItems() {
-373:    public FeatureFlagSet requiredFeatures() {
-382:    public void initializeClient(java.util.function.Consumer<net.neoforged.neoforge.client.extensions.common.IClientItemExtensions> consumer) {
-385:    public static class Properties implements net.neoforged.neoforge.common.extensions.IItemPropertiesExtensions {
-386:        private static final Interner<DataComponentMap> COMPONENT_INTERNER = Interners.newStrongInterner();
-388:        private DataComponentMap.Builder components;
-392:        private boolean canRepair = true;
-394:        public Item.Properties food(FoodProperties p_41490_) {
-398:        public Item.Properties stacksTo(int p_41488_) {
-402:        public Item.Properties durability(int p_41504_) {
-409:        public Item.Properties craftRemainder(Item p_41496_) {
-414:        public Item.Properties rarity(Rarity p_41498_) {
-418:        public Item.Properties fireResistant() {
-422:        public Item.Properties jukeboxPlayable(ResourceKey<JukeboxSong> p_350862_) {
-426:        public Item.Properties setNoRepair() {
-431:        public Item.Properties requiredFeatures(FeatureFlag... p_250948_) {
-436:        public <T> Item.Properties component(DataComponentType<T> p_330871_, T p_330323_) {
-446:        public Item.Properties attributes(ItemAttributeModifiers p_331533_) {
-455:        public static DataComponentMap validateComponents(DataComponentMap datacomponentmap) {
-463:        private DataComponentMap buildComponents() {
-468:    public interface TooltipContext {
-472:            public HolderLookup.Provider registries() {
-477:            public float tickRate() {
-483:            public MapItemSavedData mapData(MapId p_339618_) {
-504:        static Item.TooltipContext of(@Nullable final Level p_339599_) {
-507:                public HolderLookup.Provider registries() {
-512:                public float tickRate() {
-517:                public MapItemSavedData mapData(MapId p_339628_) {
-522:                public Level level() {
-528:        static Item.TooltipContext of(final HolderLookup.Provider p_339633_) {
-531:                public HolderLookup.Provider registries() {
-536:                public float tickRate() {
-542:                public MapItemSavedData mapData(MapId p_339679_) {
-
-@@@@@ SIGS: net/minecraft/network/codec/StreamCodec.java @@@@
-14:public interface StreamCodec<B, V> extends StreamDecoder<B, V>, StreamEncoder<B, V> {
-15:    static <B, V> StreamCodec<B, V> of(final StreamEncoder<B, V> p_320243_, final StreamDecoder<B, V> p_320197_) {
-18:            public V decode(B p_319945_) {
-23:            public void encode(B p_320538_, V p_320754_) {
-29:    static <B, V> StreamCodec<B, V> ofMember(final StreamMemberEncoder<B, V> p_320316_, final StreamDecoder<B, V> p_319991_) {
-32:            public V decode(B p_320797_) {
-37:            public void encode(B p_319939_, V p_320568_) {
-43:    static <B, V> StreamCodec<B, V> unit(final V p_320438_) {
-46:            public V decode(B p_320572_) {
-51:            public void encode(B p_320044_, V p_320328_) {
-66:            public O decode(B p_320534_) {
-71:            public void encode(B p_319798_, O p_320273_) {
-79:            public V decode(O p_319818_) {
-84:            public void encode(O p_319973_, V p_319843_) {
-96:            public U decode(B p_320094_) {
-103:            public void encode(B p_320767_, U p_320010_) {
-112:    static <B, C, T1> StreamCodec<B, C> composite(final StreamCodec<? super B, T1> p_320179_, final Function<C, T1> p_320085_, final Function<T1, C> p_320672_) {
-115:            public C decode(B p_320924_) {
-121:            public void encode(B p_320798_, C p_320749_) {
-136:            public C decode(B p_320168_) {
-143:            public void encode(B p_320592_, C p_320163_) {
-161:            public C decode(B p_320842_) {
-169:            public void encode(B p_320737_, C p_320439_) {
-190:            public C decode(B p_323859_) {
-199:            public void encode(B p_323667_, C p_323469_) {
-223:            public C decode(B p_324610_) {
-233:            public void encode(B p_323786_, C p_323619_) {
-260:            public C decode(B p_330310_) {
-271:            public void encode(B p_332052_, C p_331912_) {
-282:    static <B, T> StreamCodec<B, T> recursive(final UnaryOperator<StreamCodec<B, T>> p_330470_) {
-284:            private final Supplier<StreamCodec<B, T>> inner = Suppliers.memoize(() -> p_330470_.apply(this));
-287:            public T decode(B p_330903_) {
-292:            public void encode(B p_331641_, T p_330634_) {
-303:    public interface CodecOperation<B, S, T> {
-
-@@@@@ SIGS: net/minecraft/network/codec/ByteBufCodecs.java @@@@
-43:public interface ByteBufCodecs {
-46:        public Boolean decode(ByteBuf p_320813_) {
-50:        public void encode(ByteBuf p_319896_, Boolean p_320251_) {
-55:        public Byte decode(ByteBuf p_320628_) {
-59:        public void encode(ByteBuf p_320364_, Byte p_320618_) {
-64:        public Short decode(ByteBuf p_320513_) {
-68:        public void encode(ByteBuf p_320028_, Short p_320388_) {
-73:        public Integer decode(ByteBuf p_320319_) {
-77:        public void encode(ByteBuf p_320669_, Integer p_320205_) {
-82:        public Integer decode(ByteBuf p_320253_) {
-86:        public void encode(ByteBuf p_320753_, Integer p_330380_) {
-91:        public Integer decode(ByteBuf p_320759_) {
-95:        public void encode(ByteBuf p_320314_, Integer p_341414_) {
-100:        public Long decode(ByteBuf p_320635_) {
-104:        public void encode(ByteBuf p_320545_, Long p_341419_) {
-109:        public Float decode(ByteBuf p_320259_) {
-113:        public void encode(ByteBuf p_320199_, Float p_341020_) {
-118:        public Double decode(ByteBuf p_320599_) {
-122:        public void encode(ByteBuf p_320880_, Double p_340812_) {
-127:        public byte[] decode(ByteBuf p_320167_) {
-131:        public void encode(ByteBuf p_320240_, byte[] p_341316_) {
-141:        public Optional<CompoundTag> decode(ByteBuf p_320103_) {
-145:        public void encode(ByteBuf p_320012_, Optional<CompoundTag> p_341059_) {
-150:        public Vector3f decode(ByteBuf p_319897_) {
-154:        public void encode(ByteBuf p_320441_, Vector3f p_340932_) {
-159:        public Quaternionf decode(ByteBuf p_324083_) {
-163:        public void encode(ByteBuf p_324192_, Quaternionf p_341304_) {
-168:        private static final int MAX_PROPERTY_NAME_LENGTH = 64;
-169:        private static final int MAX_PROPERTY_VALUE_LENGTH = 32767;
-170:        private static final int MAX_PROPERTY_SIGNATURE_LENGTH = 1024;
-171:        private static final int MAX_PROPERTIES = 16;
-173:        public PropertyMap decode(ByteBuf p_331129_) {
-188:        public void encode(ByteBuf p_331394_, PropertyMap p_341001_) {
-199:        public GameProfile decode(ByteBuf p_341302_) {
-207:        public void encode(ByteBuf p_340881_, GameProfile p_341071_) {
-214:    static StreamCodec<ByteBuf, byte[]> byteArray(final int p_324182_) {
-216:            public byte[] decode(ByteBuf p_319947_) {
-220:            public void encode(ByteBuf p_320370_, byte[] p_331189_) {
-230:    static StreamCodec<ByteBuf, String> stringUtf8(final int p_320693_) {
-232:            public String decode(ByteBuf p_332176_) {
-236:            public void encode(ByteBuf p_331068_, String p_341104_) {
-242:    static StreamCodec<ByteBuf, Tag> tagCodec(final Supplier<NbtAccounter> p_320506_) {
-244:            public Tag decode(ByteBuf p_341393_) {
-253:            public void encode(ByteBuf p_340857_, Tag p_341321_) {
-263:    static StreamCodec<ByteBuf, CompoundTag> compoundTagCodec(Supplier<NbtAccounter> p_331128_) {
-273:    static <T> StreamCodec<ByteBuf, T> fromCodecTrusted(Codec<T> p_331105_) {
-277:    static <T> StreamCodec<ByteBuf, T> fromCodec(Codec<T> p_320615_) {
-281:    static <T> StreamCodec<ByteBuf, T> fromCodec(Codec<T> p_330943_, Supplier<NbtAccounter> p_330382_) {
-291:    static <T> StreamCodec<RegistryFriendlyByteBuf, T> fromCodecWithRegistriesTrusted(Codec<T> p_331713_) {
-295:    static <T> StreamCodec<RegistryFriendlyByteBuf, T> fromCodecWithRegistries(Codec<T> p_323797_) {
-299:    static <T> StreamCodec<RegistryFriendlyByteBuf, T> fromCodecWithRegistries(final Codec<T> p_331571_, Supplier<NbtAccounter> p_331922_) {
-300:        final StreamCodec<ByteBuf, Tag> streamcodec = tagCodec(p_331922_);
-302:            public T decode(RegistryFriendlyByteBuf p_340878_) {
-308:            public void encode(RegistryFriendlyByteBuf p_341221_, T p_341320_) {
-317:    static <B extends ByteBuf, V> StreamCodec<B, Optional<V>> optional(final StreamCodec<B, V> p_320522_) {
-319:            public Optional<V> decode(B p_324595_) {
-323:            public void encode(B p_324147_, Optional<V> p_340875_) {
-334:    static int readCount(ByteBuf p_331813_, int p_331668_) {
-343:    static void writeCount(ByteBuf p_330907_, int p_330535_, int p_331447_) {
-351:    static <B extends ByteBuf, V, C extends Collection<V>> StreamCodec<B, C> collection(IntFunction<C> p_320579_, StreamCodec<? super B, V> p_319970_) {
-359:            public C decode(B p_324220_) {
-370:            public void encode(B p_323874_, C p_340813_) {
-380:    static <B extends ByteBuf, V, C extends Collection<V>> StreamCodec.CodecOperation<B, V, C> collection(IntFunction<C> p_319808_) {
-384:    static <B extends ByteBuf, V> StreamCodec.CodecOperation<B, V, List<V>> list() {
-388:    static <B extends ByteBuf, V> StreamCodec.CodecOperation<B, V, List<V>> list(int p_330434_) {
-402:            public void encode(B p_331539_, M p_341314_) {
-410:            public M decode(B p_331901_) {
-425:    static <B extends ByteBuf, L, R> StreamCodec<B, Either<L, R>> either(final StreamCodec<? super B, L> p_331983_, final StreamCodec<? super B, R> p_332156_) {
-427:            public Either<L, R> decode(B p_332082_) {
-431:            public void encode(B p_331172_, Either<L, R> p_340944_) {
-443:    static <T> StreamCodec<ByteBuf, T> idMapper(final IntFunction<T> p_320877_, final ToIntFunction<T> p_319985_) {
-445:            public T decode(ByteBuf p_340809_) {
-450:            public void encode(ByteBuf p_341417_, T p_330257_) {
-457:    static <T> StreamCodec<ByteBuf, T> idMapper(IdMap<T> p_319822_) {
-465:            private IdMap<R> getRegistryOrThrow(RegistryFriendlyByteBuf p_330361_) {
-473:            public R decode(RegistryFriendlyByteBuf p_331253_) {
-478:            public void encode(RegistryFriendlyByteBuf p_331775_, R p_341178_) {
-485:    static <T> StreamCodec<RegistryFriendlyByteBuf, T> registry(ResourceKey<? extends Registry<T>> p_320404_) {
-489:    static <T> StreamCodec<RegistryFriendlyByteBuf, Holder<T>> holderRegistry(ResourceKey<? extends Registry<T>> p_320387_) {
-497:            private static final int DIRECT_HOLDER_ID = 0;
-499:            private IdMap<Holder<T>> getRegistryOrThrow(RegistryFriendlyByteBuf p_341377_) {
-503:            public Holder<T> decode(RegistryFriendlyByteBuf p_330998_) {
-508:            public void encode(RegistryFriendlyByteBuf p_330557_, Holder<T> p_341109_) {
-522:    static <T> StreamCodec<RegistryFriendlyByteBuf, HolderSet<T>> holderSet(final ResourceKey<? extends Registry<T>> p_332137_) {
-524:            private static final int NAMED_SET = -1;
-525:            private final StreamCodec<RegistryFriendlyByteBuf, Holder<T>> holderCodec = ByteBufCodecs.holderRegistry(p_332137_);
-527:            private final Map<net.neoforged.neoforge.registries.holdersets.HolderSetType, StreamCodec<RegistryFriendlyByteBuf, ? extends net.neoforged.neoforge.registries.holdersets.ICustomHolderSet<T>>> holderSetCodecs = new java.util.concurrent.ConcurrentHashMap<>();
-529:            private StreamCodec<RegistryFriendlyByteBuf, ? extends net.neoforged.neoforge.registries.holdersets.ICustomHolderSet<T>> holderSetCodec(net.neoforged.neoforge.registries.holdersets.HolderSetType type) {
-533:            private <H extends net.neoforged.neoforge.registries.holdersets.ICustomHolderSet<T>> H cast(net.neoforged.neoforge.registries.holdersets.ICustomHolderSet<T> holderSet) {
-537:            public HolderSet<T> decode(RegistryFriendlyByteBuf p_340887_) {
-560:            public void encode(RegistryFriendlyByteBuf p_341009_, HolderSet<T> p_340834_) {
-
-@@@@@ SIGS: net/minecraft/sounds/SoundEvent.java @@@@
-16:public class SoundEvent {
-17:    public static final Codec<SoundEvent> DIRECT_CODEC = RecordCodecBuilder.create(
-24:    public static final Codec<Holder<SoundEvent>> CODEC = RegistryFileCodec.create(Registries.SOUND_EVENT, DIRECT_CODEC);
-25:    public static final StreamCodec<ByteBuf, SoundEvent> DIRECT_STREAM_CODEC = StreamCodec.composite(
-28:    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<SoundEvent>> STREAM_CODEC = ByteBufCodecs.holder(
-31:    private static final float DEFAULT_RANGE = 16.0F;
-32:    private final ResourceLocation location;
-33:    private final float range;
-34:    private final boolean newSystem;
-36:    private static SoundEvent create(ResourceLocation p_263406_, Optional<Float> p_263346_) {
-40:    public static SoundEvent createVariableRangeEvent(ResourceLocation p_262973_) {
-44:    public static SoundEvent createFixedRangeEvent(ResourceLocation p_263003_, float p_263029_) {
-48:    private SoundEvent(ResourceLocation p_215665_, float p_215666_, boolean p_215667_) {
-54:    public ResourceLocation getLocation() {
-58:    public float getRange(float p_215669_) {
-66:    private Optional<Float> fixedRange() {
-
-@@@@@ SIGS: net/minecraft/server/level/ServerLevel.java @@@@
-169:public class ServerLevel extends Level implements WorldGenLevel {
-170:    public static final BlockPos END_SPAWN_POINT = new BlockPos(100, 50, 0);
-171:    public static final IntProvider RAIN_DELAY = UniformInt.of(12000, 180000);
-172:    public static final IntProvider RAIN_DURATION = UniformInt.of(12000, 24000);
-173:    private static final IntProvider THUNDER_DELAY = UniformInt.of(12000, 180000);
-174:    public static final IntProvider THUNDER_DURATION = UniformInt.of(3600, 15600);
-175:    private static final Logger LOGGER = LogUtils.getLogger();
-176:    private static final int EMPTY_TIME_NO_TICK = 300;
-177:    private static final int MAX_SCHEDULED_TICKS_PER_TICK = 65536;
-178:    final List<ServerPlayer> players = Lists.newArrayList();
-179:    private final ServerChunkCache chunkSource;
-180:    private final MinecraftServer server;
-181:    private final ServerLevelData serverLevelData;
-182:    private int lastSpawnChunkRadius;
-183:    final EntityTickList entityTickList = new EntityTickList();
-184:    private final PersistentEntitySectionManager<Entity> entityManager;
-185:    private final GameEventDispatcher gameEventDispatcher;
-186:    public boolean noSave;
-187:    private final SleepStatus sleepStatus;
-188:    private int emptyTime;
-189:    private final PortalForcer portalForcer;
-190:    private final LevelTicks<Block> blockTicks = new LevelTicks<>(this::isPositionTickingWithEntitiesLoaded, this.getProfilerSupplier());
-191:    private final LevelTicks<Fluid> fluidTicks = new LevelTicks<>(this::isPositionTickingWithEntitiesLoaded, this.getProfilerSupplier());
-192:    private final PathTypeCache pathTypesByPosCache = new PathTypeCache();
-193:    final Set<Mob> navigatingMobs = new ObjectOpenHashSet<>();
-195:    protected final Raids raids;
-196:    private final ObjectLinkedOpenHashSet<BlockEventData> blockEvents = new ObjectLinkedOpenHashSet<>();
-197:    private final List<BlockEventData> blockEventsToReschedule = new ArrayList<>(64);
-198:    private boolean handlingTick;
-199:    private final List<CustomSpawner> customSpawners;
-201:    private EndDragonFight dragonFight;
-202:    final Int2ObjectMap<net.neoforged.neoforge.entity.PartEntity<?>> dragonParts = new Int2ObjectOpenHashMap<>();
-203:    private final StructureManager structureManager;
-204:    private final StructureCheck structureCheck;
-205:    private final boolean tickTime;
-206:    private final RandomSequences randomSequences;
-309:    public void setDragonFight(@Nullable EndDragonFight p_287779_) {
-313:    public void setWeatherParameters(int p_8607_, int p_8608_, boolean p_8609_, boolean p_8610_) {
-322:    public Holder<Biome> getUncachedNoiseBiome(int p_203775_, int p_203776_, int p_203777_) {
-329:    public StructureManager structureManager() {
-333:    public void tick(BooleanSupplier p_8794_) {
-437:    public boolean shouldTickBlocksAt(long p_184059_) {
-441:    protected void tickTime() {
-452:    public void setDayTime(long p_8616_) {
-456:    public void tickCustomSpawners(boolean p_8800_, boolean p_8801_) {
-462:    private boolean shouldDiscardEntity(Entity p_143343_) {
-468:    private void wakeUpAllPlayers() {
-473:    public void tickChunk(LevelChunk p_8715_, int p_8716_) {
-547:    public void tickPrecipitation(BlockPos p_295060_) {
-580:    private Optional<BlockPos> findLightningRod(BlockPos p_143249_) {
-592:    protected BlockPos findLightningTargetAround(BlockPos p_143289_) {
-614:    public boolean isHandlingTick() {
-618:    public boolean canSleepThroughNights() {
-622:    private void announceSleepStatus() {
-640:    public void updateSleepingPlayerList() {
-646:    public ServerScoreboard getScoreboard() {
-650:    private void advanceWeatherCycle() {
-741:    public void resetWeatherCycle() {
-748:    public void resetEmptyTime() {
-752:    private void tickFluid(BlockPos p_184077_, Fluid p_184078_) {
-759:    private void tickBlock(BlockPos p_184113_, Block p_184114_) {
-766:    public void tickNonPassenger(Entity p_8648_) {
-784:    private void tickPassenger(Entity p_8663_, Entity p_8664_) {
-803:    public boolean mayInteract(Player p_8696_, BlockPos p_8697_) {
-807:    public void save(@Nullable ProgressListener p_8644_, boolean p_8645_, boolean p_8646_) {
-832:    private void saveLevelData() {
-840:    public <T extends Entity> List<? extends T> getEntities(EntityTypeTest<Entity, T> p_143281_, Predicate<? super T> p_143282_) {
-846:    public <T extends Entity> void getEntities(EntityTypeTest<Entity, T> p_262152_, Predicate<? super T> p_261808_, List<? super T> p_261583_) {
-850:    public <T extends Entity> void getEntities(EntityTypeTest<Entity, T> p_261842_, Predicate<? super T> p_262091_, List<? super T> p_261703_, int p_261907_) {
-863:    public List<? extends EnderDragon> getDragons() {
-867:    public List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> p_8796_) {
-871:    public List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> p_261698_, int p_262035_) {
-887:    public ServerPlayer getRandomPlayer() {
-893:    public boolean addFreshEntity(Entity p_8837_) {
-897:    public boolean addWithUUID(Entity p_8848_) {
-901:    public void addDuringTeleport(Entity p_143335_) {
-909:    public void addNewPlayer(ServerPlayer p_8835_) {
-913:    public void addRespawnedPlayer(ServerPlayer p_8846_) {
-917:    private void addPlayer(ServerPlayer p_8854_) {
-930:    private boolean addEntity(Entity p_8873_) {
-944:    public boolean tryAddFreshEntityWithPassengers(Entity p_8861_) {
-953:    public void unload(LevelChunk p_8713_) {
-958:    public void removePlayerImmediately(ServerPlayer p_143262_, Entity.RemovalReason p_143263_) {
-963:    public void destroyBlockProgress(int p_8612_, BlockPos p_8613_, int p_8614_) {
-1031:    public void globalLevelEvent(int p_8811_, BlockPos p_8812_, int p_8813_) {
-1040:    public void levelEvent(@Nullable Player p_8684_, int p_8685_, BlockPos p_8686_, int p_8687_) {
-1054:    public int getLogicalHeight() {
-1059:    public void gameEvent(Holder<GameEvent> p_316597_, Vec3 p_215042_, GameEvent.Context p_215043_) {
-1065:    public void sendBlockUpdated(BlockPos p_8755_, BlockState p_8756_, BlockState p_8757_, int p_8758_) {
-1098:    public void updateNeighborsAt(BlockPos p_215045_, Block p_215046_) {
-1104:    public void updateNeighborsAtExceptFromFacing(BlockPos p_215052_, Block p_215053_, Direction p_215054_) {
-1113:    public void neighborChanged(BlockPos p_215048_, Block p_215049_, BlockPos p_215050_) {
-1118:    public void neighborChanged(BlockState p_215035_, BlockPos p_215036_, Block p_215037_, BlockPos p_215038_, boolean p_215039_) {
-1123:    public void broadcastEntityEvent(Entity p_8650_, byte p_8651_) {
-1128:    public void broadcastDamageEvent(Entity p_270420_, DamageSource p_270311_) {
-1132:    public ServerChunkCache getChunkSource() {
-1182:    public void blockEvent(BlockPos p_8746_, Block p_8747_, int p_8748_, int p_8749_) {
-1186:    private void runBlockEvents() {
-1213:    private boolean doBlockEvent(BlockEventData p_8699_) {
-1218:    public LevelTicks<Block> getBlockTicks() {
-1222:    public LevelTicks<Fluid> getFluidTicks() {
-1228:    public MinecraftServer getServer() {
-1232:    public PortalForcer getPortalForcer() {
-1236:    public StructureTemplateManager getStructureManager() {
-1277:    private boolean sendParticles(ServerPlayer p_8637_, boolean p_8638_, double p_8639_, double p_8640_, double p_8641_, Packet<?> p_8642_) {
-1293:    public Entity getEntity(int p_8597_) {
-1299:    public Entity getEntityOrPart(int p_143318_) {
-1305:    public Entity getEntity(UUID p_8792_) {
-1310:    public BlockPos findNearestMapStructure(TagKey<Structure> p_215012_, BlockPos p_215013_, int p_215014_, boolean p_215015_) {
-1327:    public Pair<BlockPos, Holder<Biome>> findClosestBiome3d(Predicate<Holder<Biome>> p_215070_, BlockPos p_215071_, int p_215072_, int p_215073_, int p_215074_) {
-1335:    public RecipeManager getRecipeManager() {
-1340:    public TickRateManager tickRateManager() {
-1345:    public boolean noSave() {
-1349:    public DimensionDataStorage getDataStorage() {
-1355:    public MapItemSavedData getMapData(MapId p_323746_) {
-1360:    public void setMapData(MapId p_323697_, MapItemSavedData p_143306_) {
-1365:    public MapId getFreeMapId() {
-1369:    public void setDefaultSpawnPos(BlockPos p_8734_, float p_8735_) {
-1389:    public LongSet getForcedChunks() {
-1394:    public boolean setChunkForced(int p_8603_, int p_8604_, boolean p_8605_) {
-1417:    public List<ServerPlayer> players() {
-1422:    public void onBlockStateChange(BlockPos p_8751_, BlockState p_8752_, BlockState p_8753_) {
-1438:    public PoiManager getPoiManager() {
-1442:    public boolean isVillage(BlockPos p_8803_) {
-1446:    public boolean isVillage(SectionPos p_8763_) {
-1450:    public boolean isCloseToVillage(BlockPos p_8737_, int p_8738_) {
-1454:    public int sectionsToVillage(SectionPos p_8829_) {
-1458:    public Raids getRaids() {
-1463:    public Raid getRaidAt(BlockPos p_8833_) {
-1467:    public boolean isRaided(BlockPos p_8844_) {
-1471:    public void onReputationEvent(ReputationEventType p_8671_, Entity p_8672_, ReputationEventHandler p_8673_) {
-1475:    public void saveDebugReport(Path p_8787_) throws IOException {
-1527:    private static void dumpEntities(Writer p_8782_, Iterable<Entity> p_8783_) throws IOException {
-1555:    private void dumpBlockEntityTickers(Writer p_143300_) throws IOException {
-1565:    public void clearBlockEvents(BoundingBox p_8723_) {
-1570:    public void blockUpdated(BlockPos p_8743_, Block p_8744_) {
-1577:    public float getShade(Direction p_8760_, boolean p_8761_) {
-1581:    public Iterable<Entity> getAllEntities() {
-1586:    public String toString() {
-1590:    public boolean isFlat() {
-1595:    public long getSeed() {
-1600:    public EndDragonFight getDragonFight() {
-1605:    public ServerLevel getLevel() {
-1610:    public String getWatchdogStats() {
-1625:    private static <T> String getTypeCount(Iterable<T> p_143302_, Function<T, String> p_143303_) {
-1646:    public LevelEntityGetter<Entity> getEntities() {
-1650:    public void addLegacyChunkEntities(Stream<Entity> p_143312_) {
-1654:    public void addWorldGenChunkEntities(Stream<Entity> p_143328_) {
-1658:    public void startTickingChunk(LevelChunk p_184103_) {
-1662:    public void onStructureStartsAvailable(ChunkAccess p_196558_) {
-1666:    public PathTypeCache getPathTypeCache() {
-1671:    public void close() throws IOException {
-1677:    public String gatherChunkSourceStats() {
-1681:    public boolean areEntitiesLoaded(long p_143320_) {
-1685:    private boolean isPositionTickingWithEntitiesLoaded(long p_184111_) {
-1689:    public boolean isPositionEntityTicking(BlockPos p_143341_) {
-1693:    public boolean isNaturalSpawningAllowed(BlockPos p_201919_) {
-1697:    public boolean isNaturalSpawningAllowed(ChunkPos p_201917_) {
-1702:    public FeatureFlagSet enabledFeatures() {
-1707:    public PotionBrewing potionBrewing() {
-1711:    public RandomSource getRandomSequence(ResourceLocation p_287689_) {
-1715:    public RandomSequences getRandomSequences() {
-1720:    public CrashReportCategory fillReportDetails(CrashReport p_307518_) {
-1726:    final class EntityCallbacks implements LevelCallback<Entity> {
-1727:        public void onCreated(Entity p_143355_) {
-1730:        public void onDestroyed(Entity p_143359_) {
-1734:        public void onTickingStart(Entity p_143363_) {
-1738:        public void onTickingEnd(Entity p_143367_) {
-1742:        public void onTrackingStart(Entity p_143371_) {
-1769:        public void onTrackingEnd(Entity p_143375_) {
-1799:        public void onSectionChange(Entity p_215086_) {
-1805:    public java.util.Collection<net.neoforged.neoforge.entity.PartEntity<?>> getPartEntities() {
-1810:    public final void syncData(net.neoforged.neoforge.attachment.AttachmentType<?> type) {
-1814:    private final net.neoforged.neoforge.capabilities.CapabilityListenerHolder capListenerHolder = new net.neoforged.neoforge.capabilities.CapabilityListenerHolder();
-1817:    public void invalidateCapabilities(BlockPos pos) {
-1822:    public void invalidateCapabilities(ChunkPos pos) {
-1830:    public void registerCapabilityListener(BlockPos pos, net.neoforged.neoforge.capabilities.ICapabilityInvalidationListener listener) {
-1839:    public void cleanCapabilityListenerReferences() {
-1846:    public void setDayTimeFraction(float dayTimeFraction) {
-1851:    public float getDayTimeFraction() {
-1859:    public float getDayTimePerTick() {
-1880:    public void setDayTimePerTick(float dayTimePerTick) {
-
-@@@@@ SIGS: net/minecraft/world/InteractionResult.java @@@@
-3:public enum InteractionResult {
-11:    public boolean consumesAction() {
-15:    public boolean shouldSwing() {
-19:    public boolean indicateItemUse() {
-23:    public static InteractionResult sidedSuccess(boolean p_19079_) {
-
-@@@@@ SIGS: net/minecraft/world/entity/DismountHelper.java @@@@
-MISSING
-
-@@@@@ SIGS: net/minecraft/client/player/LocalPlayer.java @@@@
-95:public class LocalPlayer extends AbstractClientPlayer {
-96:    public static final Logger LOGGER = LogUtils.getLogger();
-97:    private static final int POSITION_REMINDER_INTERVAL = 20;
-98:    private static final int WATER_VISION_MAX_TIME = 600;
-99:    private static final int WATER_VISION_QUICK_TIME = 100;
-100:    private static final float WATER_VISION_QUICK_PERCENT = 0.6F;
-101:    private static final double SUFFOCATING_COLLISION_CHECK_SCALE = 0.35;
-102:    private static final double MINOR_COLLISION_ANGLE_THRESHOLD_RADIAN = 0.13962634F;
-103:    public final ClientPacketListener connection;
-104:    private final StatsCounter stats;
-105:    private final ClientRecipeBook recipeBook;
-106:    private final List<AmbientSoundHandler> ambientSoundHandlers = Lists.newArrayList();
-107:    private int permissionLevel = 0;
-108:    private double xLast;
-109:    private double yLast1;
-110:    private double zLast;
-111:    private float yRotLast;
-112:    private float xRotLast;
-113:    private boolean lastOnGround;
-114:    private boolean crouching;
-115:    private boolean wasShiftKeyDown;
-116:    private boolean wasSprinting;
-117:    private int positionReminder;
-118:    private boolean flashOnSetHealth;
-119:    public Input input;
-120:    protected final Minecraft minecraft;
-121:    protected int sprintTriggerTime;
-122:    public float yBob;
-123:    public float xBob;
-124:    public float yBobO;
-125:    public float xBobO;
-126:    private int jumpRidingTicks;
-127:    private float jumpRidingScale;
-128:    public float spinningEffectIntensity;
-129:    public float oSpinningEffectIntensity;
-130:    private boolean startedUsingItem;
-132:    private InteractionHand usingItemHand;
-133:    private boolean handsBusy;
-134:    private boolean autoJumpEnabled = true;
-135:    private int autoJumpTime;
-136:    private boolean wasFallFlying;
-137:    private int waterVisionTime;
-138:    private boolean showDeathScreen = true;
-139:    private boolean doLimitedCrafting = false;
-163:    public boolean hurt(DamageSource p_108662_, float p_108663_) {
-168:    public void heal(float p_108708_) {
-172:    public boolean startRiding(Entity p_108667_, boolean p_108668_) {
-186:    public void removeVehicle() {
-192:    public float getViewXRot(float p_108742_) {
-197:    public float getViewYRot(float p_108753_) {
-202:    public void tick() {
-223:    public float getCurrentMood() {
-233:    private void sendPosition() {
-285:    private void sendIsSprintingIfNeeded() {
-296:    public boolean drop(boolean p_108701_) {
-307:    public void swing(InteractionHand p_108660_) {
-313:    public void respawn() {
-319:    protected void actuallyHurt(DamageSource p_108729_, float p_108730_) {
-326:    public void closeContainer() {
-331:    public void clientSideCloseContainer() {
-336:    public void hurtTo(float p_108761_) {
-358:    public void onUpdateAbilities() {
-363:    public boolean isLocalPlayer() {
-368:    public boolean isSuppressingSlidingDownLadder() {
-373:    public boolean canSpawnSprintParticle() {
-377:    protected void sendRidingJump() {
-384:    public void sendOpenInventory() {
-388:    public StatsCounter getStats() {
-392:    public ClientRecipeBook getRecipeBook() {
-396:    public void removeRecipeHighlight(RecipeHolder<?> p_300983_) {
-404:    public int getPermissionLevel() {
-408:    public void setPermissionLevel(int p_108649_) {
-413:    public void displayClientMessage(Component p_108696_, boolean p_108697_) {
-417:    private void moveTowardsClosestSpace(double p_108705_, double p_108706_) {
-446:    private boolean suffocatesAt(BlockPos p_108747_) {
-455:    public void setExperienceValues(float p_108645_, int p_108646_, int p_108647_) {
-462:    public void sendSystemMessage(Component p_234129_) {
-467:    public void handleEntityEvent(byte p_108643_) {
-475:    public void setShowDeathScreen(boolean p_108712_) {
-479:    public boolean shouldShowDeathScreen() {
-483:    public void setDoLimitedCrafting(boolean p_302021_) {
-487:    public boolean getDoLimitedCrafting() {
-492:    public void playSound(SoundEvent p_108651_, float p_108652_, float p_108653_) {
-504:    public void playNotifySound(SoundEvent p_108655_, SoundSource p_108656_, float p_108657_, float p_108658_) {
-509:    public boolean isEffectiveAi() {
-514:    public void startUsingItem(InteractionHand p_108718_) {
-524:    public boolean isUsingItem() {
-529:    public void stopUsingItem() {
-535:    public InteractionHand getUsedItemHand() {
-540:    public void onSyncedDataUpdated(EntityDataAccessor<?> p_108699_) {
-558:    public PlayerRideableJumping jumpableVehicle() {
-566:    public float getJumpRidingScale() {
-571:    public boolean isTextFilteringEnabled() {
-576:    public void openTextEdit(SignBlockEntity p_277970_, boolean p_277980_) {
-585:    public void openMinecartCommandBlock(BaseCommandBlock p_108678_) {
-590:    public void openCommandBlock(CommandBlockEntity p_108680_) {
-595:    public void openStructureBlock(StructureBlockEntity p_108686_) {
-600:    public void openJigsawBlock(JigsawBlockEntity p_108682_) {
-605:    public void openItemGui(ItemStack p_108673_, InteractionHand p_108674_) {
-612:    public void crit(Entity p_108665_) {
-617:    public void magicCrit(Entity p_108710_) {
-622:    public boolean isShiftKeyDown() {
-627:    public boolean isCrouching() {
-631:    public boolean isMovingSlowly() {
-636:    public void serverAiStep() {
-649:    protected boolean isControlledCamera() {
-653:    public void resetPos() {
-672:    public void aiStep() {
-841:    public Portal.Transition getActivePortalLocalTransition() {
-846:    protected void tickDeath() {
-853:    private void handleConfusionTransitionEffect(boolean p_350372_) {
-886:    public void rideTick() {
-896:    public boolean isHandsBusy() {
-902:    public MobEffectInstance removeEffectNoUpdate(Holder<MobEffect> p_316634_) {
-912:    public void move(MoverType p_108670_, Vec3 p_108671_) {
-919:    public boolean isAutoJumpEnabled() {
-923:    protected void updateAutoJump(float p_108744_, float p_108745_) {
-1023:    protected boolean isHorizontalCollisionMinor(Vec3 p_197411_) {
-1040:    private boolean canAutoJump() {
-1050:    private boolean isMoving() {
-1055:    private boolean canStartSprinting() {
-1065:    private boolean vehicleCanSprint(Entity p_265184_) {
-1069:    private boolean hasEnoughImpulseToStartSprinting() {
-1074:    private boolean hasEnoughFoodToStartSprinting() {
-1078:    public float getWaterVision() {
-1094:    public void onGameModeChanged(GameType p_287675_) {
-1101:    public boolean isUnderWater() {
-1106:    protected boolean updateIsUnderwater() {
-1127:    public Vec3 getRopeHoldPosition(float p_108758_) {
-1140:    public void updateTutorialInventoryAction(ItemStack p_172532_, ItemStack p_172533_, ClickAction p_172534_) {
-1145:    public float getVisualRotationYInDegrees() {
-
-@@@@@ REGION: rideTick :: net/minecraft/client/player/LocalPlayer.java @@@@
-
-@@@@@ REGION: handleMoveVehicle :: net/minecraft/server/network/ServerGamePacketListenerImpl.java @@@@
