@@ -1,185 +1,453 @@
 # Build log (errors & context)
-50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-61:FAILURE: Build failed with an exception.
-66:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-78:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
-79:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
-80:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
-81:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
-82:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
-83:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-84:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-85:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-86:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-87:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-88:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-89:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-90:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-91:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-92:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-93:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-94:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-95:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-96:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-97:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-98:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-99:	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
-100:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
-101:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
-102:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
-103:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-104:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
-105:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
-106:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
-107:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-108:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-109:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-110:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-111:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-116:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-117:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
-118:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-119:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-120:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-121:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-122:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-123:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-124:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-125:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-126:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
-127:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-128:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
-129:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-130:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-131:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-132:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-133:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-134:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
-135:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-136:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-137:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-138:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-139:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-140:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-141:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-142:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-143:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
-144:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
-145:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
-146:	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-147:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-148:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-149:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-150:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
-151:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
-152:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
-153:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
-154:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
-155:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-156:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-157:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-158:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-159:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
-160:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
-161:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
-162:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
-163:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
-164:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-165:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-166:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-167:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-168:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-169:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-170:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-171:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-172:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-173:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-174:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-175:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-176:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-177:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
-178:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
-179:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-180:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-181:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-182:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
-183:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
-184:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-185:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-186:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
-187:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
-188:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
-189:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
-190:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-191:	at org.gradle.internal.execution.steps.BuildCacheStep.executeAndStoreInCache(BuildCacheStep.java:145)
-192:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$4(BuildCacheStep.java:101)
-193:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$5(BuildCacheStep.java:101)
-194:	at org.gradle.internal.Try$Success.map(Try.java:175)
-195:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithCache(BuildCacheStep.java:85)
-196:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$0(BuildCacheStep.java:74)
-197:	at org.gradle.internal.Either$Left.fold(Either.java:115)
-198:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-199:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-200:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-201:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-202:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-203:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
-204:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
-205:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
-206:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
-207:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-208:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-209:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-210:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-211:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-212:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-213:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
-214:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
-215:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
-216:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
-217:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
-218:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
-219:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
-220:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
-221:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
-222:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
-223:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
-224:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
-225:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
-226:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
-227:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
-228:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+50:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
+53:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+56:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+59:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+62:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+65:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+68:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
+71:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+74:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+77:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+80:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+83:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+86:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
+89:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+92:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+95:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+98:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+101:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+104:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
+107:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+110:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+113:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+116:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+119:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+122:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
+125:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+128:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+131:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+134:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+137:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+140:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
+143:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+146:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+149:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+152:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+155:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+158:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
+161:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+164:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+167:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+170:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+173:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+176:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
+179:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+182:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+185:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+188:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+191:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+194:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
+197:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+200:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+203:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+206:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+209:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+212:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
+215:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+218:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+221:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+224:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+227:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+230:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
+233:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+236:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+239:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+242:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+245:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+248:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
+251:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+254:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+257:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+260:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+263:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+266:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
+269:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+272:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+275:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+278:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+281:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+284:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
+287:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+290:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+293:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+296:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+299:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+302:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
+305:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+308:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+311:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+314:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+317:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+320:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
+323:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+326:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+329:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+332:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+335:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+338:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ')' or ',' expected
+341:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
+344:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
+347:/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
+357:FAILURE: Build failed with an exception.
+362:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+365:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+368:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+371:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+374:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+377:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+380:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+383:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+386:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+389:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+392:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+395:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+398:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+401:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+404:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+407:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+410:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+413:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+416:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+419:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+422:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+425:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+428:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+431:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+434:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+437:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+440:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+443:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+446:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+449:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+452:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+455:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+458:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
+461:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
+464:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
+467:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
+470:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
+473:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
+476:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
+479:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
+482:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
+485:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
+488:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
+491:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
+494:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
+497:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
+500:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
+503:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
+506:  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
 
 ## Full javac error blocks:
 
 
 > Task :compileJava
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
-                   ^
-  attempting to assign weaker access privileges; was public
-1 error
-
-> Task :compileJava FAILED
---
-* What went wrong:
-Execution failed for task ':compileJava'.
-> Compilation failed; see the compiler output below.
-  /home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-      protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
-                     ^
-    attempting to assign weaker access privileges; was public
-  1 error
-
-* Try:
---
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/entity/WaveMotorcycleEntity.java:683: error: getDismountLocationForPassenger(LivingEntity) in WaveMotorcycleEntity cannot override getDismountLocationForPassenger(LivingEntity) in Entity
-    protected Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
-                   ^
-  attempting to assign weaker access privileges; was public
-1 error
-	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ')' or ',' expected
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                           ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: not a statement
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                                ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:173: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ')' or ',' expected
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                     ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: not a statement
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                          ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:215: error: ';' expected
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                                                                           ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:231: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:235: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                           ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                                ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                                     ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:239: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:243: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:247: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:251: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:255: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:259: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:263: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:267: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:271: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:275: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:279: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                                 ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                                  ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                                      ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:283: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                                                                                       ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ')' or ',' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
+                                                                            ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: ';' expected
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
+                                                                             ^
+/home/runner/work/vehicle-plugin/vehicle-plugin/src/main/java/com/wave100/client/WaveModel.java:287: error: not a statement
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
+                                                                                 ^
