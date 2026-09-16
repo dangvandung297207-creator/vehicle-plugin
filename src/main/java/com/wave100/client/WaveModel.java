@@ -76,7 +76,7 @@ public class WaveModel extends HierarchicalModel<Entity> {
             .addBox(-1.2F, 7.2F, -5.2F, 2.4F, 5.6F, 1.3F)
             .texOffs(0, 35)
             .addBox(-3F, 10.6F, -3.8F, 6F, 2.6F, 6.8F)
-            .texOffs(48, 46)
+            .texOffs(58, 46)
             .addBox(-2.6F, 12.9F, -3.4F, 5.2F, 0.8F, 5.6F)
             .texOffs(27, 35)
             .addBox(-3.1F, 8.6F, 2.2F, 0.9F, 1.4F, 8.4F)
@@ -84,17 +84,17 @@ public class WaveModel extends HierarchicalModel<Entity> {
             .addBox(2.2F, 8.6F, 2.2F, 0.9F, 1.4F, 8.4F)
             .texOffs(20, 73)
             .addBox(-2.6F, 8.6F, 9.8F, 5.2F, 1.4F, 1.6F)
-            .texOffs(69, 62)
+            .texOffs(76, 62)
             .addBox(-2.8F, 5.2F, 9.4F, 0.8F, 3.6F, 1F)
-            .texOffs(74, 62)
+            .texOffs(81, 62)
             .addBox(2F, 5.2F, 9.4F, 0.8F, 3.6F, 1F)
             .texOffs(0, 23)
             .addBox(-3.2F, 5.2F, -3.4F, 6.4F, 3.6F, 6.6F)
-            .texOffs(71, 46)
+            .texOffs(81, 46)
             .addBox(-4F, 5.6F, -2.2F, 0.8F, 2.6F, 4.2F)
-            .texOffs(82, 46)
+            .texOffs(92, 46)
             .addBox(3.2F, 5.6F, -2.2F, 0.8F, 2.6F, 4.2F)
-            .texOffs(100, 62)
+            .texOffs(103, 62)
             .addBox(-2.4F, 8.8F, -1.6F, 4.8F, 0.4F, 3.2F)
             .texOffs(0, 68)
             .addBox(-2.4F, 9.4F, -1.6F, 4.8F, 0.4F, 3.2F)
@@ -154,7 +154,7 @@ public class WaveModel extends HierarchicalModel<Entity> {
             .addBox(-3.5F, 11.5F, -8.4F, 7F, 4.2F, 3F)
             .texOffs(95, 55)
             .addBox(-3F, 11F, -9.3F, 6F, 3.2F, 1F)
-            .texOffs(83, 62)
+            .texOffs(86, 62)
             .addBox(-2.6F, 15.6F, -8F, 5.2F, 0.9F, 2.7F)
             .texOffs(55, 62)
             .addBox(-4.3F, 11.2F, -8F, 0.8F, 2.6F, 2.2F)
@@ -170,11 +170,11 @@ public class WaveModel extends HierarchicalModel<Entity> {
             PartDefinition windscreen = body.addOrReplaceChild("windscreen", CubeListBuilder.create()
                 .texOffs(49, 68)
                 .addBox(-2.5F, 0F, -0.35F, 5F, 2.9F, 0.7F)
-                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 15.4F, -6.9F, 0.3142F, 0F, 0F));
             PartDefinition side_stand = body.addOrReplaceChild("side_stand", CubeListBuilder.create()
-                .texOffs(79, 62)
+                .texOffs(69, 62)
                 .addBox(-0.35F, -4.3F, -0.35F, 0.7F, 4.3F, 0.7F)
-                .texOffs(79, 62)
+                .texOffs(69, 62)
                 .addBox(-0.9F, -4.7F, -0.5F, 1.8F, 0.45F, 1F)
                 , PartPose.offset(-2.7F, 5F, 2.6F));
         PartDefinition steering = root.addOrReplaceChild("steering", CubeListBuilder.create()
@@ -208,11 +208,11 @@ public class WaveModel extends HierarchicalModel<Entity> {
                 .addBox(-1.9F, 1.2F, -1.2F, 3.8F, 1.4F, 1.6F)
                 , PartPose.offset(0F, 1.4F, -0.2F));
             PartDefinition fork = steering.addOrReplaceChild("fork", CubeListBuilder.create()
-                .texOffs(36, 46)
+                .texOffs(46, 46)
                 .addBox(-2.4F, -6.2F, -0.55F, 0.95F, 6.8F, 1.1F)
-                .texOffs(42, 46)
+                .texOffs(52, 46)
                 .addBox(1.45F, -6.2F, -0.55F, 0.95F, 6.8F, 1.1F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.4504F, 0F, 0F));
                 PartDefinition fork_lower = fork.addOrReplaceChild("fork_lower", CubeListBuilder.create()
                     .texOffs(43, 55)
                     .addBox(-2.45F, -4.4F, -0.65F, 1.05F, 4.7F, 1.3F)
@@ -228,71 +228,71 @@ public class WaveModel extends HierarchicalModel<Entity> {
                         PartDefinition front_tire1 = front_wheel.addOrReplaceChild("front_tire1", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283F, 0F, 0F));
                         PartDefinition front_tire2 = front_wheel.addOrReplaceChild("front_tire2", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566F, 0F, 0F));
                         PartDefinition front_tire3 = front_wheel.addOrReplaceChild("front_tire3", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885F, 0F, 0F));
                         PartDefinition front_tire4 = front_wheel.addOrReplaceChild("front_tire4", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133F, 0F, 0F));
                         PartDefinition front_tire5 = front_wheel.addOrReplaceChild("front_tire5", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
                         PartDefinition front_tire6 = front_wheel.addOrReplaceChild("front_tire6", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699F, 0F, 0F));
                         PartDefinition front_tire7 = front_wheel.addOrReplaceChild("front_tire7", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982F, 0F, 0F));
                         PartDefinition front_tire8 = front_wheel.addOrReplaceChild("front_tire8", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265F, 0F, 0F));
                         PartDefinition front_tire9 = front_wheel.addOrReplaceChild("front_tire9", CubeListBuilder.create()
                             .texOffs(0, 62)
                             .addBox(-1.05F, -4.42F, -1.4728F, 2.1F, 1.12F, 2.9456F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549F, 0F, 0F));
                         PartDefinition front_rim0 = front_wheel.addOrReplaceChild("front_rim0", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927F, 0F, 0F));
                         PartDefinition front_rim1 = front_wheel.addOrReplaceChild("front_rim1", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781F, 0F, 0F));
                         PartDefinition front_rim2 = front_wheel.addOrReplaceChild("front_rim2", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635F, 0F, 0F));
                         PartDefinition front_rim3 = front_wheel.addOrReplaceChild("front_rim3", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489F, 0F, 0F));
                         PartDefinition front_rim4 = front_wheel.addOrReplaceChild("front_rim4", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343F, 0F, 0F));
                         PartDefinition front_rim5 = front_wheel.addOrReplaceChild("front_rim5", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197F, 0F, 0F));
                         PartDefinition front_rim6 = front_wheel.addOrReplaceChild("front_rim6", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.1051FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.1051F, 0F, 0F));
                         PartDefinition front_rim7 = front_wheel.addOrReplaceChild("front_rim7", CubeListBuilder.create()
                             .texOffs(97, 68)
                             .addBox(-0.882F, -3.86F, -1.5853F, 1.764F, 0.48F, 3.1706F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.8905FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.8905F, 0F, 0F));
                         PartDefinition front_spoke0 = front_wheel.addOrReplaceChild("front_spoke0", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
@@ -300,37 +300,37 @@ public class WaveModel extends HierarchicalModel<Entity> {
                         PartDefinition front_spoke1 = front_wheel.addOrReplaceChild("front_spoke1", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.7854FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 0.7854F, 0F, 0F));
                         PartDefinition front_spoke2 = front_wheel.addOrReplaceChild("front_spoke2", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.5708FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.5708F, 0F, 0F));
                         PartDefinition front_spoke3 = front_wheel.addOrReplaceChild("front_spoke3", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.3562FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.3562F, 0F, 0F));
                         PartDefinition front_spoke4 = front_wheel.addOrReplaceChild("front_spoke4", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
                         PartDefinition front_spoke5 = front_wheel.addOrReplaceChild("front_spoke5", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.927FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 3.927F, 0F, 0F));
                         PartDefinition front_spoke6 = front_wheel.addOrReplaceChild("front_spoke6", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.7124FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 4.7124F, 0F, 0F));
                         PartDefinition front_spoke7 = front_wheel.addOrReplaceChild("front_spoke7", CubeListBuilder.create()
                             .texOffs(124, 68)
                             .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.4978FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 5.4978F, 0F, 0F));
                         PartDefinition front_hub = front_wheel.addOrReplaceChild("front_hub", CubeListBuilder.create()
                             .texOffs(36, 62)
                             .addBox(-1.15F, -1.25F, -1.25F, 2.3F, 2.5F, 2.5F)
                             , PartPose.ZERO);
                         PartDefinition front_drum_r = front_wheel.addOrReplaceChild("front_drum_r", CubeListBuilder.create()
-                            .texOffs(93, 46)
+                            .texOffs(103, 46)
                             .addBox(1.05F, -1.7F, -1.7F, 0.75F, 3.4F, 3.4F)
                             , PartPose.ZERO);
                     PartDefinition front_fender = fork_lower.addOrReplaceChild("front_fender", CubeListBuilder.create()
@@ -338,19 +338,19 @@ public class WaveModel extends HierarchicalModel<Entity> {
                         PartDefinition fender_seg0 = front_fender.addOrReplaceChild("fender_seg0", CubeListBuilder.create()
                             .texOffs(34, 68)
                             .addBox(-1.9F, -5.75F, -1.45F, 3.8F, 0.7F, 2.9F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1868FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1868F, 0F, 0F));
                         PartDefinition fender_seg1 = front_fender.addOrReplaceChild("fender_seg1", CubeListBuilder.create()
                             .texOffs(34, 68)
                             .addBox(-1.9F, -5.75F, -1.45F, 3.8F, 0.7F, 2.9F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.6755FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 1.6755F, 0F, 0F));
                         PartDefinition fender_seg2 = front_fender.addOrReplaceChild("fender_seg2", CubeListBuilder.create()
                             .texOffs(34, 68)
                             .addBox(-1.9F, -5.75F, -1.45F, 3.8F, 0.7F, 2.9F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.1642FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.1642F, 0F, 0F));
                         PartDefinition fender_seg3 = front_fender.addOrReplaceChild("fender_seg3", CubeListBuilder.create()
                             .texOffs(34, 68)
                             .addBox(-1.9F, -5.75F, -1.45F, 3.8F, 0.7F, 2.9F)
-                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.6529FF, 0FF, 0FF));
+                            , PartPose.offsetAndRotation(0F, 0F, 0F, 2.6529F, 0F, 0F));
         PartDefinition rear_wheel = root.addOrReplaceChild("rear_wheel", CubeListBuilder.create()
             , PartPose.offset(0F, 4.4F, 10F));
             PartDefinition rear_tire0 = rear_wheel.addOrReplaceChild("rear_tire0", CubeListBuilder.create()
@@ -360,71 +360,71 @@ public class WaveModel extends HierarchicalModel<Entity> {
             PartDefinition rear_tire1 = rear_wheel.addOrReplaceChild("rear_tire1", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.6283F, 0F, 0F));
             PartDefinition rear_tire2 = rear_wheel.addOrReplaceChild("rear_tire2", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.2566F, 0F, 0F));
             PartDefinition rear_tire3 = rear_wheel.addOrReplaceChild("rear_tire3", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.885F, 0F, 0F));
             PartDefinition rear_tire4 = rear_wheel.addOrReplaceChild("rear_tire4", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.5133F, 0F, 0F));
             PartDefinition rear_tire5 = rear_wheel.addOrReplaceChild("rear_tire5", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
             PartDefinition rear_tire6 = rear_wheel.addOrReplaceChild("rear_tire6", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.7699F, 0F, 0F));
             PartDefinition rear_tire7 = rear_wheel.addOrReplaceChild("rear_tire7", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3982F, 0F, 0F));
             PartDefinition rear_tire8 = rear_wheel.addOrReplaceChild("rear_tire8", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.0265F, 0F, 0F));
             PartDefinition rear_tire9 = rear_wheel.addOrReplaceChild("rear_tire9", CubeListBuilder.create()
                 .texOffs(24, 62)
                 .addBox(-1.25F, -4.42F, -1.4728F, 2.5F, 1.12F, 2.9456F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.6549F, 0F, 0F));
             PartDefinition rear_rim0 = rear_wheel.addOrReplaceChild("rear_rim0", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.3927F, 0F, 0F));
             PartDefinition rear_rim1 = rear_wheel.addOrReplaceChild("rear_rim1", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.1781F, 0F, 0F));
             PartDefinition rear_rim2 = rear_wheel.addOrReplaceChild("rear_rim2", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.9635F, 0F, 0F));
             PartDefinition rear_rim3 = rear_wheel.addOrReplaceChild("rear_rim3", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.7489F, 0F, 0F));
             PartDefinition rear_rim4 = rear_wheel.addOrReplaceChild("rear_rim4", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.5343F, 0F, 0F));
             PartDefinition rear_rim5 = rear_wheel.addOrReplaceChild("rear_rim5", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.3197F, 0F, 0F));
             PartDefinition rear_rim6 = rear_wheel.addOrReplaceChild("rear_rim6", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.1051FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.1051F, 0F, 0F));
             PartDefinition rear_rim7 = rear_wheel.addOrReplaceChild("rear_rim7", CubeListBuilder.create()
                 .texOffs(74, 68)
                 .addBox(-1.05F, -3.86F, -1.5853F, 2.1F, 0.48F, 3.1706F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.8905FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.8905F, 0F, 0F));
             PartDefinition rear_spoke0 = rear_wheel.addOrReplaceChild("rear_spoke0", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
@@ -432,41 +432,41 @@ public class WaveModel extends HierarchicalModel<Entity> {
             PartDefinition rear_spoke1 = rear_wheel.addOrReplaceChild("rear_spoke1", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.7854FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 0.7854F, 0F, 0F));
             PartDefinition rear_spoke2 = rear_wheel.addOrReplaceChild("rear_spoke2", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.5708FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 1.5708F, 0F, 0F));
             PartDefinition rear_spoke3 = rear_wheel.addOrReplaceChild("rear_spoke3", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.3562FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 2.3562F, 0F, 0F));
             PartDefinition rear_spoke4 = rear_wheel.addOrReplaceChild("rear_spoke4", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.1416F, 0F, 0F));
             PartDefinition rear_spoke5 = rear_wheel.addOrReplaceChild("rear_spoke5", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.927FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 3.927F, 0F, 0F));
             PartDefinition rear_spoke6 = rear_wheel.addOrReplaceChild("rear_spoke6", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.7124FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 4.7124F, 0F, 0F));
             PartDefinition rear_spoke7 = rear_wheel.addOrReplaceChild("rear_spoke7", CubeListBuilder.create()
                 .texOffs(0, 73)
                 .addBox(-0.3F, -3.62F, -0.3F, 0.6F, 2.62F, 0.6F)
-                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.4978FF, 0FF, 0FF));
+                , PartPose.offsetAndRotation(0F, 0F, 0F, 5.4978F, 0F, 0F));
             PartDefinition rear_hub = rear_wheel.addOrReplaceChild("rear_hub", CubeListBuilder.create()
                 .texOffs(12, 62)
                 .addBox(-1.35F, -1.25F, -1.25F, 2.7F, 2.5F, 2.5F)
                 , PartPose.ZERO);
             PartDefinition rear_drum_l = rear_wheel.addOrReplaceChild("rear_drum_l", CubeListBuilder.create()
-                .texOffs(103, 46)
+                .texOffs(36, 46)
                 .addBox(-2F, -1.7F, -1.7F, 0.75F, 3.4F, 3.4F)
                 , PartPose.ZERO);
             PartDefinition rear_sprocket = rear_wheel.addOrReplaceChild("rear_sprocket", CubeListBuilder.create()
-                .texOffs(103, 46)
+                .texOffs(36, 46)
                 .addBox(-2.4F, -1.8F, -1.8F, 0.55F, 3.6F, 3.6F)
                 , PartPose.ZERO);
         PartDefinition headlight_lens = root.addOrReplaceChild("headlight_lens", CubeListBuilder.create()

@@ -373,9 +373,11 @@ def pack_uvs():
     for p in PARTS:
         for i, box in enumerate(p.boxes):
             g = p.uv_key(i)
-            if g in groups:
-                continue
-            groups[g] = region_size(box)
+            w, h = region_size(box)
+            if g not in groups:
+                groups[g] = (w, h)
+            else:
+                groups[g] = (max(groups[g][0], w), max(groups[g][1], h))
     order = sorted(groups.keys(), key=lambda g: (-groups[g][1], -groups[g][0], g))
     packed = {}
     x = y = shelf_h = 0
@@ -574,7 +576,7 @@ def emit_java():
             pose = f"PartPose.offset({jf(p.pivot[0])}, {jf(p.pivot[1])}, {jf(p.pivot[2])})"
         else:
             pose = (f"PartPose.offsetAndRotation({jf(p.pivot[0])}, {jf(p.pivot[1])}, {jf(p.pivot[2])}, "
-                    f"{jf(rx)}F, {jf(ry)}F, {jf(rz)}F)")
+                    f"{jf(rx)}, {jf(ry)}, {jf(rz)})")
         lines.append(f"{pad}    , {pose});")
         # children
         for c in children.get(p.name, []):
