@@ -1,8 +1,8 @@
 package com.wave100.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.client.settings.IKeyConflictContext;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
 
 /**
  * Key conflict context that is only active while the local player is riding a
@@ -19,14 +19,16 @@ public enum VehicleKeyConflictContext implements IKeyConflictContext {
         if (mc == null || mc.player == null) {
             return false;
         }
-        Entity vehicle = mc.player.getVehicle();
-        return vehicle != null && vehicle.isAlive() && vehicle instanceof com.wave100.entity.WaveMotorcycleEntity;
+        return mc.player.getVehicle() instanceof com.wave100.entity.WaveMotorcycleEntity;
     }
 
     @Override
-    public boolean conflictsDefault() {
-        // the engine/headlight keys sit on F/R by default, which overlap vanilla
-        // in-game bindings - we deliberately suppress those while riding
-        return true;
+    public boolean conflicts(IKeyConflictContext other) {
+        // while riding, the in-game context is active too, so vanilla bindings
+        // on the same physical key are real conflicts (we suppress the vanilla
+        // offhand swap while riding - see WaveInputHandler)
+        return other == this
+                || other == KeyConflictContext.IN_GAME
+                || other == KeyConflictContext.UNIVERSAL;
     }
 }

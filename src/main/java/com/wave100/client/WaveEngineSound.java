@@ -41,6 +41,11 @@ public class WaveEngineSound extends AbstractTickableSoundInstance {
         return !this.bike.isRemoved() && this.bike.isAlive();
     }
 
+    /** Public way for the manager to end this sound ({@code stop()} is protected). */
+    public void halt() {
+        this.stop();
+    }
+
     @Override
     public void tick() {
         if (this.bike.isRemoved() || !this.bike.isAlive()) {

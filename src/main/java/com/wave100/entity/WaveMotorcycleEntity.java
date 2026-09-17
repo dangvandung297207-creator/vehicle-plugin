@@ -91,10 +91,10 @@ public class WaveMotorcycleEntity extends Entity {
     private static final double REAR_AXLE_Z = 0.62;
     /** Rear wheel axle height (blocks). */
     private static final double REAR_AXLE_Y = 0.28;
-    /** Radians of wheel rotation per block travelled (r = 0.28). */
+    /** Wheel revolutions per block travelled (r = 0.28 blocks). */
     private static final double WHEEL_ROT_PER_BLOCK = 1.0 / (2.0 * Math.PI * 0.28);
     /** Local position of the exhaust tip for smoke particles. */
-    private static final Vec3 EXHAUST_TIP = new Vec3(0.32, 0.55, 1.05);
+    private static final Vec3 EXHAUST_TIP = new Vec3(0.29, 0.49, 1.16);
     /** Local position of the headlight lens (used by the renderer). */
     public static final Vec3 HEADLIGHT_POS = new Vec3(0.0, 0.82, -0.45);
     /** How much of the lean angle shifts the rider sideways (subtle). */

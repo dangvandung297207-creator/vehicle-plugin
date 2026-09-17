@@ -46,7 +46,7 @@ public final class WaveSoundManager {
             while (it.hasNext()) {
                 WaveEngineSound sound = it.next().getValue();
                 if (sound.isStopped() || !sound.bikeStillValid()) {
-                    sound.stop();
+                    sound.halt();
                     it.remove();
                 }
             }
@@ -61,7 +61,7 @@ public final class WaveSoundManager {
         for (Map.Entry<Integer, WaveEngineSound> entry : ACTIVE.entrySet()) {
             WaveEngineSound sound = entry.getValue();
             if (!sound.bikeStillValid()) {
-                sound.stop();
+                sound.halt();
             }
         }
 
@@ -81,7 +81,7 @@ public final class WaveSoundManager {
                 ACTIVE.put(bike.getId(), sound);
                 mc.getSoundManager().play(sound);
             } else if (!running && existing != null) {
-                existing.stop();
+                existing.halt();
             }
         }
 
@@ -90,7 +90,7 @@ public final class WaveSoundManager {
 
     private static void stopAll() {
         for (WaveEngineSound sound : ACTIVE.values()) {
-            sound.stop();
+            sound.halt();
         }
         ACTIVE.clear();
     }
