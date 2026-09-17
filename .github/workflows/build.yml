@@ -28,8 +28,10 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
 
+      # On failure only: commit the extracted errors back to the branch so the
+      # agent can read them (the sandbox has no Gradle/JDK access).
       - name: Extract errors
-        if: always()
+        if: failure()
         run: |
           {
             echo "# Build log (errors & context)"
@@ -40,137 +42,24 @@ jobs:
           } > build-errors.txt || true
           cat build-errors.txt | head -80
 
-      - name: Commit build status files
-        if: always()
+      - name: Commit build errors
+        if: failure()
         run: |
           git config user.name "arena-ai-coding-agent[bot]"
           git config user.email "arena-ai-coding-agent[bot]@users.noreply.github.com"
-          git add build-errors.txt api-dump.txt 2>/dev/null || true
+          git add build-errors.txt
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
             git commit -m "chore: refresh build-errors.txt (bot)"
-            git push
+            git pull --rebase origin HEAD || true
+            git push || true
           fi
-
-      - name: Collect build jar
-        if: always()
-        run: |
-          mkdir -p /tmp/out
-          find build/libs -name "*.jar" -exec cp {} /tmp/out/ \; 2>/dev/null || true
-          ls -la /tmp/out
 
       - name: Upload mod jar
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: wave100-mod-jar
-          path: /tmp/out/*.jar
+          path: build/libs/*.jar
           if-no-files-found: warn
-
-  api-dump:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-read-only: false
-      - name: Prepare sources
-        run: |
-          chmod +x ./gradlew
-          ./gradlew compileJava --no-daemon -q > /dev/null 2>&1 || ./gradlew compileJava --no-daemon > /dev/null 2>&1 || true
-          echo "--- all sources-ish jars:"
-          find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources|neoform" | while read -r j; do echo "$(stat -c%s "$j") $j"; done | sort -rn | head -10
-          SRC_JAR=$(find "$HOME/.gradle" -iname "*.jar" 2>/dev/null | grep -iE "sources" | while read -r j; do echo "$(stat -c%s "$j") $j"; done | sort -rn | head -1 | cut -d' ' -f2-)
-          echo "SOURCES JAR: $SRC_JAR"
-          if [ -z "$SRC_JAR" ]; then
-            echo "SOURCES_JAR=none" >> $GITHUB_ENV
-            exit 0
-          fi
-          echo "--- first entries of jar:"
-          unzip -l "$SRC_JAR" | head -12
-          rm -rf /tmp/mcsrc && mkdir -p /tmp/mcsrc
-          unzip -oq "$SRC_JAR" -d /tmp/mcsrc
-          echo "SOURCES_JAR=$SRC_JAR" >> $GITHUB_ENV
-
-      - name: Dump API signatures
-        if: env.SOURCES_JAR != 'none'
-        run: |
-          cd /tmp/mcsrc
-          echo "--- locate Entity.java:"
-          find . -name "Entity.java" | head -5
-          OUT="$GITHUB_WORKSPACE/api-dump.txt"
-          echo "# Vanilla 1.21.1 API signature dump (auto-generated, dev reference)" > "$OUT"
-          dump() { echo "" >> "$OUT"; echo "@@@@@ FILE: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then cat "$1" >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
-          sig()  { echo "" >> "$OUT"; echo "@@@@@ SIGS: $1 @@@@" >> "$OUT"; if [ -f "$1" ]; then grep -nE "^\s*(public|protected|private|static|final).*[;={]" "$1" | head -240 >> "$OUT"; else echo "MISSING" >> "$OUT"; fi; }
-          grab() { echo "" >> "$OUT"; echo "@@@@@ GRAB: $1 :: $2 @@@@" >> "$OUT"; grep -n -A "$3" -- "$1" "$2" 2>/dev/null | head -"$(( $3 + 3 ))" >> "$OUT"; }
-          lines(){ echo "" >> "$OUT"; echo "@@@@@ LINES: $2 :: $1 ($3-$4) @@@@" >> "$OUT"; sed -n "$3,$4p" "$1" >> "$OUT" 2>/dev/null; }
-
-          E=net/minecraft/world/entity/Entity.java
-          grab "positionRider" $E 22
-          grab "getPassengerAttachmentPoint" $E 12
-          grab "getPassengerRidingPosition" $E 14
-          grab "getVehicleAttachmentPoint" $E 8
-          grab "onPassengerTurned" $E 8
-          grab "getDismountLocationForPassenger" $E 18
-          grab "canAddPassenger" $E 5
-          grab "getControllingPassenger" $E 5
-          grab "isControlledByLocalInstance" $E 12
-          grab "public final void lerpTo" $E 14
-          grab "getDefaultGravity" $E 4
-          grab "maxUpStep" $E 4
-          grab "shouldRenderAtSqrDistance" $E 4
-          grab "public boolean isPickable" $E 3
-          grab "getPickResult" $E 3
-          grab "public boolean isPushable" $E 3
-          grab "startRiding" $E 6
-          lines $E baseTick 424 495
-          lines $E applyGravity+move 1151 1180
-          lines $E move 605 745
-
-          P=net/minecraft/world/entity/player/Player.java
-          grab "DEFAULT_VEHICLE_ATTACHMENT" $P 3
-          lines $P rideTick 505 545
-
-          B=net/minecraft/world/entity/vehicle/AbstractBoat.java
-          grab "clampRotation" $B 22
-          grab "getPassengerAttachmentPoint" $B 8
-          grab "getDismountLocationForPassenger" $B 25
-          grab "onPassengerTurned" $B 4
-          sig $B
-
-          M=net/minecraft/world/entity/vehicle/AbstractMinecart.java
-          grab "public void tick" $M 55
-
-          S=net/minecraft/server/level/ServerEntity.java
-          lines $S sendChanges 86 228
-
-          dump net/minecraft/client/resources/sounds/AbstractSoundInstance.java
-          dump net/minecraft/client/resources/sounds/AbstractTickableSoundInstance.java
-          sig net/minecraft/client/resources/sounds/SoundInstance.java
-
-          sig net/minecraft/world/entity/EntityType.java
-          lines net/minecraft/world/entity/EntityType.java builder 1242 1420
-
-
-          echo "dump written: $(wc -l < $OUT) lines"
-
-      - name: Commit dump
-        if: env.SOURCES_JAR != 'none'
-        run: |
-          git config user.name "arena-ai-coding-agent[bot]"
-          git config user.email "arena-ai-coding-agent[bot]@users.noreply.github.com"
-          git add api-dump.txt
-          if git diff --cached --quiet; then
-            echo "no changes to commit"
-          else
-            git commit -m "chore: refresh api-dump.txt (bot)"
-            git push
-          fi

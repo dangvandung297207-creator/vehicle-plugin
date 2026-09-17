@@ -1,4 +1,0 @@
-# Build log (errors & context)
-64:BUILD SUCCESSFUL in 21s
-
-## Full javac error blocks:
