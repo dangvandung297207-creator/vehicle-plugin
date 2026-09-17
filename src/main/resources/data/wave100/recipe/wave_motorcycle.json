@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "III",
+    "IRI",
+    "I I"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "minecraft:redstone_block"
+  },
+  "result": {
+    "id": "wave100:wave_motorcycle",
+    "count": 1
+  }
+}

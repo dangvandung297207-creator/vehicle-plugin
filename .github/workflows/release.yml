@@ -1,0 +1,72 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
+      - name: Build with Gradle
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build --no-daemon
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          cat > /tmp/notes.md <<'NOTES'
+          ## Wave 100 Motorcycle
+
+          A rideable Honda Wave 100 style underbone motorcycle for **NeoForge 1.21.1** (Minecraft 1.21.1, Java 21).
+          Works in singleplayer and on multiplayer servers — no client-side companion mods needed.
+
+          ### Install
+
+          1. Install [NeoForge 21.1.x](https://neoforged.net/) for Minecraft 1.21.1
+          2. Drop the jar from the assets below into your `mods/` folder
+          3. Craft it (7 iron ingots + 1 redstone block) or use `/wave give @s`
+
+          ### Controls
+
+          | Input | Action |
+          |-------|--------|
+          | Right-click (empty bike) | Mount |
+          | W / S | Accelerate / brake & reverse |
+          | A / D | Steer (with lean) |
+          | SPACE (while accelerating) | Wheelie |
+          | R | Engine start/stop |
+          | F | Headlight on/off |
+          | SHIFT | Dismount |
+          | Sneak + right-click + coal/charcoal | Refuel |
+          | Sneak + right-click + iron ingot | Repair |
+
+          ### Highlights
+
+          - Velocity-based physics, 4-speed automatic gearbox, RPM simulation (~60 km/h top speed)
+          - Wheelies with balance physics, crash & recovery, suspension, animated side stand
+          - Headlight with beam + brake light (synced), RPM-pitched engine sound
+          - Fuel consumption, damage tiers with smoke effects, NBT persistence, ownership & lock
+          - Server-authoritative multiplayer movement; English + Vietnamese localization
+          - Everything configurable in `wave100-common.toml` (`/wave reload`)
+          NOTES
+          gh release create "$TAG" \
+            --title "Wave 100 Motorcycle $TAG — MC 1.21.1 (NeoForge)" \
+            --notes-file /tmp/notes.md \
+            build/libs/*.jar
